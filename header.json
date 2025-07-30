@@ -1,0 +1,180 @@
+{
+    "header": {
+      "type": "hero_header",
+      "layout": "full_screen",
+      "background": {
+        "type": "image",
+        "description": "Tropical beach scene with palm trees and turquoise water",
+        "overlay": {
+          "color": "--color-accent",
+          "opacity": "60-70%",
+          "gradient": "subtle radial gradient from center"
+        },
+        "elements": [
+          "Palm trees on left and right sides",
+          "Tropical beach road",
+          "Blue sports car (appears to be a luxury sedan)",
+          "Clear turquoise water",
+          "Cloudy sky"
+        ]
+      },
+      "navigation": {
+        "position": "top_fixed",
+        "background": "--color-primary",
+        "logo": {
+          "type": "circular_badge",
+          "text": "VM",
+          "background_color": "--color-primary",
+          "text_color": "white",
+          "brand_name": "Voiture Malaky"
+        },
+        "menu_items": [
+          {
+            "label": "Home",
+            "icon": "home",
+            "active": true
+          },
+          {
+            "label": "Reservations",
+            "icon": "calendar",
+            "has_dropdown": true,
+            "dropdown_items": [
+              {
+                "label": "My Rentals",
+                "description": "Cars I've rented"
+              },
+              {
+                "label": "My Listings", 
+                "description": "Cars I'm renting out"
+              }
+            ]
+          },
+          {
+            "label": "Profile",
+            "icon": "user"
+          }
+        ],
+        "cta_button": {
+          "text": "List Your Car",
+          "style": "primary_button",
+          "color": "turquoise",
+          "shape": "rounded"
+        }
+      },
+      "hero_content": {
+        "alignment": "center",
+        "car_icon": {
+          "position": "above_title",
+          "style": "white_outline",
+          "background": "semi_transparent_white"
+        },
+        "title": {
+          "text": "Voiture Malaky",
+          "font_size": "very_large",
+          "font_weight": "bold",
+          "color": "white",
+          "text_shadow": true
+        },
+        "subtitle": {
+          "text": "Madagascar's Premier Car Rental Platform",
+          "font_size": "large",
+          "font_weight": "medium",
+          "color": "white"
+        },
+        "description": {
+          "text": "Rent the perfect car for your Madagascar adventure or earn money by sharing your vehicle with trusted travelers",
+          "font_size": "medium",
+          "color": "white_90_opacity",
+          "max_width": "600px"
+        }
+      },
+      "search_section": {
+        "container": {
+          "background": "white_90_opacity",
+          "border_radius": "large",
+          "shadow": "large",
+          "padding": "24px",
+          "max_width": "900px",
+          "backdrop_blur": true
+        },
+        "form_fields": [
+          {
+            "label": "Lieu",
+            "icon": "location_pin",
+            "type": "select",
+            "placeholder": "Choose location"
+          },
+          {
+            "label": "nombre de Passagers", 
+            "icon": "users",
+            "type": "select",
+            "placeholder": "How many?"
+          },
+          {
+            "label": "Dates",
+            "icon": "calendar",
+            "type": "date_input",
+            "placeholder": "dd/mm/yyyy"
+          },
+          {
+            "label": "Type de véhicule",
+            "icon": "car",
+            "type": "select", 
+            "placeholder": "Car type"
+          }
+        ],
+        "search_button": {
+          "text": "Trouver votre véhicule parfait",
+          "icon": "search",
+          "style": "primary_large",
+          "color": "turquoise",
+          "full_width_mobile": true
+        }
+      },
+      "cta_buttons": {
+        "layout": "horizontal_row",
+        "gap": "16px",
+        "buttons": [
+          {
+            "text": "Listez votre véhicule & Gagnez",
+            "style": "outline_button",
+            "color": "white_outline",
+            "shape": "rounded_full"
+          },
+          {
+            "text": "Découvrez comment ça marche", 
+            "style": "outline_button",
+            "color": "white_outline",
+            "shape": "rounded_full"
+          }
+        ]
+      },
+      "design_elements": {
+        "scroll_indicator": {
+          "position": "bottom_center",
+          "style": "circular_arrow_down",
+          "color": "white_transparent"
+        },
+        "responsive_behavior": {
+          "mobile": "stacked_layout",
+          "tablet": "condensed_search_form", 
+          "desktop": "full_horizontal_layout"
+        }
+      },
+      "color_scheme": {
+        "primary": "turquoise/teal",
+        "secondary": "white",
+        "accent": "tropical_blue",
+        "text": {
+          "primary": "white",
+          "secondary": "white_90_opacity",
+          "tertiary": "dark_gray"
+        }
+      },
+      "typography": {
+        "title_font": "bold_sans_serif",
+        "body_font": "regular_sans_serif",
+        "hierarchy": "clear_size_progression"
+      }
+    }
+  }

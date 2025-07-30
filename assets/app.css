@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@plugin "daisyui";
+
+
+@plugin "daisyui/theme" {
+  name: "corporate";
+  default: false;
+  prefersdark: true;
+  color-scheme: "light";
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(95% 0 0);
+  --color-base-300: oklch(90% 0 0);
+  --color-base-content: oklch(22.389% 0.031 278.072);
+  --color-primary: oklch(61% 0.17 37);
+  --color-primary-content: oklch(100% 0 0);
+  --color-secondary: oklch(50% 0.213 27.518);
+  --color-info: oklch(40% 0.18 180);
+  --color-secondary-content: oklch(100% 0 0);
+  --color-accent: oklch(65% 0.18 180);
+  --color-accent-content: oklch(100% 0 0);
+  --color-neutral: oklch(44% 0.03 256.802);
+  --color-neutral-content: oklch(100% 0 0);
+  --color-info-content: oklch(100% 0 0);
+  --color-success: oklch(40% 0.18 180);
+  --color-success-content: oklch(100% 0 0);
+  --color-warning: oklch(71% 0.17 37);
+  --color-warning-content: oklch(90% 0 0)
+  --color-error: oklch(70% 0.191 22.216);
+  --color-error-content: oklch(90% 0 0);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.25rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+
+/* --- FIX iOS Auto-Zoom on Form Inputs --- */
+/*
+  This media query targets mobile devices (specifically WebKit browsers like Safari)
+  and sets the font size of form inputs to 16px.
+  This prevents the default browser behavior of automatically zooming in on a form field
+  when it's focused, which can be disruptive to the user experience.
+  The user can still manually zoom if they need to.
+*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select,
+  textarea,
+  input {
+    font-size: 16px !important;
+  }
+}

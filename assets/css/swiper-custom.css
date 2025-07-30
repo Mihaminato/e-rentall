@@ -1,0 +1,69 @@
+/* Styles personnalisés pour Swiper dans les cartes véhicules */
+.vehicle-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  opacity: 0.7;
+}
+
+.vehicle-swiper .swiper-pagination-bullet-active {
+  background: white;
+  opacity: 1;
+}
+
+.vehicle-swiper .swiper-button-next,
+.vehicle-swiper .swiper-button-prev {
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  backdrop-filter: blur(2px);
+}
+
+.vehicle-swiper .swiper-button-next:after,
+.vehicle-swiper .swiper-button-prev:after {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.vehicle-swiper .swiper-button-next {
+  right: 10px;
+}
+
+.vehicle-swiper .swiper-button-prev {
+  left: 10px;
+}
+
+/* Animation de transition entre les slides */
+.vehicle-swiper .swiper-slide-active {
+  transform: scale(1);
+  transition: transform 0.3s;
+}
+
+.vehicle-swiper .swiper-slide {
+  opacity: 0.9;
+  transform: scale(0.95);
+  transition: all 0.3s;
+}
+
+.vehicle-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Indicateur de photos */
+.photo-indicator {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(3px);
+}

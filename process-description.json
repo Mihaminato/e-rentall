@@ -1,0 +1,95 @@
+{
+  "title": "Processus de Location de Voiture - 4 Étapes",
+  "background": "Fond gris clair",
+  "layout": "Horizontal, 4 étapes alignées",
+  "colorScheme": {
+    "primary": "orange",
+    "secondary": "teal",
+    "background": "light grey",
+    "icons": "white squares with teal icons"
+  },
+  "steps": [
+    {
+      "number": 1,
+      "title": "Find Your Car",
+      "icon": {
+        "type": "magnifying glass",
+        "color": "teal",
+        "background": "white square"
+      },
+      "description": "Browse hundreds of cars from trusted owners across Madagascar. Filter by location, type, and budget.",
+      "visualElements": {
+        "numberCircle": {
+          "color": "orange",
+          "number": "1"
+        }
+      }
+    },
+    {
+      "number": 2,
+      "title": "Book Instantly",
+      "icon": {
+        "type": "key",
+        "color": "teal",
+        "background": "white square"
+      },
+      "description": "Reserve your perfect car with instant confirmation. Our secure platform handles payments and insurance.",
+      "visualElements": {
+        "numberCircle": {
+          "color": "orange",
+          "number": "2"
+        }
+      }
+    },
+    {
+      "number": 3,
+      "title": "Pick Up & Go",
+      "icon": {
+        "type": "car",
+        "color": "teal",
+        "background": "white square"
+      },
+      "description": "Meet your host, get the keys, and start your Madagascar adventure. GPS and 24/7 support included.",
+      "visualElements": {
+        "numberCircle": {
+          "color": "orange",
+          "number": "3"
+        }
+      }
+    },
+    {
+      "number": 4,
+      "title": "Drive Safely",
+      "icon": {
+        "type": "shield",
+        "color": "teal",
+        "background": "white square"
+      },
+      "description": "Every trip is covered by comprehensive insurance. Return the car and rate your experience.",
+      "visualElements": {
+        "numberCircle": {
+          "color": "orange",
+          "number": "4"
+        }
+      }
+    }
+  ],
+  "designStyle": {
+    "aesthetic": "clean and modern",
+    "typography": "bold titles with descriptive paragraphs",
+    "spacing": "consistent between elements",
+    "visualHierarchy": "number circles → icons → titles → descriptions"
+  },
+  "serviceContext": {
+    "type": "car rental/sharing service",
+    "location": "Madagascar",
+    "features": [
+      "instant booking",
+      "secure payments",
+      "comprehensive insurance",
+      "GPS support",
+      "24/7 customer support",
+      "rating system"
+    ]
+  }
+} 
