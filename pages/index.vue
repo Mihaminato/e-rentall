@@ -16,14 +16,14 @@
             Location de véhicules entre particuliers
           </h1>
           <p class="mb-5 text-lg">
-            Louez un véhicule auprès de propriétaires locaux ou rentabilisez le
-            vôtre quand vous ne l'utilisez pas.
+            Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre quand vous ne
+            l'utilisez pas.
           </p>
+          <!-- Bouton d'installation PWA -->
+          <PwaInstallButton />
 
           <div class="card bg-base-100 text-base-content p-6 shadow-2xl">
-            <h2 class="text-xl font-semibold mb-4">
-              Trouvez votre véhicule idéal
-            </h2>
+            <h2 class="text-xl font-semibold mb-4">Trouvez votre véhicule idéal</h2>
 
             <ClientOnly>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -50,19 +50,10 @@
               </div>
             </ClientOnly>
 
-            <div class="mt-4 flex gap-2">
+            <div class="mt-4">
               <button class="btn btn-primary w-sm" @click="searchVehicles">
                 <Icon name="mdi:magnify" class="w-6 h-6" />
                 Rechercher
-              </button>
-              <!-- Bouton d'installation PWA toujours visible -->
-              <button
-                v-if="canInstall"
-                class="btn btn-accent w-sm"
-                @click="installApp"
-              >
-                <Icon name="mdi:download" class="w-6 h-6" />
-                Installer l'app
               </button>
             </div>
           </div>
@@ -74,9 +65,7 @@
     <div class="py-16 bg-base-100">
       <div class="container mx-auto px-4">
         <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-base-content mb-4">
-            Comment ça marche
-          </h2>
+          <h2 class="text-4xl font-bold text-base-content mb-4">Comment ça marche</h2>
           <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
             Simple, sécurisé, et direct - louez un véhicule en 4 étapes faciles.
           </p>
@@ -88,9 +77,7 @@
             class="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent transform -translate-y-1/2 z-0"
           ></div> -->
 
-          <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10"
-          >
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
             <!-- Step 1: Find Your Car -->
             <div class="flex flex-col items-center text-center relative">
               <div class="relative mb-6">
@@ -100,18 +87,14 @@
                 >
                   <span class="text-white font-bold text-sm">1</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:magnify" class="text-2xl text-teal-500" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">
-                Trouvez votre véhicule
-              </h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Trouvez votre véhicule</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Parcourez des centaines de véhicules de propriétaires locaux.
-                Filtrez par lieu, type et budget.
+                Parcourez des centaines de véhicules de propriétaires locaux. Filtrez par lieu, type
+                et budget.
               </p>
             </div>
 
@@ -124,18 +107,14 @@
                 >
                   <span class="text-white font-bold text-sm">2</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:key" class="text-2xl text-teal-500" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">
-                Réservez instantanément
-              </h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Réservez instantanément</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Réservez votre véhicule idéal avec confirmation instantanée.
-                Notre plateforme sécurisée gère les paiements et les assurances.
+                Réservez votre véhicule idéal avec confirmation instantanée. Notre plateforme
+                sécurisée gère les paiements et les assurances.
               </p>
             </div>
 
@@ -148,18 +127,14 @@
                 >
                   <span class="text-white font-bold text-sm">3</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:car" class="text-2xl text-teal-500" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">
-                Récupérez et partez
-              </h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et partez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Rencontrez votre hôte, récupérez les clés et commencez votre
-                aventure à Madagascar. GPS et support 24/7 inclus.
+                Rencontrez votre hôte, récupérez les clés et commencez votre aventure à Madagascar.
+                GPS et support 24/7 inclus.
               </p>
             </div>
 
@@ -172,21 +147,14 @@
                 >
                   <span class="text-white font-bold text-sm">4</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
-                  <Icon
-                    name="mdi:shield-check"
-                    class="text-2xl text-teal-500"
-                  />
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
+                  <Icon name="mdi:shield-check" class="text-2xl text-teal-500" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">
-                Drive Safely
-              </h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Drive Safely</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Every trip is covered by comprehensive insurance. Return the car
-                and rate your experience.
+                Every trip is covered by comprehensive insurance. Return the car and rate your
+                experience.
               </p>
             </div>
           </div>
@@ -218,9 +186,7 @@
               Découvrez les derniers ajouts à notre flotte.
             </p>
             <div class="mt-4">
-              <NuxtLink to="/vehicles" class="btn btn-primary"
-                >Voir tous les véhicules</NuxtLink
-              >
+              <NuxtLink to="/vehicles" class="btn btn-primary">Voir tous les véhicules</NuxtLink>
             </div>
           </div>
 
@@ -252,9 +218,7 @@
     <!-- Avantages / Pourquoi nous choisir -->
     <div class="py-16 bg-base-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">
-          Pourquoi nous choisir
-        </h2>
+        <h2 class="text-3xl font-bold text-center mb-12">Pourquoi nous choisir</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div class="card bg-base-200">
@@ -276,9 +240,7 @@
                 </svg>
               </div>
               <h3 class="font-bold">Réservation flexible</h3>
-              <p class="text-sm">
-                Annulation gratuite jusqu'à 24h avant la location
-              </p>
+              <p class="text-sm">Annulation gratuite jusqu'à 24h avant la location</p>
             </div>
           </div>
 
@@ -301,9 +263,7 @@
                 </svg>
               </div>
               <h3 class="font-bold">Communauté vérifiée</h3>
-              <p class="text-sm">
-                Propriétaires et locataires vérifiés pour votre sécurité
-              </p>
+              <p class="text-sm">Propriétaires et locataires vérifiés pour votre sécurité</p>
             </div>
           </div>
 
@@ -326,9 +286,7 @@
                 </svg>
               </div>
               <h3 class="font-bold">Support 24/7</h3>
-              <p class="text-sm">
-                Notre équipe est à votre service tout au long de votre location
-              </p>
+              <p class="text-sm">Notre équipe est à votre service tout au long de votre location</p>
             </div>
           </div>
         </div>
@@ -340,14 +298,11 @@
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
         <p class="mb-6 max-w-xl mx-auto">
-          Rejoignez notre communauté de propriétaires et locataires dès
-          aujourd'hui et profitez de notre plateforme de location de véhicules
-          entre particuliers.
+          Rejoignez notre communauté de propriétaires et locataires dès aujourd'hui et profitez de
+          notre plateforme de location de véhicules entre particuliers.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <NuxtLink
-            to="/auth/register"
-            class="btn bg-white text-primary hover:bg-gray-200"
+          <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200"
             >S'inscrire gratuitement</NuxtLink
           >
           <NuxtLink
@@ -362,61 +317,52 @@
 </template>
 
 <script setup lang="ts">
-// Importations des composables et types
-import { CITY_OPTIONS } from "~/types";
-import type { Vehicle } from "~/types";
-import { useVehicles } from "~/composables/useVehicles";
+  // Importations des composables et types
+  import { CITY_OPTIONS } from '~/types'
+  import type { Vehicle } from '~/types'
+  import { useVehicles } from '~/composables/useVehicles'
 
-// Date actuelle pour les champs de date par défaut
-const currentDate = new Date();
-const tomorrow = new Date(currentDate);
-tomorrow.setDate(currentDate.getDate() + 1);
+  // Date actuelle pour les champs de date par défaut
+  const currentDate = new Date()
+  const tomorrow = new Date(currentDate)
+  tomorrow.setDate(currentDate.getDate() + 1)
 
-const searchLocation = ref("");
-const startDate = ref(currentDate.toISOString().split("T")[0]);
-const endDate = ref(tomorrow.toISOString().split("T")[0]);
+  const searchLocation = ref('')
+  const startDate = ref(currentDate.toISOString().split('T')[0])
+  const endDate = ref(tomorrow.toISOString().split('T')[0])
 
-// Options pour le select de province (avec "Toutes" en première option)
-const provinceOptions = [{ value: "", label: "Toutes" }, ...CITY_OPTIONS];
+  // Options pour le select de province (avec "Toutes" en première option)
+  const provinceOptions = [{ value: '', label: 'Toutes' }, ...CITY_OPTIONS]
 
-const { fetchVehiclesWithPagination } = useVehicles();
+  const { fetchVehiclesWithPagination } = useVehicles()
 
-const recentVehicles = ref<Vehicle[]>([]);
-const isLoading = ref(true);
-const error = ref<string | null>(null);
+  const recentVehicles = ref<Vehicle[]>([])
+  const isLoading = ref(true)
+  const error = ref<string | null>(null)
 
-// Cette fonction sera implémentée plus tard avec Supabase
-const searchVehicles = () => {
-  // Redirection vers la page de résultats avec les paramètres de recherche
-  navigateTo({
-    path: "/vehicles",
-    query: {
-      province: searchLocation.value,
-      start_date: startDate.value,
-      end_date: endDate.value,
-    },
-  });
-};
-
-onMounted(async () => {
-  // Test PWA
-  const { $pwa } = useNuxtApp();
-  console.log("PWA Status:", $pwa);
-
-  try {
-    isLoading.value = true;
-    const { data } = await fetchVehiclesWithPagination(
-      undefined,
-      "newest",
-      1,
-      3
-    );
-    recentVehicles.value = data;
-  } catch (err) {
-    console.error("Erreur lors du chargement des véhicules récents:", err);
-    error.value = "Impossible de charger les véhicules.";
-  } finally {
-    isLoading.value = false;
+  // Cette fonction sera implémentée plus tard avec Supabase
+  const searchVehicles = () => {
+    // Redirection vers la page de résultats avec les paramètres de recherche
+    navigateTo({
+      path: '/vehicles',
+      query: {
+        province: searchLocation.value,
+        start_date: startDate.value,
+        end_date: endDate.value
+      }
+    })
   }
-});
+
+  onMounted(async () => {
+    try {
+      isLoading.value = true
+      const { data } = await fetchVehiclesWithPagination(undefined, 'newest', 1, 3)
+      recentVehicles.value = data
+    } catch (err) {
+      console.error('Erreur lors du chargement des véhicules récents:', err)
+      error.value = 'Impossible de charger les véhicules.'
+    } finally {
+      isLoading.value = false
+    }
+  })
 </script>

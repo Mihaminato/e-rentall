@@ -1,17 +1,10 @@
 <template>
   <!-- Notification d'installation PWA -->
-  <div v-if="$pwa?.showInstallPrompt" class="fixed bottom-4 right-4 z-50">
-    <div
-      class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm"
-    >
+  <div v-if="showInstallNotification" class="fixed bottom-4 right-4 z-50">
+    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm">
       <div class="flex items-start">
         <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-blue-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -21,30 +14,20 @@
           </svg>
         </div>
         <div class="ml-3 flex-1">
-          <p class="text-sm font-medium text-gray-900">
-            Installer l'application
-          </p>
+          <p class="text-sm font-medium text-gray-900">Installer l'application</p>
           <p class="mt-1 text-sm text-gray-500">
             Installez E-Rentall sur votre appareil pour un accès rapide
           </p>
         </div>
         <div class="ml-4 flex-shrink-0 flex">
           <button
-            @click="$pwa?.install()"
             class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            @click="$pwa?.install ? $pwa.install() : null"
           >
             Installer
           </button>
-          <button
-            @click="$pwa?.cancelInstall()"
-            class="ml-2 text-gray-400 hover:text-gray-600"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+          <button class="ml-2 text-gray-400 hover:text-gray-600" @click="closeInstallNotification">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -59,18 +42,11 @@
   </div>
 
   <!-- Notification de mise à jour -->
-  <div v-if="$pwa?.needRefresh" class="fixed bottom-4 right-4 z-50">
-    <div
-      class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm"
-    >
+  <div v-if="showUpdateNotification" class="fixed bottom-4 right-4 z-50">
+    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm">
       <div class="flex items-start">
         <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-green-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
+          <svg class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -80,30 +56,20 @@
           </svg>
         </div>
         <div class="ml-3 flex-1">
-          <p class="text-sm font-medium text-gray-900">
-            Nouvelle version disponible
-          </p>
+          <p class="text-sm font-medium text-gray-900">Nouvelle version disponible</p>
           <p class="mt-1 text-sm text-gray-500">
             Une nouvelle version de l'application est disponible
           </p>
         </div>
         <div class="ml-4 flex-shrink-0 flex">
           <button
-            @click="$pwa?.updateServiceWorker()"
             class="bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+            @click="$pwa?.updateServiceWorker ? $pwa.updateServiceWorker() : null"
           >
             Mettre à jour
           </button>
-          <button
-            @click="$pwa?.cancelPrompt()"
-            class="ml-2 text-gray-400 hover:text-gray-600"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+          <button class="ml-2 text-gray-400 hover:text-gray-600" @click="closeUpdateNotification">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -118,10 +84,8 @@
   </div>
 
   <!-- Notification hors ligne -->
-  <div v-if="$pwa?.offlineReady" class="fixed bottom-4 right-4 z-50">
-    <div
-      class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm"
-    >
+  <div v-if="showOfflineNotification" class="fixed bottom-4 right-4 z-50">
+    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm">
       <div class="flex items-start">
         <div class="flex-shrink-0">
           <svg
@@ -139,24 +103,14 @@
           </svg>
         </div>
         <div class="ml-3 flex-1">
-          <p class="text-sm font-medium text-gray-900">
-            Prêt pour le mode hors ligne
-          </p>
+          <p class="text-sm font-medium text-gray-900">Prêt pour le mode hors ligne</p>
           <p class="mt-1 text-sm text-gray-500">
             L'application peut maintenant fonctionner hors ligne
           </p>
         </div>
         <div class="ml-4 flex-shrink-0">
-          <button
-            @click="$pwa?.cancelPrompt()"
-            class="text-gray-400 hover:text-gray-600"
-          >
-            <svg
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+          <button class="text-gray-400 hover:text-gray-600" @click="closeOfflineNotification">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -172,14 +126,100 @@
 </template>
 
 <script setup lang="ts">
-const { $pwa } = useNuxtApp();
+  const { $pwa } = useNuxtApp()
 
-// Masquer automatiquement les notifications après 5 secondes
-onMounted(() => {
-  if ($pwa?.offlineReady || $pwa?.needRefresh) {
-    setTimeout(() => {
-      $pwa?.cancelPrompt();
-    }, 5000);
+  // Variables réactives pour les notifications
+  const showInstallNotification = ref(false)
+  const showUpdateNotification = ref(false)
+  const showOfflineNotification = ref(false)
+
+  // Fonction pour fermer les notifications
+  const closeInstallNotification = () => {
+    showInstallNotification.value = false
   }
-});
+
+  const closeUpdateNotification = () => {
+    showUpdateNotification.value = false
+  }
+
+  const closeOfflineNotification = () => {
+    showOfflineNotification.value = false
+  }
+
+  // Configuration au montage
+  onMounted(() => {
+    console.log('🔧 PwaNotifications monté')
+    console.log('🔍 Plugin PWA disponible:', !!$pwa)
+
+    // Vérifier l'état initial du PWA
+    if ($pwa) {
+      console.log('État initial PWA:', {
+        showInstallPrompt: $pwa.showInstallPrompt,
+        needRefresh: $pwa.needRefresh,
+        offlineReady: $pwa.offlineReady,
+        isInstalled: $pwa.isInstalled
+      })
+
+      // Initialiser les notifications basées sur l'état actuel
+      if (!$pwa.isInstalled && $pwa.showInstallPrompt) {
+        showInstallNotification.value = true
+      }
+
+      if ($pwa.needRefresh) {
+        showUpdateNotification.value = true
+      }
+
+      if ($pwa.offlineReady) {
+        showOfflineNotification.value = true
+      }
+    }
+
+    // Auto-masquer les notifications après 10 secondes
+    setTimeout(closeOfflineNotification, 10000)
+  })
+
+  // Watchers pour les changements d'état PWA
+  if ($pwa) {
+    watch(
+      () => $pwa.showInstallPrompt,
+      newVal => {
+        console.log('showInstallPrompt changé:', newVal)
+        if (newVal && !$pwa.isInstalled) {
+          showInstallNotification.value = true
+        } else {
+          showInstallNotification.value = false
+        }
+      }
+    )
+
+    watch(
+      () => $pwa.needRefresh,
+      newVal => {
+        console.log('needRefresh changé:', newVal)
+        showUpdateNotification.value = newVal || false
+      }
+    )
+
+    watch(
+      () => $pwa.offlineReady,
+      newVal => {
+        console.log('offlineReady changé:', newVal)
+        if (newVal) {
+          showOfflineNotification.value = true
+          // Auto-masquer après 10 secondes
+          setTimeout(closeOfflineNotification, 10000)
+        }
+      }
+    )
+
+    watch(
+      () => $pwa.isInstalled,
+      newVal => {
+        console.log('isInstalled changé:', newVal)
+        if (newVal) {
+          showInstallNotification.value = false
+        }
+      }
+    )
+  }
 </script>
