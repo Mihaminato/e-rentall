@@ -19,6 +19,9 @@
             Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre quand vous ne
             l'utilisez pas.
           </p>
+          <!-- Bouton d'installation PWA -->
+          <PwaInstallButton />
+
           <div class="card bg-base-100 text-base-content p-6 shadow-2xl">
             <h2 class="text-xl font-semibold mb-4">Trouvez votre véhicule idéal</h2>
 
@@ -84,15 +87,14 @@
                 >
                   <span class="text-white font-bold text-sm">1</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:magnify" class="text-2xl text-teal-500" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Trouvez votre véhicule</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Parcourez des centaines de véhicules de propriétaires locaux. Filtrez par lieu, type et budget.
+                Parcourez des centaines de véhicules de propriétaires locaux. Filtrez par lieu, type
+                et budget.
               </p>
             </div>
 
@@ -105,15 +107,14 @@
                 >
                   <span class="text-white font-bold text-sm">2</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:key" class="text-2xl text-teal-500" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Réservez instantanément</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Réservez votre véhicule idéal avec confirmation instantanée. Notre plateforme sécurisée gère les paiements et les assurances.
+                Réservez votre véhicule idéal avec confirmation instantanée. Notre plateforme
+                sécurisée gère les paiements et les assurances.
               </p>
             </div>
 
@@ -126,15 +127,14 @@
                 >
                   <span class="text-white font-bold text-sm">3</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:car" class="text-2xl text-teal-500" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et partez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Rencontrez votre hôte, récupérez les clés et commencez votre aventure à Madagascar. GPS et support 24/7 inclus.
+                Rencontrez votre hôte, récupérez les clés et commencez votre aventure à Madagascar.
+                GPS et support 24/7 inclus.
               </p>
             </div>
 
@@ -147,15 +147,14 @@
                 >
                   <span class="text-white font-bold text-sm">4</span>
                 </div>
-                <div
-                  class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
-                >
+                <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
                   <Icon name="mdi:shield-check" class="text-2xl text-teal-500" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Drive Safely</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Every trip is covered by comprehensive insurance. Return the car and rate your experience.
+                Every trip is covered by comprehensive insurance. Return the car and rate your
+                experience.
               </p>
             </div>
           </div>

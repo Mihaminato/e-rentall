@@ -21,6 +21,7 @@
     "@supabase/supabase-js": "^2.50.0",
     "@tailwindcss/vite": "^4.1.10",
     "@unhead/vue": "^2.0.3",
+    "@vite-pwa/nuxt": "^1.0.4",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue-email/components": "^0.0.21",
     "@vue-email/render": "^0.0.9",
@@ -43,8 +44,6 @@
   "devDependencies": {
     "@faker-js/faker": "^9.9.0",
     "@iconify/json": "^2.2.353",
-    "@stagewise/toolbar": "^0.5.0",
-    "@stagewise/toolbar-vue": "^0.4.9",
     "@types/nodemailer": "^6.4.17",
     "dotenv": "^17.0.1",
     "unplugin-icons": "^22.1.0"
