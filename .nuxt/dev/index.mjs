@@ -1,62 +1,63 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, getResponseStatus, createError, getQuery as getQuery$1, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getResponseStatusText } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getResponseStatus, getQuery as getQuery$1, readBody, lazyEventHandler, useBase, createApp, createRouter as createRouter$1, toNodeListener, getRouterParam, getResponseStatusText } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { escapeHtml } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/@vue/shared/dist/shared.cjs.js';
-import { isVNode, defineComponent, createBlock, openBlock, unref, withCtx, createVNode, createTextVNode, createElementVNode, toDisplayString, createCommentVNode, createElementBlock, toValue, isRef } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/vue/index.mjs';
-import { Html, Head, Body, Container, Heading, Text, Section, Button } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/@vue-email/components/dist/index.mjs';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/vue/server-renderer/index.mjs';
-import destr, { destr as destr$1 } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/destr/dist/index.mjs';
-import { createDebugger, createHooks } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unstorage/drivers/fs.mjs';
-import { digest, hash as hash$1 } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/ohash/dist/index.mjs';
-import { klona } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/scule/dist/index.mjs';
-import { getContext } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unctx/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/radix3/dist/index.mjs';
+import { escapeHtml } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/@vue/shared/dist/shared.cjs.js';
+import { isVNode, defineComponent, createBlock, openBlock, unref, withCtx, createVNode, createTextVNode, createElementVNode, toDisplayString, createCommentVNode, createElementBlock, toValue, isRef } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/vue/index.mjs';
+import { Html, Head, Body, Container, Heading, Text, Section, Button } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/@vue-email/components/dist/index.mjs';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/vue/server-renderer/index.mjs';
+import destr, { destr as destr$1 } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/destr/dist/index.mjs';
+import { createDebugger, createHooks } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unstorage/drivers/fs.mjs';
+import { digest, hash as hash$1 } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/ohash/dist/index.mjs';
+import { klona } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/scule/dist/index.mjs';
+import { getContext } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unctx/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/youch-core/build/index.js';
-import { Youch } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/nitropack/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/youch-core/build/index.js';
+import { Youch } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/nitropack/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { stringify } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/devalue/index.js';
-import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/errx/dist/index.js';
-import { basename, isAbsolute } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/pathe/dist/index.mjs';
-import { getIcons } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/@iconify/utils/lib/index.mjs';
-import { collections } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/.nuxt/nuxt-icon-server-bundle.mjs';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unhead/dist/server.mjs';
-import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unhead/dist/plugins.mjs';
-import { walkResolver } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/unhead/dist/utils.mjs';
+import { stringify } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/devalue/index.js';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/errx/dist/index.js';
+import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/ipx/dist/index.mjs';
-import devalue from 'file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { dirname as dirname$1, resolve as resolve$1, basename, isAbsolute } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/pathe/dist/index.mjs';
+import { getIcons } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/@iconify/utils/lib/index.mjs';
+import { collections } from 'file:///media/prince/Donner/Prince/e-rentall/.nuxt/nuxt-icon-server-bundle.mjs';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unhead/dist/server.mjs';
+import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unhead/dist/plugins.mjs';
+import { walkResolver } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/unhead/dist/utils.mjs';
+import { ipxFSStorage, ipxHttpStorage, createIPX, createIPXH3Handler } from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/ipx/dist/index.mjs';
+import devalue from 'file:///media/prince/Donner/Prince/e-rentall/node_modules/@nuxt/devalue/dist/devalue.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"/Users/jenirandriamihajasoa/workspace/e-rentall/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/media/prince/Donner/Prince/e-rentall/server/assets"}];
 
-const assets = createStorage();
+const assets$1 = createStorage();
 
 for (const asset of serverAssets) {
-  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
+  assets$1.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
 }
 
 const storage = createStorage({});
 
-storage.mount('/assets', assets);
+storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/jenirandriamihajasoa/workspace/e-rentall","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/jenirandriamihajasoa/workspace/e-rentall/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/jenirandriamihajasoa/workspace/e-rentall/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/jenirandriamihajasoa/workspace/e-rentall/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/jenirandriamihajasoa/workspace/e-rentall/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/media/prince/Donner/Prince/e-rentall","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/media/prince/Donner/Prince/e-rentall/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/media/prince/Donner/Prince/e-rentall/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/media/prince/Donner/Prince/e-rentall/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/media/prince/Donner/Prince/e-rentall/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -947,7 +948,7 @@ const _inlineRuntimeConfig = {
     "alias": {},
     "fs": {
       "dir": [
-        "/Users/jenirandriamihajasoa/workspace/e-rentall/public"
+        "/media/prince/Donner/Prince/e-rentall/public"
       ]
     },
     "http": {
@@ -1328,13 +1329,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _ANs9FFyjWsAyrgihrVnz8Wl1Rm8q_BRfGgGtNOSuIXs = (function(nitro) {
+const _p2oTIwAM0JrF8gkaF_Udbg2zrlPVJvvJEfCDs0690qA = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
-const rootDir = "/Users/jenirandriamihajasoa/workspace/e-rentall";
+const rootDir = "/media/prince/Donner/Prince/e-rentall";
 
 const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"Location de voitures entre particuliers à Madagascar"},{"name":"theme-color","content":"#3B82F6"}],"link":[],"style":[],"script":[],"noscript":[]};
 
@@ -1353,7 +1354,7 @@ const devReducers = {
   URL: (data) => data instanceof URL ? data.toString() : void 0
 };
 const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _JGcHVA2ZXS8akYxuqe5wo05pQFCm2Vn_3ur5HHOIRr8 = (nitroApp) => {
+const _k5qVIWx94vjPYqDqWvXvVsmr0HDKJS2scd3BA9hL7U = (nitroApp) => {
   const handler = nitroApp.h3App.handler;
   nitroApp.h3App.handler = (event) => {
     return asyncContext.callAsync({ logs: [], event }, () => handler(event));
@@ -1426,15 +1427,104 @@ function defineNitroPlugin(def) {
   return def;
 }
 
-const _XqxsObQpMMRUnFozWnio9uzKgyZ8mkIPI36dagGFE = defineNitroPlugin((nitro) => {
+const __wnXabhxz2BlzHJRB0RxwWohkZEVWNUo6QNbpeo7QRE = defineNitroPlugin((nitro) => {
   createDebugger(nitro.hooks, { tag: "nitro-runtime" });
 });
 
 const plugins = [
-  _ANs9FFyjWsAyrgihrVnz8Wl1Rm8q_BRfGgGtNOSuIXs,
-_JGcHVA2ZXS8akYxuqe5wo05pQFCm2Vn_3ur5HHOIRr8,
-_XqxsObQpMMRUnFozWnio9uzKgyZ8mkIPI36dagGFE
+  _p2oTIwAM0JrF8gkaF_Udbg2zrlPVJvvJEfCDs0690qA,
+_k5qVIWx94vjPYqDqWvXvVsmr0HDKJS2scd3BA9hL7U,
+__wnXabhxz2BlzHJRB0RxwWohkZEVWNUo6QNbpeo7QRE
 ];
+
+const assets = {};
+
+function readAsset (id) {
+  const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
+  return promises.readFile(resolve$1(serverDir, assets[id].path))
+}
+
+const publicAssetBases = {"/_nuxt/builds/meta/":{"maxAge":31536000},"/_nuxt/builds/":{"maxAge":1},"/_fonts/":{"maxAge":31536000},"/_scripts/":{"maxAge":31536000}};
+
+function isPublicAssetURL(id = '') {
+  if (assets[id]) {
+    return true
+  }
+  for (const base in publicAssetBases) {
+    if (id.startsWith(base)) { return true }
+  }
+  return false
+}
+
+function getAsset (id) {
+  return assets[id]
+}
+
+const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
+const EncodingMap = { gzip: ".gz", br: ".br" };
+const _NKQkp7 = eventHandler((event) => {
+  if (event.method && !METHODS.has(event.method)) {
+    return;
+  }
+  let id = decodePath(
+    withLeadingSlash(withoutTrailingSlash(parseURL(event.path).pathname))
+  );
+  let asset;
+  const encodingHeader = String(
+    getRequestHeader(event, "accept-encoding") || ""
+  );
+  const encodings = [
+    ...encodingHeader.split(",").map((e) => EncodingMap[e.trim()]).filter(Boolean).sort(),
+    ""
+  ];
+  if (encodings.length > 1) {
+    appendResponseHeader(event, "Vary", "Accept-Encoding");
+  }
+  for (const encoding of encodings) {
+    for (const _id of [id + encoding, joinURL(id, "index.html" + encoding)]) {
+      const _asset = getAsset(_id);
+      if (_asset) {
+        asset = _asset;
+        id = _id;
+        break;
+      }
+    }
+  }
+  if (!asset) {
+    if (isPublicAssetURL(id)) {
+      removeResponseHeader(event, "Cache-Control");
+      throw createError({ statusCode: 404 });
+    }
+    return;
+  }
+  const ifNotMatch = getRequestHeader(event, "if-none-match") === asset.etag;
+  if (ifNotMatch) {
+    setResponseStatus(event, 304, "Not Modified");
+    return "";
+  }
+  const ifModifiedSinceH = getRequestHeader(event, "if-modified-since");
+  const mtimeDate = new Date(asset.mtime);
+  if (ifModifiedSinceH && asset.mtime && new Date(ifModifiedSinceH) >= mtimeDate) {
+    setResponseStatus(event, 304, "Not Modified");
+    return "";
+  }
+  if (asset.type && !getResponseHeader(event, "Content-Type")) {
+    setResponseHeader(event, "Content-Type", asset.type);
+  }
+  if (asset.etag && !getResponseHeader(event, "ETag")) {
+    setResponseHeader(event, "ETag", asset.etag);
+  }
+  if (asset.mtime && !getResponseHeader(event, "Last-Modified")) {
+    setResponseHeader(event, "Last-Modified", mtimeDate.toUTCString());
+  }
+  if (asset.encoding && !getResponseHeader(event, "Content-Encoding")) {
+    setResponseHeader(event, "Content-Encoding", asset.encoding);
+  }
+  if (asset.size > 0 && !getResponseHeader(event, "Content-Length")) {
+    setResponseHeader(event, "Content-Length", asset.size);
+  }
+  return readAsset(id);
+});
 
 function defineRenderHandler(render) {
   const runtimeConfig = useRuntimeConfig();
@@ -1563,21 +1653,33 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" [ADMIN] Demande accept\xE9e par le propri\xE9taire ")
+                      createTextVNode(
+                        " [ADMIN] Demande accept\xE9e par le propri\xE9taire ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[1] || (_cache[1] = [
-                      createTextVNode(" Bonjour Admin, ")
+                      createTextVNode(
+                        " Bonjour Admin, ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [1]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[2] || (_cache[2] = createTextVNode(" Le propri\xE9taire a accept\xE9 la demande de r\xE9servation pour le v\xE9hicule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " Le propri\xE9taire a accept\xE9 la demande de r\xE9servation pour le v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -1585,7 +1687,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(", matricule ")),
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -1605,7 +1711,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[4] || (_cache[4] = createTextVNode(". "))
+                      _cache[4] || (_cache[4] = createTextVNode(
+                        ". ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [2, 3, 4]
@@ -1726,7 +1836,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" \u2022 Statut : En attente de paiement acompte ")
+                          createTextVNode(
+                            " \u2022 Statut : En attente de paiement acompte ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -1737,7 +1851,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[7] || (_cache[7] = [
-                      createTextVNode(" La r\xE9servation est maintenant en attente du paiement de l'acompte par le locataire. Une fois l'acompte r\xE9gl\xE9, vous devrez confirmer d\xE9finitivement la r\xE9servation. ")
+                      createTextVNode(
+                        " La r\xE9servation est maintenant en attente du paiement de l'acompte par le locataire. Une fois l'acompte r\xE9gl\xE9, vous devrez confirmer d\xE9finitivement la r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [7]
@@ -1749,7 +1867,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[8] || (_cache[8] = [
-                          createTextVNode(" Voir la r\xE9servation ")
+                          createTextVNode(
+                            " Voir la r\xE9servation ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [8]
@@ -1760,7 +1882,11 @@ const _sfc_main$e = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[9] || (_cache[9] = [
-                      createTextVNode(" Syst\xE8me VehicleRental ")
+                      createTextVNode(
+                        " Syst\xE8me VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [9]
@@ -1817,7 +1943,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Demande accept\xE9e - R\xE9gler l'acompte ")
+                      createTextVNode(
+                        " Demande accept\xE9e - R\xE9gler l'acompte ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -1838,7 +1968,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                     style: { "color": "#666", "font-size": "16px", "line-height": "1.6" }
                   }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Excellente nouvelle ! Votre demande ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Excellente nouvelle ! Votre demande ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -1846,7 +1980,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(" a \xE9t\xE9 accept\xE9e par le propri\xE9taire. Merci de r\xE9gler l'acompte pour confirmer la r\xE9servation. "))
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " a \xE9t\xE9 accept\xE9e par le propri\xE9taire. Merci de r\xE9gler l'acompte pour confirmer la r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2]
@@ -1855,7 +1993,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                     style: { "color": "#666", "font-size": "16px", "line-height": "1.6" }
                   }, {
                     default: withCtx(() => _cache[3] || (_cache[3] = [
-                      createTextVNode(" Excellente nouvelle ! Votre demande a \xE9t\xE9 accept\xE9e par le propri\xE9taire. Merci de r\xE9gler l'acompte pour confirmer la r\xE9servation. ")
+                      createTextVNode(
+                        " Excellente nouvelle ! Votre demande a \xE9t\xE9 accept\xE9e par le propri\xE9taire. Merci de r\xE9gler l'acompte pour confirmer la r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [3]
@@ -1962,7 +2104,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666", "text-align": "center", "font-size": "14px" } }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" (50% du montant total) ")
+                          createTextVNode(
+                            " (50% du montant total) ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -1973,7 +2119,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[7] || (_cache[7] = [
-                      createTextVNode(" Pour finaliser votre r\xE9servation, veuillez vous connecter \xE0 votre espace et proc\xE9der au paiement de l'acompte. Une fois l'acompte r\xE9gl\xE9, votre r\xE9servation sera d\xE9finitivement confirm\xE9e. ")
+                      createTextVNode(
+                        " Pour finaliser votre r\xE9servation, veuillez vous connecter \xE0 votre espace et proc\xE9der au paiement de l'acompte. Une fois l'acompte r\xE9gl\xE9, votre r\xE9servation sera d\xE9finitivement confirm\xE9e. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [7]
@@ -1985,7 +2135,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#28a745", "color": "white", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[8] || (_cache[8] = [
-                          createTextVNode(" Payer l'acompte maintenant ")
+                          createTextVNode(
+                            " Payer l'acompte maintenant ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [8]
@@ -1996,7 +2150,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[9] || (_cache[9] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -2004,7 +2162,11 @@ const _sfc_main$d = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [9]
@@ -2065,21 +2227,33 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" [ADMIN] Acompte r\xE9gl\xE9 - R\xE9servation confirm\xE9e ")
+                      createTextVNode(
+                        " [ADMIN] Acompte r\xE9gl\xE9 - R\xE9servation confirm\xE9e ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[1] || (_cache[1] = [
-                      createTextVNode(" Bonjour Admin, ")
+                      createTextVNode(
+                        " Bonjour Admin, ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [1]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[2] || (_cache[2] = createTextVNode(" L'acompte pour la r\xE9servation du v\xE9hicule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " L'acompte pour la r\xE9servation du v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2087,7 +2261,11 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(", matricule ")),
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2107,7 +2285,11 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[4] || (_cache[4] = createTextVNode(" a \xE9t\xE9 r\xE9gl\xE9. La r\xE9servation est maintenant confirm\xE9e. "))
+                      _cache[4] || (_cache[4] = createTextVNode(
+                        " a \xE9t\xE9 r\xE9gl\xE9. La r\xE9servation est maintenant confirm\xE9e. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [2, 3, 4]
@@ -2239,7 +2421,11 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" \u2022 Statut : Confirm\xE9e et active ")
+                          createTextVNode(
+                            " \u2022 Statut : Confirm\xE9e et active ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -2265,14 +2451,22 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[8] || (_cache[8] = [
-                          createTextVNode(" \u2022 Email de confirmation envoy\xE9 au locataire ")
+                          createTextVNode(
+                            " \u2022 Email de confirmation envoy\xE9 au locataire ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [8]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[9] || (_cache[9] = [
-                          createTextVNode(" \u2022 Email de confirmation envoy\xE9 au propri\xE9taire ")
+                          createTextVNode(
+                            " \u2022 Email de confirmation envoy\xE9 au propri\xE9taire ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [9]
@@ -2288,7 +2482,11 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[10] || (_cache[10] = [
-                          createTextVNode(" Consulter la r\xE9servation ")
+                          createTextVNode(
+                            " Consulter la r\xE9servation ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [10]
@@ -2299,7 +2497,11 @@ const _sfc_main$c = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[11] || (_cache[11] = [
-                      createTextVNode(" Syst\xE8me VehicleRental ")
+                      createTextVNode(
+                        " Syst\xE8me VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [11]
@@ -2359,7 +2561,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" R\xE9servation confirm\xE9e pour votre v\xE9hicule ")
+                      createTextVNode(
+                        " R\xE9servation confirm\xE9e pour votre v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -2377,7 +2583,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Excellente nouvelle ! La r\xE9servation pour votre v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Excellente nouvelle ! La r\xE9servation pour votre v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2385,7 +2595,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(", matricule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2405,7 +2619,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(" est confirm\xE9e. "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        " est confirm\xE9e. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -2443,7 +2661,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                         style: { "margin": "10px 0 0 0", "color": "#666" }
                       }, {
                         default: withCtx(() => _cache[5] || (_cache[5] = [
-                          createTextVNode(" \u2022 ID R\xE9servation : N/A ")
+                          createTextVNode(
+                            " \u2022 ID R\xE9servation : N/A ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [5]
@@ -2557,28 +2779,44 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[7] || (_cache[7] = [
-                          createTextVNode(" \u2022 Pr\xE9parez votre v\xE9hicule pour la location ")
+                          createTextVNode(
+                            " \u2022 Pr\xE9parez votre v\xE9hicule pour la location ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [7]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[8] || (_cache[8] = [
-                          createTextVNode(" \u2022 Contactez le locataire pour organiser la remise du v\xE9hicule ")
+                          createTextVNode(
+                            " \u2022 Contactez le locataire pour organiser la remise du v\xE9hicule ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [8]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[9] || (_cache[9] = [
-                          createTextVNode(" \u2022 Vous recevrez les documents contractuels par email sous peu ")
+                          createTextVNode(
+                            " \u2022 Vous recevrez les documents contractuels par email sous peu ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [9]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[10] || (_cache[10] = [
-                          createTextVNode(" \u2022 Le solde sera r\xE9gl\xE9 \xE0 la fin de la location ")
+                          createTextVNode(
+                            " \u2022 Le solde sera r\xE9gl\xE9 \xE0 la fin de la location ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [10]
@@ -2589,7 +2827,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[11] || (_cache[11] = [
-                      createTextVNode(" F\xE9licitations pour cette nouvelle location ! Le syst\xE8me vous notifiera de toute mise \xE0 jour concernant cette r\xE9servation. ")
+                      createTextVNode(
+                        " F\xE9licitations pour cette nouvelle location ! Le syst\xE8me vous notifiera de toute mise \xE0 jour concernant cette r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [11]
@@ -2601,7 +2843,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#2563eb", "color": "white", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[12] || (_cache[12] = [
-                          createTextVNode(" Voir la r\xE9servation ")
+                          createTextVNode(
+                            " Voir la r\xE9servation ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [12]
@@ -2612,7 +2858,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[13] || (_cache[13] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -2620,7 +2870,11 @@ const _sfc_main$b = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [13]
@@ -2678,7 +2932,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" \u{1F389} R\xE9servation confirm\xE9e ! ")
+                      createTextVNode(
+                        " \u{1F389} R\xE9servation confirm\xE9e ! ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -2696,7 +2954,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Excellente nouvelle ! Votre r\xE9servation pour le v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Excellente nouvelle ! Votre r\xE9servation pour le v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2704,7 +2966,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(", matricule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2724,7 +2990,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(" est confirm\xE9e. Merci pour votre confiance ! "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        " est confirm\xE9e. Merci pour votre confiance ! ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -2762,7 +3032,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         style: { "margin": "10px 0 0 0", "color": "#666" }
                       }, {
                         default: withCtx(() => _cache[5] || (_cache[5] = [
-                          createTextVNode(" \u2022 ID R\xE9servation : N/A ")
+                          createTextVNode(
+                            " \u2022 ID R\xE9servation : N/A ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [5]
@@ -2865,21 +3139,33 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[7] || (_cache[7] = [
-                          createTextVNode(" \u2022 Vous recevrez sous peu les documents de location par email ")
+                          createTextVNode(
+                            " \u2022 Vous recevrez sous peu les documents de location par email ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [7]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[8] || (_cache[8] = [
-                          createTextVNode(" \u2022 Le propri\xE9taire vous contactera pour organiser la remise du v\xE9hicule ")
+                          createTextVNode(
+                            " \u2022 Le propri\xE9taire vous contactera pour organiser la remise du v\xE9hicule ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [8]
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[9] || (_cache[9] = [
-                          createTextVNode(" \u2022 Conservez cette confirmation pour vos records ")
+                          createTextVNode(
+                            " \u2022 Conservez cette confirmation pour vos records ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [9]
@@ -2890,7 +3176,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[10] || (_cache[10] = [
-                      createTextVNode(" Nous vous souhaitons un excellent voyage ! En cas de questions, n'h\xE9sitez pas \xE0 nous contacter ou \xE0 consulter votre espace personnel. ")
+                      createTextVNode(
+                        " Nous vous souhaitons un excellent voyage ! En cas de questions, n'h\xE9sitez pas \xE0 nous contacter ou \xE0 consulter votre espace personnel. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [10]
@@ -2902,7 +3192,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#28a745", "color": "white", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[11] || (_cache[11] = [
-                          createTextVNode(" Voir ma r\xE9servation ")
+                          createTextVNode(
+                            " Voir ma r\xE9servation ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [11]
@@ -2913,7 +3207,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[12] || (_cache[12] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -2921,7 +3219,11 @@ const _sfc_main$a = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [12]
@@ -2972,7 +3274,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Demande de r\xE9servation refus\xE9e ")
+                      createTextVNode(
+                        " Demande de r\xE9servation refus\xE9e ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -2990,7 +3296,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Nous sommes d\xE9sol\xE9s de vous informer que votre demande de r\xE9servation du v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Nous sommes d\xE9sol\xE9s de vous informer que votre demande de r\xE9servation du v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -2998,7 +3308,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(", matricule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -3018,7 +3332,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(" a \xE9t\xE9 refus\xE9e par le propri\xE9taire. "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        " a \xE9t\xE9 refus\xE9e par le propri\xE9taire. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -3084,7 +3402,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[5] || (_cache[5] = [
-                          createTextVNode(" \u2022 Statut : Refus\xE9e ")
+                          createTextVNode(
+                            " \u2022 Statut : Refus\xE9e ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [5]
@@ -3095,7 +3417,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[6] || (_cache[6] = [
-                      createTextVNode(" Ne vous d\xE9couragez pas ! De nombreux autres v\xE9hicules sont disponibles sur notre plateforme. Nous vous encourageons \xE0 explorer d'autres options qui pourraient correspondre \xE0 vos besoins. ")
+                      createTextVNode(
+                        " Ne vous d\xE9couragez pas ! De nombreux autres v\xE9hicules sont disponibles sur notre plateforme. Nous vous encourageons \xE0 explorer d'autres options qui pourraient correspondre \xE0 vos besoins. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [6]
@@ -3107,7 +3433,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[7] || (_cache[7] = [
-                          createTextVNode(" Rechercher d'autres v\xE9hicules ")
+                          createTextVNode(
+                            " Rechercher d'autres v\xE9hicules ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [7]
@@ -3118,7 +3448,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[8] || (_cache[8] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -3126,7 +3460,11 @@ const _sfc_main$9 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [8]
@@ -3176,7 +3514,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Confirmation d'Annulation ")
+                      createTextVNode(
+                        " Confirmation d'Annulation ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -3194,7 +3536,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Nous vous confirmons que votre demande d'annulation pour la r\xE9servation du v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Nous vous confirmons que votre demande d'annulation pour la r\xE9servation du v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -3202,7 +3548,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(" a bien \xE9t\xE9 enregistr\xE9e. "))
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " a bien \xE9t\xE9 enregistr\xE9e. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2]
@@ -3260,7 +3610,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                       })) : createCommentVNode("v-if", true),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[4] || (_cache[4] = [
-                          createTextVNode(" \u2022 Statut : Annul\xE9e ")
+                          createTextVNode(
+                            " \u2022 Statut : Annul\xE9e ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [4]
@@ -3271,7 +3625,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[5] || (_cache[5] = [
-                      createTextVNode(" Nous esp\xE9rons vous revoir bient\xF4t sur notre plateforme. ")
+                      createTextVNode(
+                        " Nous esp\xE9rons vous revoir bient\xF4t sur notre plateforme. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [5]
@@ -3283,7 +3641,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" Trouver un autre v\xE9hicule ")
+                          createTextVNode(
+                            " Trouver un autre v\xE9hicule ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -3294,7 +3656,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[7] || (_cache[7] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -3302,7 +3668,11 @@ const _sfc_main$8 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe Vaika Malaky ")
+                      createTextVNode(
+                        " L'\xE9quipe Vaika Malaky ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [7]
@@ -3360,21 +3730,33 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" [ADMIN] Annulation de R\xE9servation ")
+                      createTextVNode(
+                        " [ADMIN] Annulation de R\xE9servation ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[1] || (_cache[1] = [
-                      createTextVNode(" Bonjour Admin, ")
+                      createTextVNode(
+                        " Bonjour Admin, ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [1]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[2] || (_cache[2] = [
-                      createTextVNode(" Une r\xE9servation a \xE9t\xE9 annul\xE9e. ")
+                      createTextVNode(
+                        " Une r\xE9servation a \xE9t\xE9 annul\xE9e. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [2]
@@ -3396,7 +3778,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[4] || (_cache[4] = createTextVNode(" \u2022 ")),
+                          _cache[4] || (_cache[4] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[5] || (_cache[5] = createElementVNode(
                             "strong",
                             null,
@@ -3418,7 +3804,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                         style: { "margin": "5px 0 0 0", "color": "#666" }
                       }, {
                         default: withCtx(() => [
-                          _cache[6] || (_cache[6] = createTextVNode(" \u2022 ")),
+                          _cache[6] || (_cache[6] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[7] || (_cache[7] = createElementVNode(
                             "strong",
                             null,
@@ -3511,7 +3901,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[9] || (_cache[9] = [
-                          createTextVNode(" \u2022 Statut : Annul\xE9e ")
+                          createTextVNode(
+                            " \u2022 Statut : Annul\xE9e ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [9]
@@ -3533,7 +3927,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[10] || (_cache[10] = [
-                      createTextVNode(" Les parties concern\xE9es (locataire et propri\xE9taire) ont \xE9t\xE9 notifi\xE9es. Aucune action suppl\xE9mentaire n'est requise de votre part, sauf si un suivi est n\xE9cessaire. ")
+                      createTextVNode(
+                        " Les parties concern\xE9es (locataire et propri\xE9taire) ont \xE9t\xE9 notifi\xE9es. Aucune action suppl\xE9mentaire n'est requise de votre part, sauf si un suivi est n\xE9cessaire. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [10]
@@ -3545,7 +3943,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#6c757d", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[11] || (_cache[11] = [
-                          createTextVNode(" Voir la r\xE9servation dans l'admin ")
+                          createTextVNode(
+                            " Voir la r\xE9servation dans l'admin ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [11]
@@ -3556,7 +3958,11 @@ const _sfc_main$7 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[12] || (_cache[12] = [
-                      createTextVNode(" Syst\xE8me Vaika Malaky ")
+                      createTextVNode(
+                        " Syst\xE8me Vaika Malaky ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [12]
@@ -3610,7 +4016,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Annulation de R\xE9servation ")
+                      createTextVNode(
+                        " Annulation de R\xE9servation ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -3628,7 +4038,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Une r\xE9servation pour votre v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Une r\xE9servation pour votre v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -3636,7 +4050,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(" a \xE9t\xE9 annul\xE9e. "))
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " a \xE9t\xE9 annul\xE9e. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2]
@@ -3658,7 +4076,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[4] || (_cache[4] = createTextVNode(" \u2022 ")),
+                          _cache[4] || (_cache[4] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[5] || (_cache[5] = createElementVNode(
                             "strong",
                             null,
@@ -3680,7 +4102,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                         style: { "margin": "5px 0 0 0", "color": "#666" }
                       }, {
                         default: withCtx(() => [
-                          _cache[6] || (_cache[6] = createTextVNode(" \u2022 ")),
+                          _cache[6] || (_cache[6] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[7] || (_cache[7] = createElementVNode(
                             "strong",
                             null,
@@ -3751,7 +4177,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[9] || (_cache[9] = [
-                          createTextVNode(" \u2022 Statut : Annul\xE9e ")
+                          createTextVNode(
+                            " \u2022 Statut : Annul\xE9e ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [9]
@@ -3762,7 +4192,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[10] || (_cache[10] = [
-                      createTextVNode(" Votre calendrier de disponibilit\xE9 pour ce v\xE9hicule a \xE9t\xE9 mis \xE0 jour en cons\xE9quence. Aucune action suppl\xE9mentaire n'est requise de votre part. ")
+                      createTextVNode(
+                        " Votre calendrier de disponibilit\xE9 pour ce v\xE9hicule a \xE9t\xE9 mis \xE0 jour en cons\xE9quence. Aucune action suppl\xE9mentaire n'est requise de votre part. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [10]
@@ -3774,7 +4208,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[11] || (_cache[11] = [
-                          createTextVNode(" Voir mes demandes ")
+                          createTextVNode(
+                            " Voir mes demandes ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [11]
@@ -3785,7 +4223,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[12] || (_cache[12] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -3793,7 +4235,11 @@ const _sfc_main$6 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe Vaika Malaky ")
+                      createTextVNode(
+                        " L'\xE9quipe Vaika Malaky ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [12]
@@ -3852,21 +4298,33 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" [ADMIN] Nouvelle r\xE9servation cr\xE9\xE9e ")
+                      createTextVNode(
+                        " [ADMIN] Nouvelle r\xE9servation cr\xE9\xE9e ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[1] || (_cache[1] = [
-                      createTextVNode(" Bonjour Admin, ")
+                      createTextVNode(
+                        " Bonjour Admin, ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [1]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[2] || (_cache[2] = createTextVNode(" Nouvelle demande de r\xE9servation en attente pour ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " Nouvelle demande de r\xE9servation en attente pour ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -3874,7 +4332,11 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(", matricule ")),
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -3894,7 +4356,11 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[4] || (_cache[4] = createTextVNode(". La demande a bien \xE9t\xE9 envoy\xE9e et est en cours de traitement. "))
+                      _cache[4] || (_cache[4] = createTextVNode(
+                        ". La demande a bien \xE9t\xE9 envoy\xE9e et est en cours de traitement. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [2, 3, 4]
@@ -4024,7 +4490,11 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" Voir la demande ")
+                          createTextVNode(
+                            " Voir la demande ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -4035,7 +4505,11 @@ const _sfc_main$5 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[7] || (_cache[7] = [
-                      createTextVNode(" Syst\xE8me VehicleRental ")
+                      createTextVNode(
+                        " Syst\xE8me VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [7]
@@ -4090,7 +4564,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Nouvelle demande de r\xE9servation ")
+                      createTextVNode(
+                        " Nouvelle demande de r\xE9servation ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -4108,7 +4586,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Une nouvelle demande de r\xE9servation est en attente pour votre v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Une nouvelle demande de r\xE9servation est en attente pour votre v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4116,7 +4598,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(", matricule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4136,7 +4622,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(". Merci de la traiter. "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ". Merci de la traiter. ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -4228,7 +4718,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[5] || (_cache[5] = [
-                      createTextVNode(" Veuillez vous connecter \xE0 votre espace pour accepter ou refuser cette demande de r\xE9servation. ")
+                      createTextVNode(
+                        " Veuillez vous connecter \xE0 votre espace pour accepter ou refuser cette demande de r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [5]
@@ -4240,7 +4734,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#2563eb", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[6] || (_cache[6] = [
-                          createTextVNode(" Traiter cette demande ")
+                          createTextVNode(
+                            " Traiter cette demande ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [6]
@@ -4251,7 +4749,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[7] || (_cache[7] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -4259,7 +4761,11 @@ const _sfc_main$4 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [7]
@@ -4311,7 +4817,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Demande de r\xE9servation re\xE7ue ")
+                      createTextVNode(
+                        " Demande de r\xE9servation re\xE7ue ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -4329,7 +4839,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Nous avons bien re\xE7u votre demande de r\xE9servation pour le v\xE9hicule ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Nous avons bien re\xE7u votre demande de r\xE9servation pour le v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4337,7 +4851,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(", matricule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        ", matricule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4345,7 +4863,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(". "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ". ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -4411,7 +4933,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => _cache[5] || (_cache[5] = [
-                          createTextVNode(" \u2022 Statut : En attente de confirmation ")
+                          createTextVNode(
+                            " \u2022 Statut : En attente de confirmation ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [5]
@@ -4422,7 +4948,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[6] || (_cache[6] = [
-                      createTextVNode(" Votre demande est actuellement "),
+                      createTextVNode(
+                        " Votre demande est actuellement ",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "strong",
                         null,
@@ -4430,7 +4960,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(". Le propri\xE9taire du v\xE9hicule va examiner votre demande et vous recevrez une notification d\xE8s qu'une d\xE9cision sera prise. ")
+                      createTextVNode(
+                        ". Le propri\xE9taire du v\xE9hicule va examiner votre demande et vous recevrez une notification d\xE8s qu'une d\xE9cision sera prise. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [6]
@@ -4442,7 +4976,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[7] || (_cache[7] = [
-                          createTextVNode(" Suivre ma demande ")
+                          createTextVNode(
+                            " Suivre ma demande ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [7]
@@ -4453,7 +4991,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[8] || (_cache[8] = [
-                      createTextVNode(" Cordialement,"),
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "br",
                         null,
@@ -4461,7 +5003,11 @@ const _sfc_main$3 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [8]
@@ -4507,21 +5053,33 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" [ACTION REQUISE] V\xE9rification d'acompte ")
+                      createTextVNode(
+                        " [ACTION REQUISE] V\xE9rification d'acompte ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[1] || (_cache[1] = [
-                      createTextVNode("Bonjour Administrateur,")
+                      createTextVNode(
+                        "Bonjour Administrateur,",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [1]
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[2] || (_cache[2] = [
-                      createTextVNode(" Un paiement d'acompte a \xE9t\xE9 soumis par un locataire et n\xE9cessite votre "),
+                      createTextVNode(
+                        " Un paiement d'acompte a \xE9t\xE9 soumis par un locataire et n\xE9cessite votre ",
+                        -1
+                        /* CACHED */
+                      ),
                       createElementVNode(
                         "strong",
                         { style: { "color": "#c0392b" } },
@@ -4529,7 +5087,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" avant la confirmation finale de la r\xE9servation. ")
+                      createTextVNode(
+                        " avant la confirmation finale de la r\xE9servation. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [2]
@@ -4551,7 +5113,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "15px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[4] || (_cache[4] = createTextVNode(" \u2022 ")),
+                          _cache[4] || (_cache[4] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[5] || (_cache[5] = createElementVNode(
                             "strong",
                             null,
@@ -4570,7 +5136,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[6] || (_cache[6] = createTextVNode(" \u2022 ")),
+                          _cache[6] || (_cache[6] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[7] || (_cache[7] = createElementVNode(
                             "strong",
                             null,
@@ -4589,7 +5159,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[8] || (_cache[8] = createTextVNode(" \u2022 ")),
+                          _cache[8] || (_cache[8] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[9] || (_cache[9] = createElementVNode(
                             "strong",
                             null,
@@ -4608,7 +5182,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "5px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[10] || (_cache[10] = createTextVNode(" \u2022 ")),
+                          _cache[10] || (_cache[10] = createTextVNode(
+                            " \u2022 ",
+                            -1
+                            /* CACHED */
+                          )),
                           _cache[11] || (_cache[11] = createElementVNode(
                             "strong",
                             null,
@@ -4642,7 +5220,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "text-align": "center" } }, {
                     default: withCtx(() => _cache[12] || (_cache[12] = [
-                      createTextVNode(" Veuillez vous assurer que le paiement a bien \xE9t\xE9 re\xE7u sur le compte avant de cliquer sur le bouton ci-dessous. ")
+                      createTextVNode(
+                        " Veuillez vous assurer que le paiement a bien \xE9t\xE9 re\xE7u sur le compte avant de cliquer sur le bouton ci-dessous. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [12]
@@ -4654,7 +5236,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#007bff", "color": "white", "padding": "12px 24px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500" }
                       }, {
                         default: withCtx(() => _cache[13] || (_cache[13] = [
-                          createTextVNode(" Voir la r\xE9servation et confirmer ")
+                          createTextVNode(
+                            " Voir la r\xE9servation et confirmer ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [13]
@@ -4665,7 +5251,11 @@ const _sfc_main$2 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[14] || (_cache[14] = [
-                      createTextVNode(" Syst\xE8me VehicleRental ")
+                      createTextVNode(
+                        " Syst\xE8me VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [14]
@@ -4719,7 +5309,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                 default: withCtx(() => [
                   createVNode(unref(Heading), { style: { "color": "#333", "text-align": "center", "margin-bottom": "30px" } }, {
                     default: withCtx(() => _cache[0] || (_cache[0] = [
-                      createTextVNode(" Action requise : R\xE9f\xE9rence de paiement incorrecte ")
+                      createTextVNode(
+                        " Action requise : R\xE9f\xE9rence de paiement incorrecte ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [0]
@@ -4737,7 +5331,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => [
-                      _cache[1] || (_cache[1] = createTextVNode(" Nous vous contactons concernant votre r\xE9servation ")),
+                      _cache[1] || (_cache[1] = createTextVNode(
+                        " Nous vous contactons concernant votre r\xE9servation ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4745,7 +5343,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[2] || (_cache[2] = createTextVNode(" pour le v\xE9hicule ")),
+                      _cache[2] || (_cache[2] = createTextVNode(
+                        " pour le v\xE9hicule ",
+                        -1
+                        /* CACHED */
+                      )),
                       createElementVNode(
                         "strong",
                         null,
@@ -4753,7 +5355,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                         1
                         /* TEXT */
                       ),
-                      _cache[3] || (_cache[3] = createTextVNode(". "))
+                      _cache[3] || (_cache[3] = createTextVNode(
+                        ". ",
+                        -1
+                        /* CACHED */
+                      ))
                     ]),
                     _: 1,
                     __: [1, 2, 3]
@@ -4762,7 +5368,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                     default: withCtx(() => [
                       createVNode(unref(Text), { style: { "font-size": "18px", "font-weight": "500", "color": "#333", "margin-top": "0" } }, {
                         default: withCtx(() => _cache[4] || (_cache[4] = [
-                          createTextVNode(" D\xE9tails de la r\xE9servation : ")
+                          createTextVNode(
+                            " D\xE9tails de la r\xE9servation : ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [4]
@@ -4832,7 +5442,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       }),
                       createVNode(unref(Text), { style: { "margin": "10px 0 0 0", "color": "#666" } }, {
                         default: withCtx(() => [
-                          _cache[9] || (_cache[9] = createTextVNode(` L'administrateur a examin\xE9 votre soumission de paiement et a constat\xE9 que la r\xE9f\xE9rence fournie ("`)),
+                          _cache[9] || (_cache[9] = createTextVNode(
+                            ` L'administrateur a examin\xE9 votre soumission de paiement et a constat\xE9 que la r\xE9f\xE9rence fournie ("`,
+                            -1
+                            /* CACHED */
+                          )),
                           createElementVNode(
                             "strong",
                             null,
@@ -4840,7 +5454,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                             1
                             /* TEXT */
                           ),
-                          _cache[10] || (_cache[10] = createTextVNode('") semble incorrecte. Pour finaliser votre r\xE9servation, veuillez soumettre une nouvelle r\xE9f\xE9rence de paiement valide. '))
+                          _cache[10] || (_cache[10] = createTextVNode(
+                            '") semble incorrecte. Pour finaliser votre r\xE9servation, veuillez soumettre une nouvelle r\xE9f\xE9rence de paiement valide. ',
+                            -1
+                            /* CACHED */
+                          ))
                         ]),
                         _: 1,
                         __: [9, 10]
@@ -4851,7 +5469,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6" } }, {
                     default: withCtx(() => _cache[11] || (_cache[11] = [
-                      createTextVNode(" Vous pouvez le faire en cliquant sur le bouton ci-dessous. Cela vous redirigera vers la page de votre r\xE9servation o\xF9 vous pourrez saisir la nouvelle r\xE9f\xE9rence. ")
+                      createTextVNode(
+                        " Vous pouvez le faire en cliquant sur le bouton ci-dessous. Cela vous redirigera vers la page de votre r\xE9servation o\xF9 vous pourrez saisir la nouvelle r\xE9f\xE9rence. ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [11]
@@ -4863,7 +5485,11 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                         style: { "background-color": "#ffc107", "color": "#212529", "padding": "15px 30px", "text-decoration": "none", "border-radius": "6px", "display": "inline-block", "font-weight": "500", "font-size": "16px" }
                       }, {
                         default: withCtx(() => _cache[12] || (_cache[12] = [
-                          createTextVNode(" Soumettre une nouvelle r\xE9f\xE9rence ")
+                          createTextVNode(
+                            " Soumettre une nouvelle r\xE9f\xE9rence ",
+                            -1
+                            /* CACHED */
+                          )
                         ])),
                         _: 1,
                         __: [12]
@@ -4874,11 +5500,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                   }),
                   createVNode(unref(Text), { style: { "color": "#666", "font-size": "16px", "line-height": "1.6", "margin-top": "30px" } }, {
                     default: withCtx(() => _cache[13] || (_cache[13] = [
-                      createTextVNode(" Si vous avez des questions, n'h\xE9sitez pas \xE0 nous contacter. "),
-                      createElementVNode(
-                        "br",
-                        null,
-                        null,
+                      createTextVNode(
+                        " Si vous avez des questions, n'h\xE9sitez pas \xE0 nous contacter. ",
                         -1
                         /* CACHED */
                       ),
@@ -4889,7 +5512,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" Cordialement,"),
                       createElementVNode(
                         "br",
                         null,
@@ -4897,7 +5519,23 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                         -1
                         /* CACHED */
                       ),
-                      createTextVNode(" L'\xE9quipe VehicleRental ")
+                      createTextVNode(
+                        " Cordialement,",
+                        -1
+                        /* CACHED */
+                      ),
+                      createElementVNode(
+                        "br",
+                        null,
+                        null,
+                        -1
+                        /* CACHED */
+                      ),
+                      createTextVNode(
+                        " L'\xE9quipe VehicleRental ",
+                        -1
+                        /* CACHED */
+                      )
                     ])),
                     _: 1,
                     __: [13]
@@ -5016,7 +5654,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
             )),
             createElementVNode("div", _hoisted_9, [
               createElementVNode("p", _hoisted_10, [
-                _cache[4] || (_cache[4] = createTextVNode(" \u2705 L'utilisateur ")),
+                _cache[4] || (_cache[4] = createTextVNode(
+                  " \u2705 L'utilisateur ",
+                  -1
+                  /* CACHED */
+                )),
                 createElementVNode(
                   "strong",
                   null,
@@ -5024,7 +5666,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   1
                   /* TEXT */
                 ),
-                _cache[5] || (_cache[5] = createTextVNode(" a fourni les documents ")),
+                _cache[5] || (_cache[5] = createTextVNode(
+                  " a fourni les documents ",
+                  -1
+                  /* CACHED */
+                )),
                 _cache[6] || (_cache[6] = createElementVNode(
                   "strong",
                   null,
@@ -5032,7 +5678,11 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
                   -1
                   /* CACHED */
                 )),
-                _cache[7] || (_cache[7] = createTextVNode(" et ")),
+                _cache[7] || (_cache[7] = createTextVNode(
+                  " et ",
+                  -1
+                  /* CACHED */
+                )),
                 _cache[8] || (_cache[8] = createElementVNode(
                   "strong",
                   null,
@@ -5103,7 +5753,7 @@ const emailComponents = {
 };
 async function sendEmail(options) {
   const { to, subject, component, props } = options;
-  const { render } = await import('file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/@vue-email/render/dist/node/index.mjs');
+  const { render } = await import('file:///media/prince/Donner/Prince/e-rentall/node_modules/@vue-email/render/dist/node/index.mjs');
   const emailComponent = emailComponents[component];
   if (!emailComponent) {
     throw new Error(`Composant email "${component}" introuvable.`);
@@ -5112,7 +5762,7 @@ async function sendEmail(options) {
   try {
     if (false) ; else {
       console.info("Utilisation de nodemailer pour le d\xE9veloppement...");
-      const nodemailer = await import('file:///Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/nodemailer/lib/nodemailer.js');
+      const nodemailer = await import('file:///media/prince/Donner/Prince/e-rentall/node_modules/nodemailer/lib/nodemailer.js');
       const createTransport = nodemailer.createTransport;
       const transporter = createTransport({
         host: config.mail.smtp.host,
@@ -5139,7 +5789,7 @@ async function sendEmail(options) {
 
 const warnOnceSet = /* @__PURE__ */ new Set();
 const DEFAULT_ENDPOINT = "https://api.iconify.design";
-const _eHuAuV = defineCachedEventHandler(async (event) => {
+const _r6tfxD = defineCachedEventHandler(async (event) => {
   const url = getRequestURL(event);
   if (!url)
     return createError({ status: 400, message: "Invalid icon request" });
@@ -5256,8 +5906,8 @@ function setSSRError(ssrContext, error) {
 
 const APP_ROOT_OPEN_TAG = `<${appRootTag}${propsToString(appRootAttrs)}>`;
 const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
-const getServerEntry = () => import('file:///Users/jenirandriamihajasoa/workspace/e-rentall/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
-const getClientManifest = () => import('file:///Users/jenirandriamihajasoa/workspace/e-rentall/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file:///media/prince/Donner/Prince/e-rentall/.nuxt//dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file:///media/prince/Donner/Prince/e-rentall/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
@@ -5503,7 +6153,7 @@ async function getIslandContext(event) {
   return ctx;
 }
 
-const _4EpILM = lazyEventHandler(() => {
+const _BHJVpM = lazyEventHandler(() => {
   const opts = useRuntimeConfig().ipx || {};
   const fsDir = opts?.fs?.dir ? (Array.isArray(opts.fs.dir) ? opts.fs.dir : [opts.fs.dir]).map((dir) => isAbsolute(dir) ? dir : fileURLToPath(new URL(dir, globalThis._importMeta_.url))) : void 0;
   const fsStorage = opts.fs?.dir ? ipxFSStorage({ ...opts.fs, dir: fsDir }) : void 0;
@@ -5521,20 +6171,21 @@ const _4EpILM = lazyEventHandler(() => {
   return useBase(opts.baseURL, ipxHandler);
 });
 
-const _lazy_0vmaYa = () => Promise.resolve().then(function () { return sendNotifications_post$1; });
-const _lazy_gz0tTK = () => Promise.resolve().then(function () { return sendNotification_post$1; });
-const _lazy_jhJ5fN = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_rwaa63 = () => Promise.resolve().then(function () { return sendNotifications_post$1; });
+const _lazy_Un0Ldd = () => Promise.resolve().then(function () { return sendNotification_post$1; });
+const _lazy_2QCmTl = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/api/bookings/send-notifications', handler: _lazy_0vmaYa, lazy: true, middleware: false, method: "post" },
-  { route: '/api/documents/send-notification', handler: _lazy_gz0tTK, lazy: true, middleware: false, method: "post" },
-  { route: '/__nuxt_error', handler: _lazy_jhJ5fN, lazy: true, middleware: false, method: undefined },
-  { route: '/api/_nuxt_icon/:collection', handler: _eHuAuV, lazy: false, middleware: false, method: undefined },
+  { route: '', handler: _NKQkp7, lazy: false, middleware: true, method: undefined },
+  { route: '/api/bookings/send-notifications', handler: _lazy_rwaa63, lazy: true, middleware: false, method: "post" },
+  { route: '/api/documents/send-notification', handler: _lazy_Un0Ldd, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_error', handler: _lazy_2QCmTl, lazy: true, middleware: false, method: undefined },
+  { route: '/api/_nuxt_icon/:collection', handler: _r6tfxD, lazy: false, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/_ipx/**', handler: _4EpILM, lazy: false, middleware: false, method: undefined },
-  { route: '/_fonts/**', handler: _lazy_jhJ5fN, lazy: true, middleware: false, method: undefined },
-  { route: '/_scripts/**', handler: _lazy_jhJ5fN, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_jhJ5fN, lazy: true, middleware: false, method: undefined }
+  { route: '/_ipx/**', handler: _BHJVpM, lazy: false, middleware: false, method: undefined },
+  { route: '/_fonts/**', handler: _lazy_2QCmTl, lazy: true, middleware: false, method: undefined },
+  { route: '/_scripts/**', handler: _lazy_2QCmTl, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_2QCmTl, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {

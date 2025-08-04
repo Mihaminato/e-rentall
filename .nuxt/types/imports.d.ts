@@ -17,6 +17,7 @@ declare global {
   const defineAppConfig: typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineAppConfig']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
+  const defineLazyHydrationComponent: typeof import('../../node_modules/nuxt/dist/app/composables/lazy-hydration')['defineLazyHydrationComponent']
   const defineNuxtComponent: typeof import('../../node_modules/nuxt/dist/app/composables/component')['defineNuxtComponent']
   const defineNuxtLink: typeof import('../../node_modules/nuxt/dist/app/components/nuxt-link')['defineNuxtLink']
   const defineNuxtPlugin: typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineNuxtPlugin']
@@ -68,6 +69,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const onWatcherCleanup: typeof import('vue')['onWatcherCleanup']
   const piniaPluginPersistedstate: typeof import('../../node_modules/pinia-plugin-persistedstate/dist/nuxt/runtime/storages')['storages']
   const prefetchComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload')['prefetchComponents']
   const preloadComponents: typeof import('../../node_modules/nuxt/dist/app/composables/preload')['preloadComponents']
@@ -106,6 +108,8 @@ declare global {
   const useAdminDashboard: typeof import('../../composables/useAdminDashboard')['useAdminDashboard']
   const useAdminUsers: typeof import('../../composables/useAdminUsers')['useAdminUsers']
   const useAppConfig: typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']
+  const useApplePwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useApplePwaIcon']
+  const useAppleSplashScreenPwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useAppleSplashScreenPwaIcon']
   const useAsyncData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../../composables/useAuth')['useAuth']
@@ -116,6 +120,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useError: typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']
+  const useFaviconPwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useFaviconPwaIcon']
   const useFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']
   const useHead: typeof import('../../node_modules/nuxt/dist/app/composables/head')['useHead']
   const useHeadSafe: typeof import('../../node_modules/nuxt/dist/app/composables/head')['useHeadSafe']
@@ -126,10 +131,12 @@ declare global {
   const useLazyFetch: typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingIndicator: typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']
+  const useMaskablePwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']
   const useModel: typeof import('vue')['useModel']
   const useNuxtApp: typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']
   const useNuxtData: typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']
   const useNuxtDevTools: typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']
+  const usePWA: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['usePWA']
   const usePagination: typeof import('../../composables/usePagination')['usePagination']
   const usePinia: typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']
   const usePreviewMode: typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']
@@ -181,6 +188,7 @@ declare global {
   const useState: typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useTransitionState: typeof import('vue')['useTransitionState']
+  const useTransparentPwaIcon: typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useTransparentPwaIcon']
   const useVehicles: typeof import('../../composables/useVehicles')['useVehicles']
   const validateCinIssuedDate: typeof import('../../utils/validation')['validateCinIssuedDate']
   const validateCinNumber: typeof import('../../utils/validation')['validateCinNumber']
@@ -239,6 +247,7 @@ declare module 'vue' {
     readonly defineAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineAppConfig']>
     readonly defineAsyncComponent: UnwrapRef<typeof import('vue')['defineAsyncComponent']>
     readonly defineComponent: UnwrapRef<typeof import('vue')['defineComponent']>
+    readonly defineLazyHydrationComponent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/lazy-hydration')['defineLazyHydrationComponent']>
     readonly defineNuxtComponent: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/component')['defineNuxtComponent']>
     readonly defineNuxtLink: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/components/nuxt-link')['defineNuxtLink']>
     readonly defineNuxtPlugin: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['defineNuxtPlugin']>
@@ -290,6 +299,7 @@ declare module 'vue' {
     readonly onServerPrefetch: UnwrapRef<typeof import('vue')['onServerPrefetch']>
     readonly onUnmounted: UnwrapRef<typeof import('vue')['onUnmounted']>
     readonly onUpdated: UnwrapRef<typeof import('vue')['onUpdated']>
+    readonly onWatcherCleanup: UnwrapRef<typeof import('vue')['onWatcherCleanup']>
     readonly piniaPluginPersistedstate: UnwrapRef<typeof import('../../node_modules/pinia-plugin-persistedstate/dist/nuxt/runtime/storages')['storages']>
     readonly prefetchComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['prefetchComponents']>
     readonly preloadComponents: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preload')['preloadComponents']>
@@ -328,6 +338,8 @@ declare module 'vue' {
     readonly useAdminDashboard: UnwrapRef<typeof import('../../composables/useAdminDashboard')['useAdminDashboard']>
     readonly useAdminUsers: UnwrapRef<typeof import('../../composables/useAdminUsers')['useAdminUsers']>
     readonly useAppConfig: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/config')['useAppConfig']>
+    readonly useApplePwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useApplePwaIcon']>
+    readonly useAppleSplashScreenPwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useAppleSplashScreenPwaIcon']>
     readonly useAsyncData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useAsyncData']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAuth: UnwrapRef<typeof import('../../composables/useAuth')['useAuth']>
@@ -338,6 +350,7 @@ declare module 'vue' {
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly useError: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/error')['useError']>
+    readonly useFaviconPwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useFaviconPwaIcon']>
     readonly useFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useFetch']>
     readonly useHead: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/head')['useHead']>
     readonly useHeadSafe: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/head')['useHeadSafe']>
@@ -348,10 +361,12 @@ declare module 'vue' {
     readonly useLazyFetch: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/fetch')['useLazyFetch']>
     readonly useLink: UnwrapRef<typeof import('vue-router')['useLink']>
     readonly useLoadingIndicator: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/loading-indicator')['useLoadingIndicator']>
+    readonly useMaskablePwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useMaskablePwaIcon']>
     readonly useModel: UnwrapRef<typeof import('vue')['useModel']>
     readonly useNuxtApp: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/nuxt')['useNuxtApp']>
     readonly useNuxtData: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/asyncData')['useNuxtData']>
     readonly useNuxtDevTools: UnwrapRef<typeof import('../../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools')['useNuxtDevTools']>
+    readonly usePWA: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['usePWA']>
     readonly usePagination: UnwrapRef<typeof import('../../composables/usePagination')['usePagination']>
     readonly usePinia: UnwrapRef<typeof import('../../node_modules/@pinia/nuxt/dist/runtime/composables')['usePinia']>
     readonly usePreviewMode: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/preview')['usePreviewMode']>
@@ -403,6 +418,7 @@ declare module 'vue' {
     readonly useState: UnwrapRef<typeof import('../../node_modules/nuxt/dist/app/composables/state')['useState']>
     readonly useTemplateRef: UnwrapRef<typeof import('vue')['useTemplateRef']>
     readonly useTransitionState: UnwrapRef<typeof import('vue')['useTransitionState']>
+    readonly useTransparentPwaIcon: UnwrapRef<typeof import('../../node_modules/@vite-pwa/nuxt/dist/runtime/composables/index')['useTransparentPwaIcon']>
     readonly useVehicles: UnwrapRef<typeof import('../../composables/useVehicles')['useVehicles']>
     readonly validateCinIssuedDate: UnwrapRef<typeof import('../../utils/validation')['validateCinIssuedDate']>
     readonly validateCinNumber: UnwrapRef<typeof import('../../utils/validation')['validateCinNumber']>

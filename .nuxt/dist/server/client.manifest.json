@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "/Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/nuxt/dist/app/entry.js": {
+  "/media/prince/Donner/Prince/e-rentall/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "/Users/jenirandriamihajasoa/workspace/e-rentall/node_modules/nuxt/dist/app/entry.js"
+    "file": "/media/prince/Donner/Prince/e-rentall/node_modules/nuxt/dist/app/entry.js"
   }
 }

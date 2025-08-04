@@ -53,6 +53,7 @@ interface _GlobalComponents {
     'UiImageModal': typeof import("../components/ui/ImageModal.vue")['default']
     'UiPagination': typeof import("../components/ui/Pagination.vue")['default']
     'UiProfileVerificationCard': typeof import("../components/ui/ProfileVerificationCard.vue")['default']
+    'UiPwaNotifications': typeof import("../components/ui/PwaNotifications.vue")['default']
     'UiSessionTroubleshoot': typeof import("../components/ui/SessionTroubleshoot.vue")['default']
     'UiToast': typeof import("../components/ui/Toast.vue")['default']
     'UiUserAvatar': typeof import("../components/ui/UserAvatar.vue")['default']
@@ -92,6 +93,14 @@ interface _GlobalComponents {
     'NuxtImg': typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']
     'NuxtPicture': typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']
     'Icon': typeof import("../node_modules/@nuxt/icon/dist/runtime/components/index")['default']
+    'VitePwaManifest': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']
+    'NuxtPwaManifest': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']
+    'NuxtPwaAssets': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/NuxtPwaAssets")['default']
+    'PwaAppleImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleImage.vue")['default']
+    'PwaAppleSplashScreenImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleSplashScreenImage.vue")['default']
+    'PwaFaviconImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaFaviconImage.vue")['default']
+    'PwaMaskableImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaMaskableImage.vue")['default']
+    'PwaTransparentImage': typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']
     'NuxtPage': typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']
     'NoScript': typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']
     'Link': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -103,7 +112,7 @@ interface _GlobalComponents {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
-    'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+    'NuxtRouteAnnouncer': typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
       'LazyNavAuthMenu': LazyComponent<typeof import("../components/NavAuthMenu.vue")['default']>
     'LazyNavFooter': LazyComponent<typeof import("../components/NavFooter.vue")['default']>
     'LazyNavHeader': LazyComponent<typeof import("../components/NavHeader.vue")['default']>
@@ -145,6 +154,7 @@ interface _GlobalComponents {
     'LazyUiImageModal': LazyComponent<typeof import("../components/ui/ImageModal.vue")['default']>
     'LazyUiPagination': LazyComponent<typeof import("../components/ui/Pagination.vue")['default']>
     'LazyUiProfileVerificationCard': LazyComponent<typeof import("../components/ui/ProfileVerificationCard.vue")['default']>
+    'LazyUiPwaNotifications': LazyComponent<typeof import("../components/ui/PwaNotifications.vue")['default']>
     'LazyUiSessionTroubleshoot': LazyComponent<typeof import("../components/ui/SessionTroubleshoot.vue")['default']>
     'LazyUiToast': LazyComponent<typeof import("../components/ui/Toast.vue")['default']>
     'LazyUiUserAvatar': LazyComponent<typeof import("../components/ui/UserAvatar.vue")['default']>
@@ -184,6 +194,14 @@ interface _GlobalComponents {
     'LazyNuxtImg': LazyComponent<typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']>
     'LazyNuxtPicture': LazyComponent<typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']>
     'LazyIcon': LazyComponent<typeof import("../node_modules/@nuxt/icon/dist/runtime/components/index")['default']>
+    'LazyVitePwaManifest': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']>
+    'LazyNuxtPwaManifest': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']>
+    'LazyNuxtPwaAssets': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/NuxtPwaAssets")['default']>
+    'LazyPwaAppleImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleImage.vue")['default']>
+    'LazyPwaAppleSplashScreenImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleSplashScreenImage.vue")['default']>
+    'LazyPwaFaviconImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaFaviconImage.vue")['default']>
+    'LazyPwaMaskableImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaMaskableImage.vue")['default']>
+    'LazyPwaTransparentImage': LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']>
     'LazyNuxtPage': LazyComponent<typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']>
     'LazyNoScript': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
     'LazyLink': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']>
@@ -195,7 +213,7 @@ interface _GlobalComponents {
     'LazyHtml': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']>
     'LazyBody': LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']>
     'LazyNuxtIsland': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']>
-    'LazyNuxtRouteAnnouncer': LazyComponent<IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>>
+    'LazyNuxtRouteAnnouncer': LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 }
 
 declare module 'vue' {
@@ -243,6 +261,7 @@ export const UiImageDropzone: typeof import("../components/ui/ImageDropzone.vue"
 export const UiImageModal: typeof import("../components/ui/ImageModal.vue")['default']
 export const UiPagination: typeof import("../components/ui/Pagination.vue")['default']
 export const UiProfileVerificationCard: typeof import("../components/ui/ProfileVerificationCard.vue")['default']
+export const UiPwaNotifications: typeof import("../components/ui/PwaNotifications.vue")['default']
 export const UiSessionTroubleshoot: typeof import("../components/ui/SessionTroubleshoot.vue")['default']
 export const UiToast: typeof import("../components/ui/Toast.vue")['default']
 export const UiUserAvatar: typeof import("../components/ui/UserAvatar.vue")['default']
@@ -282,6 +301,14 @@ export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/co
 export const NuxtImg: typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']
 export const NuxtPicture: typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']
 export const Icon: typeof import("../node_modules/@nuxt/icon/dist/runtime/components/index")['default']
+export const VitePwaManifest: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']
+export const NuxtPwaManifest: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']
+export const NuxtPwaAssets: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/NuxtPwaAssets")['default']
+export const PwaAppleImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleImage.vue")['default']
+export const PwaAppleSplashScreenImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleSplashScreenImage.vue")['default']
+export const PwaFaviconImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaFaviconImage.vue")['default']
+export const PwaMaskableImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaMaskableImage.vue")['default']
+export const PwaTransparentImage: typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']
 export const NuxtPage: typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']
 export const NoScript: typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']
 export const Link: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']
@@ -293,7 +320,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
-export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+export const NuxtRouteAnnouncer: typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']
 export const LazyNavAuthMenu: LazyComponent<typeof import("../components/NavAuthMenu.vue")['default']>
 export const LazyNavFooter: LazyComponent<typeof import("../components/NavFooter.vue")['default']>
 export const LazyNavHeader: LazyComponent<typeof import("../components/NavHeader.vue")['default']>
@@ -335,6 +362,7 @@ export const LazyUiImageDropzone: LazyComponent<typeof import("../components/ui/
 export const LazyUiImageModal: LazyComponent<typeof import("../components/ui/ImageModal.vue")['default']>
 export const LazyUiPagination: LazyComponent<typeof import("../components/ui/Pagination.vue")['default']>
 export const LazyUiProfileVerificationCard: LazyComponent<typeof import("../components/ui/ProfileVerificationCard.vue")['default']>
+export const LazyUiPwaNotifications: LazyComponent<typeof import("../components/ui/PwaNotifications.vue")['default']>
 export const LazyUiSessionTroubleshoot: LazyComponent<typeof import("../components/ui/SessionTroubleshoot.vue")['default']>
 export const LazyUiToast: LazyComponent<typeof import("../components/ui/Toast.vue")['default']>
 export const LazyUiUserAvatar: LazyComponent<typeof import("../components/ui/UserAvatar.vue")['default']>
@@ -374,6 +402,14 @@ export const LazyNuxtRouteAnnouncer: LazyComponent<typeof import("../node_module
 export const LazyNuxtImg: LazyComponent<typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtImg.vue")['default']>
 export const LazyNuxtPicture: LazyComponent<typeof import("../node_modules/@nuxt/image/dist/runtime/components/NuxtPicture.vue")['default']>
 export const LazyIcon: LazyComponent<typeof import("../node_modules/@nuxt/icon/dist/runtime/components/index")['default']>
+export const LazyVitePwaManifest: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']>
+export const LazyNuxtPwaManifest: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/VitePwaManifest")['default']>
+export const LazyNuxtPwaAssets: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/NuxtPwaAssets")['default']>
+export const LazyPwaAppleImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleImage.vue")['default']>
+export const LazyPwaAppleSplashScreenImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaAppleSplashScreenImage.vue")['default']>
+export const LazyPwaFaviconImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaFaviconImage.vue")['default']>
+export const LazyPwaMaskableImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaMaskableImage.vue")['default']>
+export const LazyPwaTransparentImage: LazyComponent<typeof import("../node_modules/@vite-pwa/nuxt/dist/runtime/components/PwaTransparentImage.vue")['default']>
 export const LazyNuxtPage: LazyComponent<typeof import("../node_modules/nuxt/dist/pages/runtime/page")['default']>
 export const LazyNoScript: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['NoScript']>
 export const LazyLink: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Link']>
@@ -385,6 +421,6 @@ export const LazyHead: LazyComponent<typeof import("../node_modules/nuxt/dist/he
 export const LazyHtml: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']>
 export const LazyBody: LazyComponent<typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']>
 export const LazyNuxtIsland: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']>
-export const LazyNuxtRouteAnnouncer: LazyComponent<IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>>
+export const LazyNuxtRouteAnnouncer: LazyComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
 
 export const componentNames: string[]

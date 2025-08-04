@@ -1,9 +1,9 @@
 {
-  "_hash": "SpuId_7tkBKXvgrqGo_YHuiCpNPZgI9bH2PwNanunnU",
+  "_hash": "nM1exV_MHed2-yhhAwGoTO8XaCMNlVLWF2Vb5-Bjues",
   "project": {
-    "rootDir": "/Users/jenirandriamihajasoa/workspace/e-rentall"
+    "rootDir": "/media/prince/Donner/Prince/e-rentall"
   },
   "versions": {
-    "nuxt": "3.17.6"
+    "nuxt": "3.18.0"
   }
 }
