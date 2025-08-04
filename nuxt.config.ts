@@ -51,7 +51,7 @@ export default defineNuxtConfig({
       name: 'Location Voitures Madagascar',
       short_name: 'E-Rentall',
       description: 'Location de voitures entre particuliers à Madagascar',
-      theme_color: '#3B82F6',
+      theme_color: '#ffffff',
       background_color: '#ffffff',
       display: 'standalone',
       orientation: 'portrait',
@@ -173,7 +173,7 @@ export default defineNuxtConfig({
           name: 'description',
           content: 'Location de voitures entre particuliers à Madagascar'
         },
-        { name: 'theme-color', content: '#3B82F6' }
+        { name: 'theme-color', content: '#ffffff' }
       ]
     }
   },

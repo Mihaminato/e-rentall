@@ -82,47 +82,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Notification hors ligne -->
-  <div v-if="showOfflineNotification" class="fixed bottom-4 right-4 z-50">
-    <div class="bg-white border border-gray-200 rounded-lg shadow-lg p-4 max-w-sm">
-      <div class="flex items-start">
-        <div class="flex-shrink-0">
-          <svg
-            class="h-6 w-6 text-yellow-600"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-            />
-          </svg>
-        </div>
-        <div class="ml-3 flex-1">
-          <p class="text-sm font-medium text-gray-900">Prêt pour le mode hors ligne</p>
-          <p class="mt-1 text-sm text-gray-500">
-            L'application peut maintenant fonctionner hors ligne
-          </p>
-        </div>
-        <div class="ml-4 flex-shrink-0">
-          <button class="text-gray-400 hover:text-gray-600" @click="closeOfflineNotification">
-            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -131,7 +90,6 @@
   // Variables réactives pour les notifications
   const showInstallNotification = ref(false)
   const showUpdateNotification = ref(false)
-  const showOfflineNotification = ref(false)
 
   // Fonction pour fermer les notifications
   const closeInstallNotification = () => {
@@ -140,10 +98,6 @@
 
   const closeUpdateNotification = () => {
     showUpdateNotification.value = false
-  }
-
-  const closeOfflineNotification = () => {
-    showOfflineNotification.value = false
   }
 
   // Configuration au montage
@@ -168,14 +122,7 @@
       if ($pwa.needRefresh) {
         showUpdateNotification.value = true
       }
-
-      if ($pwa.offlineReady) {
-        showOfflineNotification.value = true
-      }
     }
-
-    // Auto-masquer les notifications après 10 secondes
-    setTimeout(closeOfflineNotification, 10000)
   })
 
   // Watchers pour les changements d'état PWA
@@ -183,7 +130,7 @@
     watch(
       () => $pwa.showInstallPrompt,
       newVal => {
-        console.log('showInstallPrompt changé:', newVal)
+        console.info('showInstallPrompt changé:', newVal)
         if (newVal && !$pwa.isInstalled) {
           showInstallNotification.value = true
         } else {
@@ -195,27 +142,15 @@
     watch(
       () => $pwa.needRefresh,
       newVal => {
-        console.log('needRefresh changé:', newVal)
+        console.info('needRefresh changé:', newVal)
         showUpdateNotification.value = newVal || false
-      }
-    )
-
-    watch(
-      () => $pwa.offlineReady,
-      newVal => {
-        console.log('offlineReady changé:', newVal)
-        if (newVal) {
-          showOfflineNotification.value = true
-          // Auto-masquer après 10 secondes
-          setTimeout(closeOfflineNotification, 10000)
-        }
       }
     )
 
     watch(
       () => $pwa.isInstalled,
       newVal => {
-        console.log('isInstalled changé:', newVal)
+        console.info('isInstalled changé:', newVal)
         if (newVal) {
           showInstallNotification.value = false
         }
