@@ -51,7 +51,7 @@
             </ClientOnly>
 
             <div class="mt-4">
-              <button class="btn btn-primary w-sm" @click="searchVehicles">
+              <button class="btn btn-primary w-full max-w-xs" @click="searchVehicles">
                 <Icon name="mdi:magnify" class="w-6 h-6" />
                 Rechercher
               </button>
