@@ -31,8 +31,61 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/test-utils',
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt'
+    'pinia-plugin-persistedstate/nuxt',
+    '@vite-pwa/nuxt'
   ],
+  pwa: {
+    registerType: 'autoUpdate',
+    // Utiliser injectManifest au lieu de generateSW pour éviter l'erreur ProxyTarget
+    // Désactiver workbox qui cause l'erreur
+    client: {
+      installPrompt: true,
+      periodicSyncForUpdates: 20
+    },
+    devOptions: {
+      enabled: true,
+      suppressWarnings: true,
+      type: 'module'
+    },
+    manifest: {
+      name: 'Location Voitures Madagascar',
+      short_name: 'E-Rentall',
+      description: 'Location de voitures entre particuliers à Madagascar',
+      theme_color: '#ffffff',
+      background_color: '#ffffff',
+      display: 'standalone',
+      orientation: 'portrait',
+      scope: '/',
+      start_url: '/',
+      icons: [
+        {
+          src: '/favicon.ico',
+          sizes: '64x64 32x32 24x24 16x16',
+          type: 'image/x-icon'
+        },
+        {
+          src: '/pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        },
+        {
+          src: '/pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable'
+        }
+      ],
+      categories: ['travel', 'business'],
+      lang: 'fr',
+      dir: 'ltr',
+      prefer_related_applications: false
+    }
+  },
 
   // Configuration des icônes pour la production
   icon: {
@@ -116,8 +169,11 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Location de voitures entre particuliers à Madagascar' },
-        { name: 'theme-color', content: '#3B82F6' }
+        {
+          name: 'description',
+          content: 'Location de voitures entre particuliers à Madagascar'
+        },
+        { name: 'theme-color', content: '#ffffff' }
       ]
     }
   },
