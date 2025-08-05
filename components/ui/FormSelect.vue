@@ -1,14 +1,14 @@
 <template>
   <div class="form-control">
-    <label v-if="label || icon" class="label">
-      <span class="label-text font-semibold flex items-center gap-2">
+    <label v-if="label || icon" class="label pb-2">
+      <span class="label-text font-medium text-sm flex items-center gap-2 text-base-content/80">
         <Icon v-if="icon" :name="icon" class="w-4 h-4 text-success" />
         {{ label }}
       </span>
     </label>
     <select
       :value="modelValue"
-      class="select select-bordered w-full focus-within:outline-none focus-within:border-primary"
+      class="select select-bordered w-full focus-within:outline-none focus-within:border-primary bg-white"
       :class="{ 'select-error': !!error }"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
       @blur="$emit('blur')"

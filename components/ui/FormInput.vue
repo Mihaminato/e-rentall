@@ -1,14 +1,14 @@
 <template>
   <div class="form-control">
-    <label v-if="label || icon" class="label">
-      <span class="label-text font-semibold flex items-center gap-2">
-        <Icon v-if="icon" :name="icon" class="w-4 h-4 text-info" />
+    <label v-if="label || icon" class="label pb-2">
+      <span class="label-text font-medium text-sm flex items-center gap-2 text-base-content/80">
+        <Icon v-if="icon" :name="icon" class="w-4 h-4 text-success" />
         {{ label }}
       </span>
     </label>
     <input
       :value="modelValue"
-      class="input input-bordered w-full flex items-center gap-2 focus-within:outline-none focus-within:border-primary"
+      class="input input-bordered w-full focus-within:outline-none focus-within:border-primary bg-white"
       :type="type"
       :placeholder="placeholder"
       :class="{ 'input-error': !!error }"

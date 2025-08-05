@@ -2,15 +2,20 @@
   <div>
     <!-- Hero Section (avec correction pour éliminer l'espace blanc) -->
     <div
-      class="hero min-h-[100vh] bg-accent-200 -mt-16 md:-mt-20"
+      class="hero min-h-[100vh] bg-accent-200 -mt-16 md:-mt-20 relative"
       style="
         background-image: url('https://images.unsplash.com/photo-1750792717021-57a790d10d28?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
         background-size: cover;
         background-position: center;
       "
     >
-      <div class="hero-overlay bg-opacity-60"></div>
-      <div class="hero-content text-center text-white">
+      <!-- Gradient overlay personnalisé -->
+      <div 
+        class="absolute inset-0 z-10 bg-gradient-to-br from-primary/70 to-accent/70"
+      ></div>
+      
+      <!-- Contenu avec z-index pour être au-dessus du gradient -->
+      <div class="hero-content text-center text-white relative z-20">
         <div class="max-w-md md:max-w-lg lg:max-w-2xl">
           <h1 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
             Location de véhicules entre particuliers
@@ -19,11 +24,12 @@
             Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre quand vous ne
             l'utilisez pas.
           </p>
-          <div class="card bg-base-100 text-base-content p-6 shadow-2xl">
-            <h2 class="text-xl font-semibold mb-4">Trouvez votre véhicule idéal</h2>
+          <div class="card bg-base-100 text-base-content p-4 sm:p-6 shadow-2xl max-w-2xl mx-auto">
+            <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">Trouvez votre véhicule idéal</h2>
 
             <ClientOnly>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <!-- Disposition responsive : verticale sur mobile, horizontale sur desktop -->
+              <div class="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-3 sm:gap-4">
                 <UiFormSelect
                   v-model="searchLocation"
                   label="Lieux"
@@ -37,7 +43,6 @@
                   type="date"
                   icon="mdi:calendar"
                 />
-
                 <UiFormInput
                   v-model="endDate"
                   label="Date de fin"
@@ -47,9 +52,9 @@
               </div>
             </ClientOnly>
 
-            <div class="mt-4">
-              <button class="btn btn-primary w-sm" @click="searchVehicles">
-                <Icon name="mdi:magnify" class="w-6 h-6" />
+            <div class="mt-6 text-center">
+              <button class="btn btn-primary w-full sm:w-auto px-8 py-3 text-base font-semibold" @click="searchVehicles">
+                <Icon name="mdi:magnify" class="w-5 h-5 mr-2" />
                 Rechercher
               </button>
             </div>
@@ -87,7 +92,7 @@
                 <div
                   class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
                 >
-                  <Icon name="mdi:magnify" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:magnify" class="text-2xl text-accent" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Trouvez votre véhicule</h3>
@@ -108,7 +113,7 @@
                 <div
                   class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
                 >
-                  <Icon name="mdi:key" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:key" class="text-2xl text-accent" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Réservez instantanément</h3>
@@ -129,7 +134,7 @@
                 <div
                   class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
                 >
-                  <Icon name="mdi:car" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:car" class="text-2xl text-accent" />
                 </div>
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et partez</h3>
@@ -150,12 +155,12 @@
                 <div
                   class="w-20 h-20 bg-white flex items-center justify-center shadow-md"
                 >
-                  <Icon name="mdi:shield-check" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:shield-check" class="text-2xl text-accent" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">Drive Safely</h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Sécurité</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Every trip is covered by comprehensive insurance. Return the car and rate your experience.
+                Chaque trajet est couvert par une assurance complète. Ramenez le véhicule et évaluez votre expérience.
               </p>
             </div>
           </div>
