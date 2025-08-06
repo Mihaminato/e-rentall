@@ -4,7 +4,7 @@
       class="btn btn-primary btn-lg gap-2 shadow-lg hover:shadow-xl transition-all duration-300"
       @click="installApp"
     >
-      <Icon name="mdi:download" class="w-6 h-6" />
+      <Icon name="mdi:download" class="w-6 h-6 text-accent" />
       Installer l'application
     </button>
     <p class="text-sm text-white/80 mt-2">Accès rapide depuis votre écran d'accueil</p>

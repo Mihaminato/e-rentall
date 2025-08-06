@@ -113,7 +113,7 @@
         <div class="bg-base-200 p-6 rounded-lg mt-12">
           <p class="font-semibold">Contact</p>
           <p>Pour toute question concernant ces conditions d'utilisation, veuillez nous contacter à :</p>
-          <p class="mt-2">contact@erentall.com</p>
+          <p class="mt-2">contact@erentall.market</p>
         </div>
       </div>
     </div>

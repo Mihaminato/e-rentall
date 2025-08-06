@@ -72,7 +72,7 @@
         <div class="text-center mb-16">
           <h2 class="text-4xl font-bold text-base-content mb-4">Comment ça marche</h2>
           <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
-            Simple, sécurisé, et direct - louez un véhicule en 4 étapes faciles.
+            Simple, sécurisé, et direct - louez un véhicule en 4 étapes sécurisées.
           </p>
         </div>
 
@@ -83,7 +83,7 @@
           ></div> -->
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            <!-- Step 1: Find Your Car -->
+            <!-- Step 1: Recherche et réservation -->
             <div class="flex flex-col items-center text-center relative">
               <div class="relative mb-6">
                 <!-- Pastille en haut à droite du conteneur de l'icône -->
@@ -93,17 +93,16 @@
                   <span class="text-white font-bold text-sm">1</span>
                 </div>
                 <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
-                  <Icon name="mdi:magnify" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:magnify" class="text-2xl text-accent" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">Trouvez votre véhicule</h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Recherchez et réservez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Parcourez des centaines de véhicules de propriétaires locaux. Filtrez par lieu, type
-                et budget.
+                Trouvez votre véhicule idéal avec nos filtres avancés. Remplissez le formulaire de réservation avec vos dates, destination et nombre de personnes.
               </p>
             </div>
 
-            <!-- Step 2: Book Instantly -->
+            <!-- Step 2: Approbation propriétaire -->
             <div class="flex flex-col items-center text-center relative">
               <div class="relative mb-6">
                 <!-- Pastille en haut à droite du conteneur de l'icône -->
@@ -113,17 +112,16 @@
                   <span class="text-white font-bold text-sm">2</span>
                 </div>
                 <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
-                  <Icon name="mdi:key" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:account-check" class="text-2xl text-accent" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">Réservez instantanément</h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Le propriétaire approuve</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Réservez votre véhicule idéal avec confirmation instantanée. Notre plateforme
-                sécurisée gère les paiements et les assurances.
+                Le propriétaire examine votre demande et peut l'approuver ou la refuser. En cas d'approbation, un acompte significatif est défini automatiquement.
               </p>
             </div>
 
-            <!-- Step 3: Pick Up & Go -->
+            <!-- Step 3: Paiement et validation -->
             <div class="flex flex-col items-center text-center relative">
               <div class="relative mb-6">
                 <!-- Pastille en haut à droite du conteneur de l'icône -->
@@ -133,17 +131,16 @@
                   <span class="text-white font-bold text-sm">3</span>
                 </div>
                 <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
-                  <Icon name="mdi:car" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:credit-card-check" class="text-2xl text-accent" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et partez</h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Paiement et validation</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Rencontrez votre hôte, récupérez les clés et commencez votre aventure à Madagascar.
-                GPS et support 24/7 inclus.
+                Effectuez le paiement avec la référence fournie. Notre équipe valide le paiement et confirme automatiquement votre réservation.
               </p>
             </div>
 
-            <!-- Step 4: Drive Safely -->
+            <!-- Step 4: Récupération et utilisation -->
             <div class="flex flex-col items-center text-center relative">
               <div class="relative mb-6">
                 <!-- Pastille en haut à droite du conteneur de l'icône -->
@@ -153,13 +150,12 @@
                   <span class="text-white font-bold text-sm">4</span>
                 </div>
                 <div class="w-20 h-20 bg-white flex items-center justify-center shadow-md">
-                  <Icon name="mdi:shield-check" class="text-2xl text-teal-500" />
+                  <Icon name="mdi:car" class="text-2xl text-accent" />
                 </div>
               </div>
-              <h3 class="text-lg font-bold text-base-content mb-3">Sécurité</h3>
+              <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et profitez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Every trip is covered by comprehensive insurance. Return the car and rate your
-                experience.
+                Rendez-vous au point de rencontre, effectuez l'état des lieux avec le propriétaire et profitez de votre location en toute tranquillité.
               </p>
             </div>
           </div>
