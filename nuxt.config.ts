@@ -64,17 +64,17 @@ export default defineNuxtConfig({
           type: 'image/x-icon'
         },
         {
-          src: '/pwa-192x192.png',
+          src: '/e-rentall-icon-192x192.png',
           sizes: '192x192',
           type: 'image/png'
         },
         {
-          src: '/pwa-512x512.png',
+          src: '/e-rentall-icon-512x512.png',
           sizes: '512x512',
           type: 'image/png'
         },
         {
-          src: '/pwa-512x512.png',
+          src: '/e-rentall-icon-512x512.png',
           sizes: '512x512',
           type: 'image/png',
           purpose: 'any maskable'
@@ -166,14 +166,27 @@ export default defineNuxtConfig({
   // Optimisation des ressources
   app: {
     head: {
+      title: 'E-Rentall - Location de voitures entre particuliers à Madagascar',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Location de voitures entre particuliers à Madagascar'
+          content: 'Location de voitures entre particuliers à Madagascar. Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre.'
         },
-        { name: 'theme-color', content: '#ffffff' }
+        { name: 'theme-color', content: '#e2725b' },
+        { name: 'msapplication-TileColor', content: '#e2725b' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+        { name: 'apple-mobile-web-app-title', content: 'E-Rentall' },
+        { name: 'application-name', content: 'E-Rentall' },
+        { name: 'format-detection', content: 'telephone=no' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/e-rentall-icon-192x192.png' },
+        { rel: 'mask-icon', href: '/favicon.png', color: '#e2725b' }
       ]
     }
   },
