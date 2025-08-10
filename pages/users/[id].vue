@@ -120,7 +120,7 @@
               <div class="space-y-3">
                 <div class="flex justify-between items-center">
                   <span class="text-base-content/70">Véhicules actifs</span>
-                  <div class="badge badge-primary">{{ userVehicles.length }}</div>
+                  <div class="badge badge-primary">{{ ownerVehicles.length }}</div>
                 </div>
                 <div class="flex justify-between items-center">
                   <span class="text-base-content/70">Membre depuis</span>
@@ -163,7 +163,7 @@
           </div>
 
           <!-- Message d'information -->
-          <div v-if="userVehicles.length > 0" class="alert alert-info mb-6">
+          <div v-if="ownerVehicles.length > 0" class="alert alert-info mb-6">
             <Icon name="mdi:information" class="w-5 h-5" />
             <span class="text-sm"
               >Seuls les véhicules actifs et disponibles à la location sont affichés.</span
@@ -171,9 +171,17 @@
           </div>
 
           <!-- Liste des véhicules -->
-          <div v-if="userVehicles.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- <div v-if="userVehicles.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <VehiclesVehicleCard
               v-for="vehicle in userVehicles"
+              :key="vehicle.id"
+              :vehicle="vehicle"
+            />
+          </div> -->
+
+          <div v-if="ownerVehicles.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <VehiclesVehicleCard
+              v-for="vehicle in ownerVehicles"
               :key="vehicle.id"
               :vehicle="vehicle"
             />
@@ -210,7 +218,7 @@
   const route = useRoute()
   const router = useRouter()
   const supabase = useNuxtApp().$supabase as SupabaseClient
-  const { vehicles: userVehicles, fetchMyVehicles } = useVehicles()
+  const { ownerVehicles, fetchOwnerVehiclesWithPhotos } = useVehicles()
   const {
     getPublicProfile,
     verifyUserProfile,
@@ -295,7 +303,10 @@
       }
 
       // Charger les véhicules de l'utilisateur (vue publique - seulement véhicules actifs)
-      await fetchMyVehicles(userId.value, true)
+      // await fetchMyVehicles(userId.value, true)
+
+      // Charger les véhicules du propriétaire
+      await fetchOwnerVehiclesWithPhotos(userId.value)
 
       // Mettre à jour le titre de la page
       useHead({

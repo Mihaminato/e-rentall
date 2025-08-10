@@ -20,6 +20,7 @@ export const useVehicles = () => {
   const vehiclePhotos = ref<VehiclePhoto[]>([])
   const isLoading = ref(false)
   const error = ref<string | null>(null)
+  const ownerVehicles = ref<Vehicle[]>([])
 
   const VEHICLE_DOCUMENTS_BUCKET = 'documents'
 
@@ -92,10 +93,10 @@ export const useVehicles = () => {
         //   console.log('COROLLA TROUVEE', v)
         // }
         const primaryPhoto = v.vehicle_photos?.find(photo => photo.is_primary)
-        
+
         // Vérifier si le véhicule a des disponibilités
         const hasAvailabilities = v.availabilities && v.availabilities.length > 0
-        
+
         return {
           ...v,
           image_url: primaryPhoto?.file_path
@@ -319,7 +320,53 @@ export const useVehicles = () => {
       // Traiter les données des véhicules pour générer les URLs des photos
       const processedVehicles = processVehicleData(data as unknown as Vehicle[])
 
+      ownerVehicles.value = processedVehicles
+
       return { vehicles: processedVehicles, error: null, totalCount: count }
+    } catch (err) {
+      error.value = (err as Error).message
+      return { vehicles: [], error: error.value, totalCount: 0 }
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  // Récupérer les véhicules d'un propriétaire avec leurs photos (style similaire à fetchMyVehicles)
+  const fetchOwnerVehiclesWithPhotos = async (
+    ownerId: string,
+    page: number = 1,
+    limit: number = 6,
+    statuses: boolean[] = [true, false]
+  ): Promise<{ vehicles: Vehicle[]; error: string | null; totalCount: number | null }> => {
+    isLoading.value = true
+    error.value = null
+
+    const from = (page - 1) * limit
+    const to = from + limit - 1
+
+    try {
+      const {
+        data,
+        error: fetchError,
+        count
+      } = await supabase
+        .from('vehicles')
+        .select(
+          `id,owner_id,make,model,year,transmission,seats,price_per_day,vehicle_type,province,license_plate,consumption,is_active,
+            description,fuel_type,created_at,updated_at,
+            vehicle_photos (id,vehicle_id,file_path,is_primary),
+            availabilities (id,vehicle_id,start_date,end_date)`,
+          { count: 'exact' }
+        )
+        .eq('owner_id', ownerId)
+        .in('is_active', statuses)
+        .range(from, to)
+        .order('created_at', { ascending: false })
+
+      if (fetchError) throw fetchError
+
+      const processedVehicles = processVehicleData(data as unknown as Vehicle[])
+      return { vehicles: processedVehicles, error: null, totalCount: count || 0 }
     } catch (err) {
       error.value = (err as Error).message
       return { vehicles: [], error: error.value, totalCount: 0 }
@@ -938,10 +985,12 @@ export const useVehicles = () => {
     vehiclePhotos,
     isLoading,
     error,
+    ownerVehicles,
     fetchVehiclesWithPagination,
     fetchVehicleById,
     fetchVehiclePhotos,
     fetchMyVehicles,
+    fetchOwnerVehiclesWithPhotos,
     getMyVehiclesCounts,
     fetchAllVehicles,
     addVehicle,
