@@ -13,7 +13,7 @@
       <UiCalendar
         :marked-dates="availableDates"
         :selected-dates="selectedDatesForCalendar"
-        :initial-date="firstAvailabilityDate"
+        :initial-date="initialCalendarDate"
         :show-legend="true"
         :legend-items="legendItems"
         marker-color-class="bg-success"
@@ -137,9 +137,10 @@
   const selectedStartDate = ref<Date | null>(null)
   const selectedEndDate = ref<Date | null>(null)
 
-  // Dates disponibles calculées
+  // Dates disponibles calculées (seulement à partir d'aujourd'hui)
   const availableDates = computed(() => {
     const dates: Date[] = []
+    const today = dayjs().startOf('day')
 
     props.availabilities.forEach(availability => {
       const start = dayjs(availability.start_date)
@@ -147,7 +148,9 @@
 
       let current = start
       while (current.isSameOrBefore(end, 'day')) {
-        dates.push(current.toDate())
+        if (current.isSameOrAfter(today, 'day')) {
+          dates.push(current.toDate())
+        }
         current = current.add(1, 'day')
       }
     })
@@ -182,17 +185,30 @@
     return dates
   })
 
-  // Première date de disponibilité pour initialiser le calendrier
-  const firstAvailabilityDate = computed(() => {
-    if (props.availabilities.length === 0) return null
+  // Date d'initialisation du calendrier
+  // Affiche la première disponibilité FUTURE si elle existe, sinon le mois actuel
+  const initialCalendarDate = computed(() => {
+    const today = dayjs().startOf('day')
 
-    // Trouver la première date de disponibilité (la plus proche de maintenant)
-    const sortedAvailabilities = [...props.availabilities].sort(
-      (a, b) => dayjs(a.start_date).valueOf() - dayjs(b.start_date).valueOf()
-    )
+    if (props.availabilities.length === 0) {
+      return today.toDate()
+    }
 
-    const firstAvailability = sortedAvailabilities[0]
-    return firstAvailability ? dayjs(firstAvailability.start_date).toDate() : null
+    // Filtrer uniquement les disponibilités encore valides (fin >= aujourd'hui)
+    const futureAvailabilities = [...props.availabilities]
+      .filter(a => dayjs(a.end_date).isSameOrAfter(today, 'day'))
+      .sort((a, b) => dayjs(a.start_date).valueOf() - dayjs(b.start_date).valueOf())
+
+    if (futureAvailabilities.length === 0) {
+      // Toutes les dispos sont dans le passé → afficher le mois actuel
+      return today.toDate()
+    }
+
+    const firstFuture = futureAvailabilities[0]
+    const firstFutureStart = dayjs(firstFuture.start_date)
+
+    // Ne jamais initialiser sur un mois passé
+    return firstFutureStart.isBefore(today, 'month') ? today.toDate() : firstFutureStart.toDate()
   })
 
   // Légende du calendrier

@@ -183,24 +183,12 @@
       const { success, error: loginError } = await login(email.value, password.value)
 
       if (success) {
-        router.push('/profile')
+        router.push('/vehicles')
       } else {
         error.value = loginError
       }
     } catch (err) {
       error.value = err.message || 'Une erreur est survenue lors de la connexion'
-    } finally {
-      loading.value = false
-    }
-  }
-
-  const signInWithGoogle = async () => {
-    loading.value = true
-    try {
-      // Authentification OAuth avec Google via Supabase
-      console.log('Connexion avec Google')
-    } catch (error) {
-      console.error('Erreur de connexion Google:', error)
     } finally {
       loading.value = false
     }

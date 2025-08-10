@@ -160,7 +160,10 @@
           class="card bg-base-100 shadow-md overflow-hidden duration-300"
         >
           <!-- Carrousel de photos -->
-          <div class="relative h-52 bg-base-200 cursor-pointer overflow-hidden">
+          <div
+            class="relative h-52 bg-base-200 cursor-pointer overflow-hidden"
+            @click="navigateTo(`/vehicles/${vehicle.id}`)"
+          >
             <VehiclesPhotoCarousel
               :photos="vehicle.vehicle_photos || []"
               :vehicle-name="`${vehicle.make} ${vehicle.model}`"
@@ -175,10 +178,7 @@
           </div>
 
           <!-- Corps de la carte avec design épuré -->
-          <div
-            class="card-body p-4 flex flex-col cursor-pointer"
-            @click="navigateTo(`/vehicles/${vehicle.id}`)"
-          >
+          <div class="card-body p-4 flex flex-col cursor-pointer">
             <div class="flex items-center justify-between mt-1 text-xs">
               <p class="font-bold text-2xl text-primary mr-2 rounded-lg">
                 {{ vehicle.price_per_day }} <span class="text-lg">Ar/jour</span>
@@ -189,7 +189,7 @@
               </div>
             </div>
             <!-- Caractéristiques -->
-            <div class="mb-2 flex w-full">
+            <div class="mb-2 flex w-full" @click="navigateTo(`/vehicles/${vehicle.id}`)">
               <div class="flex flex-wrap gap-1">
                 <div class="badge badge-outline badge-sm">
                   <Icon name="mdi:calendar" class="w-3 h-3 mr-1" />{{ vehicle.year }}
