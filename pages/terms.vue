@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto px-4 py-12">
     <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-bold mb-8">Conditions Générales d'Utilisation (CGU) – E-RENTALL</h1>
+      <h1 class="text-3xl font-bold mb-8 text-accent">Conditions Générales d'Utilisation (CGU) – E-RENTALL</h1>
       
       <div class="prose prose-lg">
         <h2 class="text-2xl font-semibold mt-8 mb-4">PRÉAMBULE</h2>
@@ -12,7 +12,7 @@
         
         <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 1 – Définitions</strong></h2>
         <ul class="list-disc pl-6 mb-6">
-          <li><strong>Plateforme</strong> : site internet www.erentall.com et/ou application mobile E-RENTALL.</li>
+          <li><strong>Plateforme</strong> : site internet <a href="https://www.erentall.market" target="_blank" rel="noopener">www.erentall.market</a> et/ou application mobile E-RENTALL.</li>
           <li><strong>Utilisateur</strong> : toute personne physique accédant à la Plateforme et utilisant les Services.</li>
           <li><strong>Réservataire</strong> : Utilisateur effectuant une réservation de véhicule avec chauffeur.</li>
           <li><strong>Fournisseur</strong> : Utilisateur proposant un véhicule avec chauffeur via la Plateforme.</li>
@@ -113,7 +113,9 @@
         <div class="bg-base-200 p-6 rounded-lg mt-12">
           <p class="font-semibold">Contact</p>
           <p>Pour toute question concernant ces conditions d'utilisation, veuillez nous contacter à :</p>
-          <p class="mt-2">contact@erentall.market</p>
+          <p class="mt-2">
+            <a href="mailto:support@erentall.market" class="text-primary underline hover:text-primary-focus">support@erentall.market</a>
+          </p>
         </div>
       </div>
     </div>
