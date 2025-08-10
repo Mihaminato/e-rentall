@@ -5,7 +5,7 @@
         <NuxtLink to="/" class="text-lg font-bold">E-rentall</NuxtLink>
 
         <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
-          <NuxtLink to="/about" class="link link-hover text-sm">À propos</NuxtLink>
+          <!-- <NuxtLink to="/about" class="link link-hover text-sm">À propos</NuxtLink> -->
           <NuxtLink to="/how-it-works" class="link link-hover text-sm">Comment ça marche</NuxtLink>
           <NuxtLink to="/terms" class="link link-hover text-sm">Conditions d'utilisation</NuxtLink>
           <NuxtLink to="/privacy" class="link link-hover text-sm"
