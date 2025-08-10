@@ -307,6 +307,7 @@
 
       // Charger les véhicules du propriétaire
       await fetchOwnerVehiclesWithPhotos(userId.value)
+      console.log('ownerVehicles', ownerVehicles.value)
 
       // Mettre à jour le titre de la page
       useHead({

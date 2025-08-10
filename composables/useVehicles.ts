@@ -320,7 +320,7 @@ export const useVehicles = () => {
       // Traiter les données des véhicules pour générer les URLs des photos
       const processedVehicles = processVehicleData(data as unknown as Vehicle[])
 
-      ownerVehicles.value = processedVehicles
+      vehicles.value = processedVehicles
 
       return { vehicles: processedVehicles, error: null, totalCount: count }
     } catch (err) {
@@ -366,6 +366,7 @@ export const useVehicles = () => {
       if (fetchError) throw fetchError
 
       const processedVehicles = processVehicleData(data as unknown as Vehicle[])
+      ownerVehicles.value = processedVehicles
       return { vehicles: processedVehicles, error: null, totalCount: count || 0 }
     } catch (err) {
       error.value = (err as Error).message
