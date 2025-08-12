@@ -183,7 +183,7 @@
       const { success, error: loginError } = await login(email.value, password.value)
 
       if (success) {
-        router.push('/vehicles')
+        router.push('/')
       } else {
         error.value = loginError
       }
