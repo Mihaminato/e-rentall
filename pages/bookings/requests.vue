@@ -280,7 +280,8 @@
     if (action === 'approve') {
       const booking = bookings.value.find(b => b.id === bookingId)
       if (booking) {
-        const result = await setBookingDeposit(booking.id, booking.total_price)
+        const duration = calculateDurationInDays(booking.start_date, booking.end_date)
+        const result = await setBookingDeposit(booking.id, booking.total_price, duration)
         success = result.success
       }
     } else if (action === 'refuse') {

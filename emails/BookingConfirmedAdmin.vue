@@ -65,7 +65,10 @@
             • Acompte réglé : {{ formatPrice(depositAmount) }} ✅
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Référence paiement : {{ paymentReference }}
+            • Reste à payer : {{ formatPrice(totalPrice - depositAmount) }} ✅
+          </Text>
+          <Text style="margin: 5px 0 0 0; color: #666">
+            • Numéro de téléphone de l'envoyeur : +261 {{ paymentReference }}
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666"> • Statut : Confirmée et active </Text>
         </Section>

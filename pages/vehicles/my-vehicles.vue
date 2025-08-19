@@ -160,10 +160,7 @@
           class="card bg-base-100 shadow-md overflow-hidden duration-300"
         >
           <!-- Carrousel de photos -->
-          <div
-            class="relative h-52 bg-base-200 cursor-pointer overflow-hidden"
-            @click="navigateTo(`/vehicles/${vehicle.id}`)"
-          >
+          <div class="relative h-52 bg-base-200 cursor-pointer overflow-hidden">
             <VehiclesPhotoCarousel
               :photos="vehicle.vehicle_photos || []"
               :vehicle-name="`${vehicle.make} ${vehicle.model}`"
@@ -297,9 +294,9 @@
 
       <!-- Modal pour ajouter/éditer un véhicule -->
       <VehiclesFormModal
-        v-if="showAddVehicleModal"
+        modal-id="vehicle-form-modal"
         :vehicle="editingVehicle"
-        @close="showAddVehicleModal = false"
+        @close="handleVehicleFormModalClose"
         @saved="handleVehicleSaved"
       />
     </div>
@@ -348,6 +345,7 @@
   const { fetchVehicleAvailabilities } = useAvailabilities()
   const { user: authUser, profile } = storeToRefs(useAuthStore())
   const pagination = usePagination({ pageSize: 5 })
+  const route = useRoute()
   // États réactifs du composant
   const vehicles = ref<Vehicle[]>([])
   const isLoading = ref(true)
@@ -363,7 +361,6 @@
   })
 
   // Gestion des modaux
-  const showAddVehicleModal = ref(false)
   const isDeleteModalVisible = ref(false)
   const editingVehicle = ref<Vehicle | null>(null)
   const vehicleToDelete = ref<Vehicle | null>(null)
@@ -446,7 +443,7 @@
 
   // Gérer la sauvegarde (ajout/modification) d'un véhicule
   const handleVehicleSaved = () => {
-    showAddVehicleModal.value = false
+    handleVehicleFormModalClose()
     editingVehicle.value = null
     showToast('Véhicule sauvegardé avec succès!', 'success')
     loadCounts() // Recharger les compteurs
@@ -456,13 +453,42 @@
   // Ouvrir le modal pour l'ajout
   const openAddVehicleModal = () => {
     editingVehicle.value = null
-    showAddVehicleModal.value = true
+    openVehicleFormModal()
+  }
+
+  const handleVehicleFormModalClose = () => {
+    editingVehicle.value = null
+    const vehicleFormModal = document.getElementById('vehicle-form-modal') as HTMLDialogElement
+    if (vehicleFormModal) {
+      vehicleFormModal.close()
+    }
+  }
+
+  const openVehicleFormModal = () => {
+    const vehicleFormModal = document.getElementById('vehicle-form-modal') as HTMLDialogElement
+    if (vehicleFormModal) {
+      vehicleFormModal.showModal()
+    }
   }
 
   // Ouvrir le modal pour la modification
   const editVehicle = (vehicle: Vehicle) => {
     editingVehicle.value = vehicle
-    showAddVehicleModal.value = true
+    openVehicleFormModal()
+  }
+
+  // Ouvrir le modal d'édition depuis l'URL
+  const openEditModalFromUrl = async () => {
+    const editVehicleId = route.query.edit as string
+
+    if (editVehicleId) {
+      // Chercher le véhicule dans la liste actuelle (déjà chargée)
+      const vehicleToEdit = vehicles.value.find(v => v.id === editVehicleId)
+      if (vehicleToEdit) {
+        editingVehicle.value = vehicleToEdit
+        openVehicleFormModal()
+      }
+    }
   }
 
   // ----- GESTION DE LA SUPPRESSION -----
@@ -583,6 +609,17 @@
   // Charger les données au montage du composant
   onMounted(async () => {
     await loadCounts()
+
+    // Vérifier d'abord si on doit changer d'onglet depuis l'URL
+    const tab = route.query.tab as string
+    if (tab && (tab === 'active' || tab === 'inactive')) {
+      activeTab.value = tab
+    }
+
+    // Charger les véhicules de l'onglet approprié
     await loadVehicles()
+
+    // Vérifier si on doit ouvrir le modal d'édition depuis l'URL
+    await openEditModalFromUrl()
   })
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 py-8">
-    <!-- Composant Toast pour les notifications -->
+    <!-- Composant Toast pour les notifications   -->
     <UiToast
       :visible="toast.visible"
       :message="toast.message"
@@ -42,7 +42,10 @@
               </div>
             </div>
             <div class="sm:text-right">
-              <div class="badge badge-lg" :class="getStatusColor(booking.status)">
+              <div
+                class="badge badge-lg text-white text-sm font-semibold"
+                :class="getStatusColor(booking.status)"
+              >
                 {{ getStatusLabel(booking.status) }}
               </div>
               <div class="text-sm text-base-content/70 mt-1">
@@ -214,7 +217,7 @@
           <!-- Section Paiement acompte (pour le locataire) -->
           <div
             v-if="
-              userRole === 'renter' &&
+              (userRole === 'renter' || userRole === 'admin') &&
               booking.status === 'owner_approved' &&
               !booking.is_deposit_paid
             "
@@ -232,7 +235,9 @@
               <div class="my-2 text-center">
                 <p class="text-lg">Montant de l'acompte :</p>
                 <p class="text-3xl font-bold">{{ formatPrice(booking.deposit_amount || 0) }}</p>
-                <p class="text-sm opacity-80">(Soit 50% du montant total)</p>
+                <p class="text-sm opacity-80">
+                  (Soit nombre de jours {{ numberOfDays }} * 5000 Ar)
+                </p>
               </div>
               <div class="card-actions justify-end">
                 <button class="btn" :disabled="isLoading" @click="openDepositModal">
@@ -245,7 +250,7 @@
           <!-- Section Attente de confirmation (pour le locataire) -->
           <div
             v-if="
-              userRole === 'renter' &&
+              (userRole === 'renter' || userRole === 'admin') &&
               booking.status === 'owner_approved' &&
               booking.is_deposit_paid
             "
@@ -416,8 +421,8 @@
         <h3 class="font-bold text-lg">Payer l'acompte</h3>
         <div class="py-4">
           <p>
-            Veuillez effectuer votre paiement sur le numéro ci-dessous, puis entrez la référence de
-            la transaction pour confirmer.
+            Veuillez effectuer votre paiement sur le numéro ci-dessous, puis entrez le numéro de
+            téléphone de l'envoyeur pour confirmer.
           </p>
           <div class="my-3 p-3 bg-base-200 rounded-lg text-center font-mono text-lg">
             (+261) 34 00 123 45 (M-Vola)
@@ -445,7 +450,9 @@
             <span class="label-text-alt text-error">{{ phoneValidationError }}</span>
           </label>
           <label v-else class="label">
-            <span class="label-text-alt text-base-content/70">Format: 34 00 123 45 (9 chiffres)</span>
+            <span class="label-text-alt text-base-content/70"
+              >Format: 34 00 123 45 (9 chiffres)</span
+            >
           </label>
         </div>
         <div class="modal-action">
@@ -501,6 +508,7 @@
 
 <script setup lang="ts">
   import { useRoute } from 'vue-router'
+
   import { useBookings } from '~/composables/useBookings'
   import { useAuthStore } from '~/stores/auth'
   import { BOOKING_STATUS_LABELS, BOOKING_STATUS_COLORS } from '~/types'
@@ -548,6 +556,11 @@
     type: 'info' as 'info' | 'success' | 'warning' | 'error'
   })
 
+  const numberOfDays = computed(() => {
+    if (!booking.value) return 0
+    return calculateDurationInDays(booking.value.start_date, booking.value.end_date)
+  })
+
   // --- Propriétés Calculées ---
   const primaryPhotoUrl = computed(() => {
     if (!booking.value?.vehicle?.vehicle_photos?.length) {
@@ -572,9 +585,10 @@
 
   const canCancel = computed(() => {
     if (!booking.value) return false
+    if (userRole.value === 'admin') return true
     const status = booking.value.status
     const validStatuses = ['pending', 'owner_approved', 'confirmed']
-    return validStatuses.includes(status) && userRole.value !== 'guest'
+    return validStatuses.includes(status)
   })
 
   const ownerNoteText = computed(() => {
@@ -623,32 +637,32 @@
   // Validation du numéro de téléphone
   const validatePhoneNumber = () => {
     const phoneNumber = renterPaymentReference.value.trim()
-    
+
     // Vérifier si le champ est vide
     if (!phoneNumber) {
       phoneValidationError.value = 'Le numéro de téléphone est requis'
       return false
     }
-    
+
     // Supprimer tous les espaces et caractères non numériques
     const cleanNumber = phoneNumber.replace(/\s/g, '').replace(/\D/g, '')
-    
+
     // Vérifier la longueur exacte (9 chiffres)
     if (cleanNumber.length !== 9) {
       phoneValidationError.value = 'Le numéro doit contenir exactement 9 chiffres'
       return false
     }
-    
+
     // Vérifier que c'est bien un numéro malgache valide (commence par 3)
     if (!cleanNumber.startsWith('3')) {
       phoneValidationError.value = 'Le numéro doit commencer par 3'
       return false
     }
-    
+
     // Formater le numéro pour l'affichage
     const formattedNumber = cleanNumber.replace(/(\d{2})(\d{2})(\d{3})(\d{2})/, '$1 $2 $3 $4')
     renterPaymentReference.value = formattedNumber
-    
+
     // Pas d'erreur
     phoneValidationError.value = ''
     return true
@@ -676,7 +690,12 @@
   // --- Actions ---
   const approveBooking = async () => {
     if (!booking.value) return
-    const result = await setBookingDeposit(booking.value.id, booking.value.total_price)
+    const numberOfDays = calculateDurationInDays(booking.value.start_date, booking.value.end_date)
+    const result = await setBookingDeposit(
+      booking.value.id,
+      booking.value.total_price,
+      numberOfDays
+    )
     if (result.success) await fetchBookingById(bookingId)
   }
 

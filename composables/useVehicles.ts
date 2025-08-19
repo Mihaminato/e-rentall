@@ -89,13 +89,19 @@ export const useVehicles = () => {
   const processVehicleData = (data: Vehicle[]) => {
     return (
       data?.map(v => {
-        // if (v.type === 'sedan' && v.model.toLowerCase().includes('corolla')) {
-        //   console.log('COROLLA TROUVEE', v)
-        // }
         const primaryPhoto = v.vehicle_photos?.find(photo => photo.is_primary)
 
-        // Vérifier si le véhicule a des disponibilités
-        const hasAvailabilities = v.availabilities && v.availabilities.length > 0
+        // Vérifier si le véhicule a des disponibilités qui chevauchent aujourd'hui ou le futur
+        const today = new Date()
+        today.setHours(0, 0, 0, 0) // Réinitialiser l'heure à minuit
+
+        const hasAvailabilities =
+          v.availabilities &&
+          v.availabilities.length > 0 &&
+          v.availabilities.some(availability => {
+            const endDate = new Date(availability.end_date)
+            return endDate >= today
+          })
 
         return {
           ...v,

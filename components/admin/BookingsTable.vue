@@ -69,11 +69,14 @@
             <div class="font-semibold">{{ formatPrice(booking.total_price) }}</div>
           </td>
           <td>
-            <div v-if="booking.is_deposit_paid" class="flex items-center gap-1">
+            <div
+              v-if="booking.is_deposit_paid"
+              class="flex flex-wrap items-center gap-1 justify-center"
+            >
               <div class="badge badge-success badge-sm text-success-content">Payé</div>
               <div
                 v-if="booking.payment_reference"
-                class="text-xs text-base-100 font-mono badge badge-sm badge-primary"
+                class="text-xs text-base-100 font-mono badge badge-sm badge-primary whitespace-nowrap"
                 :title="booking.payment_reference"
               >
                 #{{ booking.payment_reference }}

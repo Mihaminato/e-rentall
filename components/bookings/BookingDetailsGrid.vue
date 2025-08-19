@@ -34,7 +34,7 @@
         v-if="booking.deposit_amount"
         class="flex items-center justify-between sm:block p-3 rounded-lg bg-base-200/50"
       >
-        <span class="text-sm text-base-content/70">Acompte (50%) : </span>
+        <span class="text-sm text-base-content/70">Acompte (nombre de jours * 5000 Ar) : </span>
         <div class="flex items-center gap-2">
           <span class="font-semibold">{{ formatPrice(booking.deposit_amount) }}</span>
           <span
@@ -42,24 +42,37 @@
             class="badge badge-success badge-sm text-success-content"
             >Payé</span
           >
-          <span v-else class="badge badge-warning badge-sm text-warning-content">En attente</span>
+          <span v-else class="badge badge-warning badge-sm text-warning-content text-white"
+            >En attente</span
+          >
         </div>
       </div>
 
       <!-- Référence de paiement -->
-      <div
-        v-if="booking.payment_reference"
-        class="flex items-center justify-between sm:block p-3 rounded-lg bg-base-200/50"
-      >
-        <span class="text-sm text-base-content/70">Référence de paiement : </span>
-        <span class="font-semibold font-mono">{{ booking.payment_reference }}</span>
+      <div v-if="booking.payment_reference" class="p-3 rounded-lg bg-base-200/50">
+        <div class="text-sm text-base-content/70 mb-1">Numéro de téléphone de l'envoyeur :</div>
+        <div class="font-semibold font-mono">+261 {{ booking.payment_reference }}</div>
       </div>
     </div>
     <!-- Prix total -->
     <div class="mt-4 pt-4 border-t border-base-content/10">
       <div class="flex justify-between items-center text-lg">
-        <span class="font-bold">Prix total :</span>
+        <span class="font-bold">Prix total : </span>
         <span class="font-bold text-primary">{{ formatPrice(booking.total_price) }}</span>
+      </div>
+      <div
+        v-if="booking.deposit_amount && booking.is_deposit_paid"
+        class="flex items-center justify-between text-lg"
+      >
+        <span class="font-bold">Reste à payer : </span>
+        <div class="flex items-center gap-2">
+          <span class="font-semibold text-primary"
+            >{{ formatPrice(booking.total_price - booking.deposit_amount) }}
+          </span>
+          <span class="font-semibold text-primary"
+            >({{ formatPrice(booking.deposit_amount) }} Ar déjà payés)
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -86,9 +99,6 @@
   }
 
   const getDuration = (startDate: string, endDate: string) => {
-    const start = new Date(startDate)
-    const end = new Date(endDate)
-    const diffTime = Math.abs(end.getTime() - start.getTime())
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return calculateDurationInDays(startDate, endDate)
   }
 </script>

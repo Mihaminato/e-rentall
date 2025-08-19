@@ -198,9 +198,12 @@
   import {
     validateCinNumber,
     validateCinIssuedDate,
-    formatCinNumber,
     CIN_VALIDATION_MESSAGES
   } from '~/utils/validation'
+
+  definePageMeta({
+    middleware: ['auth']
+  })
 
   const router = useRouter()
   const { register, isLoading } = useAuth()
@@ -233,13 +236,6 @@
     CIN_VALIDATION_MESSAGES.INVALID_DATE,
     value => !value || validateCinIssuedDate(value as string)
   )
-
-  // Fonction pour formater le CIN en temps réel
-  const handleCinInput = (event: Event) => {
-    const target = event.target as HTMLInputElement
-    const value = target.value
-    cinNumber.value = formatCinNumber(value)
-  }
 
   // Règles de validation Vuelidate
   const rules = {

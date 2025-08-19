@@ -225,11 +225,7 @@
 
   // Computed
   const duration = computed(() => {
-    if (!formData.value.startDate || !formData.value.endDate) return 0
-    const start = new Date(formData.value.startDate)
-    const end = new Date(formData.value.endDate)
-    const diffTime = Math.abs(end.getTime() - start.getTime())
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    return calculateDurationInDays(formData.value.startDate, formData.value.endDate)
   })
 
   const totalPrice = computed(() => {

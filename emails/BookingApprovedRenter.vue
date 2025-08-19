@@ -81,7 +81,7 @@
             {{ formatPrice(depositAmount) }}
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666; text-align: center; font-size: 14px">
-            (50% du montant total)
+            (nombre de jours * 5000 Ar)
           </Text>
         </Section>
 

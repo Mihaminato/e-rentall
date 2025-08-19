@@ -361,7 +361,9 @@
   }
 
   const navigateToEdit = () => {
-    router.push(`/vehicles/my-vehicles?edit=${vehicle.value?.id}`)
+    // Déterminer l'onglet selon le statut du véhicule
+    const tab = vehicle.value?.is_active ? 'active' : 'inactive'
+    router.push(`/vehicles/my-vehicles?edit=${vehicle.value?.id}&tab=${tab}`)
   }
 
   // Fonctions pour les actions du propriétaire

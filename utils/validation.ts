@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 /**
  * Fonctions de validation pour les données utilisateur
  */
@@ -85,3 +87,13 @@ export const CIN_VALIDATION_MESSAGES = {
   FUTURE_DATE: 'La date de délivrance ne peut pas être dans le futur',
   DATE_REQUIRED: 'La date de délivrance de la CIN est requise'
 } as const
+
+/**
+ * Calcule la durée entre deux dates en incluant la date de fin
+ * @param startDate Date de début (format string)
+ * @param endDate Date de fin (format string)
+ * @returns Nombre de jours entre les deux dates (date de fin incluse)
+ */
+export const calculateDurationInDays = (startDate: string, endDate: string): number => {
+  return dayjs(endDate).diff(dayjs(startDate), 'day', true) + 1
+}

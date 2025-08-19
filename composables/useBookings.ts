@@ -527,10 +527,10 @@ export const useBookings = () => {
   }
 
   // Étape 1 (Propriétaire) : Approuver et définir l'acompte
-  const setBookingDeposit = async (id: string, totalAmount: number, ownerNotes?: string) => {
+  const setBookingDeposit = async (id: string, totalAmount: number, numberOfDays: number) => {
     isUpdating.value = true
     error.value = null
-    const depositAmount = totalAmount * 0.5 // 50% d'acompte
+    const depositAmount = numberOfDays * 5000 // nombre de jours * 5000 Ar
 
     try {
       const { data, error: updateError } = await supabase

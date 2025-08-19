@@ -4,8 +4,8 @@
 
 
 @plugin "daisyui/theme" {
-  name: "corporate";
-  default: false;
+  name: "corporate"; 
+  default: true; /* false pour le theme light */
   prefersdark: true;
   color-scheme: "light";
   --color-base-100: oklch(100% 0 0);

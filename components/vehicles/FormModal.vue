@@ -1,8 +1,9 @@
 <template>
-  <div class="modal modal-open modal-bottom md:modal-middle">
-    <div class="modal-box relative max-w-6xl bg-base-100 p-6 shadow-lg rounded-lg">
+  <dialog :id="modalId" class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
       <!-- Toast pour les notifications utilisateur -->
       <UiToast
+        class="my-6"
         :visible="toastVisible"
         :message="toastMessage"
         :type="toastType"
@@ -10,16 +11,15 @@
       />
 
       <!-- Bouton de fermeture en haut à droite -->
-      <button
-        class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-10"
-        @click="$emit('close')"
-      >
-        <Icon name="mdi:close" class="w-5 h-5" />
-      </button>
 
-      <h3 class="font-bold text-2xl mb-6 text-center text-primary">
-        {{ vehicle ? 'Modifier le véhicule' : 'Ajouter un véhicule' }}
-      </h3>
+      <div class="flex justify-between items-center my-6">
+        <h3 class="font-bold text-2xl text-center text-primary">
+          {{ vehicle ? 'Modifier le véhicule' : 'Ajouter un véhicule' }}
+        </h3>
+        <button class="btn btn-sm btn-circle btn-ghost" @click="$emit('close')">
+          <Icon name="mdi:close" size="24" />
+        </button>
+      </div>
 
       <!-- Formulaire de véhicule -->
       <form class="space-y-6" @submit.prevent="saveVehicle">
@@ -318,24 +318,23 @@
         </div>
       </form>
     </div>
-
-    <!-- Modal de confirmation pour la suppression de document -->
-    <UiConfirmationModal
-      :visible="isConfirmModalVisible"
-      title="Confirmer la suppression"
-      :message="`Êtes-vous sûr de vouloir supprimer définitivement ce document ? Cette action est irréversible.`"
-      confirm-text="Supprimer"
-      :loading="isDeleting"
-      @confirm="executeDeleteDocument"
-      @cancel="isConfirmModalVisible = false"
-    />
-  </div>
+  </dialog>
+  <UiConfirmationModal
+    :visible="isConfirmModalVisible"
+    title="Confirmer la suppression"
+    :message="`Êtes-vous sûr de vouloir supprimer définitivement ce document ? Cette action est irréversible.`"
+    confirm-text="Supprimer"
+    :loading="isDeleting"
+    @confirm="executeDeleteDocument"
+    @cancel="isConfirmModalVisible = false"
+  />
+  <!-- Modal de confirmation pour la suppression de document -->
 </template>
 
 <script setup lang="ts">
   import { useVuelidate } from '@vuelidate/core'
   import { required, minValue, maxValue, helpers } from '@vuelidate/validators'
-  import type { PhotoPreview, Vehicle, VehicleForm, City } from '~/types'
+  import type { PhotoPreview, Vehicle, VehicleForm } from '~/types'
   import {
     VEHICLE_TYPE_OPTIONS,
     TRANSMISSION_OPTIONS,
@@ -346,6 +345,7 @@
   // Props
   const props = defineProps<{
     vehicle?: Vehicle | null
+    modalId: string
   }>()
 
   // Emits
@@ -376,7 +376,8 @@
   const isDeleting = ref(false)
   const docToDelete = ref<'vehicle_registration' | 'technical_inspection' | null>(null)
 
-  const form = reactive<VehicleForm>({
+  // Valeurs par défaut du formulaire
+  const defaultFormValues: VehicleForm = {
     make: '',
     model: '',
     year: null,
@@ -392,7 +393,18 @@
     photos: [],
     vehicleRegistrationFile: null,
     technicalInspectionFile: null
-  })
+  }
+
+  const form = reactive<VehicleForm>({ ...defaultFormValues })
+
+  // Fonction pour réinitialiser le formulaire
+  const resetForm = () => {
+    Object.assign(form, defaultFormValues)
+    previews.value = []
+    existingDocs.vehicle_registration = null
+    existingDocs.technical_inspection = null
+    v$.value.$reset()
+  }
 
   const existingDocs = reactive<{
     vehicle_registration: { id: string; file_path: string } | null
@@ -659,6 +671,7 @@
     () => props.vehicle,
     async newVehicle => {
       if (newVehicle) {
+        // Mode édition : remplir le formulaire avec les données du véhicule
         form.make = newVehicle.make
         form.model = newVehicle.model
         form.year = newVehicle.year
@@ -700,6 +713,9 @@
           existingDocs.vehicle_registration = regDoc || null
           existingDocs.technical_inspection = techDoc || null
         }
+      } else {
+        // Mode ajout : réinitialiser complètement le formulaire
+        resetForm()
       }
     },
     { immediate: true }

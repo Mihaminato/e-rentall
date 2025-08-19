@@ -113,8 +113,11 @@
 <script setup>
   import { useAuth } from '~/composables/useAuth'
   import { useVuelidate } from '@vuelidate/core'
-  import { required, email as emailValidator, helpers } from '@vuelidate/validators'
+  import { required, email as emailValidator, minLength, helpers } from '@vuelidate/validators'
 
+  definePageMeta({
+    middleware: ['auth']
+  })
   const router = useRouter()
   const { login } = useAuth()
 
@@ -126,6 +129,11 @@
   const showPassword = ref(false)
   const showValidationError = ref(true)
 
+  const containsNumber = helpers.withMessage(
+    'Le mot de passe doit contenir au moins un chiffre',
+    value => /\d/.test(value)
+  )
+
   // Règles de validation Vuelidate
   const rules = {
     email: {
@@ -133,7 +141,12 @@
       email: helpers.withMessage("Format d'email invalide", emailValidator)
     },
     password: {
-      required: helpers.withMessage('Le mot de passe est requis', required)
+      required: helpers.withMessage('Le mot de passe est requis', required),
+      minLength: helpers.withMessage(
+        'Le mot de passe doit contenir au moins 8 caractères',
+        minLength(8)
+      ),
+      containsNumber
     }
   }
 

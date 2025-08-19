@@ -58,7 +58,7 @@
               border-radius: 4px;
             "
           >
-            Référence de paiement : {{ paymentReference }}
+            Numéro de téléphone de l'envoyeur : +261 {{ paymentReference }}
           </Text>
         </Section>
 
