@@ -88,9 +88,6 @@
             • Contactez le locataire pour organiser la remise du véhicule
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Vous recevrez les documents contractuels par email sous peu
-          </Text>
-          <Text style="margin: 5px 0 0 0; color: #666">
             • Le solde sera réglé à la fin de la location
           </Text>
         </Section>

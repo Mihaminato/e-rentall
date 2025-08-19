@@ -42,7 +42,8 @@
     allVehiclesLoaded,
     fetchRecentVehicles,
     listenToVehicleChanges,
-    unsubscribeFromVehicleChanges
+    unsubscribeFromVehicleChanges,
+    resetVehiclesPagination
   } = useAdminDashboard()
 
   const scrollComponent = ref<HTMLElement | null>(null)
@@ -55,10 +56,10 @@
   }
 
   // Fonction pour rafraîchir la liste si une mise à jour a lieu dans la modale
-  const refetchOnUpdate = () => {
-    // On pourrait imaginer une logique plus fine, mais pour l'instant on réinitialise.
-    recentVehicles.value = []
-    fetchRecentVehicles()
+  const refetchOnUpdate = async () => {
+    // Réinitialiser complètement la pagination et recharger
+    resetVehiclesPagination()
+    await fetchRecentVehicles()
   }
 
   useInfiniteScroll(

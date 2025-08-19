@@ -281,6 +281,13 @@ export function useAdminDashboard() {
     }
   }
 
+  // Fonction pour réinitialiser la pagination des véhicules
+  const resetVehiclesPagination = () => {
+    vehiclesPage.value = 0
+    allVehiclesLoaded.value = false
+    recentVehicles.value = []
+  }
+
   return {
     stats,
     loading,
@@ -303,6 +310,7 @@ export function useAdminDashboard() {
     allVehiclesLoaded,
     fetchRecentVehicles,
     listenToVehicleChanges,
-    unsubscribeFromVehicleChanges
+    unsubscribeFromVehicleChanges,
+    resetVehiclesPagination
   }
 }

@@ -11,7 +11,7 @@
           class="form-control w-full mb-4"
         >
           <label class="label">
-            <span class="label-text">{{ getDocumentTypeName(docType) }}</span>
+            <span class="label-text">{{ getDocumentTypeName(docType) }} <span class="text-xs text-base-content/60">(fichier PDF uniquement)</span></span>
           </label>
           <input
             type="file"

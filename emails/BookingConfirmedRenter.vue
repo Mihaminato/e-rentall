@@ -78,11 +78,8 @@
           <Text style="margin: 0; color: #333">
             <strong>Prochaines étapes :</strong>
           </Text>
-          <Text style="margin: 10px 0 0 0; color: #666">
-            • Vous recevrez sous peu les documents de location par email
-          </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Le propriétaire vous contactera pour organiser la remise du véhicule
+            • Le propriétaire vous contactera pour organiser votre voyage
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
             • Conservez cette confirmation pour vos records
