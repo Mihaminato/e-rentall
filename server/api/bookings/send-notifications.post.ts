@@ -6,8 +6,10 @@ interface EmailTemplateProps {
   reservationId: string
   renterName: string
   renterEmail: string
+  renterPhone: string
   ownerName: string
   ownerEmail: string
+  ownerPhone: string
   vehicleName: string
   vehicleModel: string
   vehicleLicensePlate: string
@@ -40,8 +42,10 @@ export default defineEventHandler(async event => {
       reservationId: booking.id,
       renterName: `${booking.renter.first_name} ${booking.renter.last_name}`,
       renterEmail: booking.renter.email,
+      renterPhone: booking.renter.phone || 'Non renseigné',
       ownerName: `${booking.owner.first_name} ${booking.owner.last_name}`,
       ownerEmail: booking.owner.email,
+      ownerPhone: booking.owner.phone || 'Non renseigné',
       vehicleName: booking.vehicle.make,
       vehicleModel: booking.vehicle.model,
       vehicleLicensePlate: booking.vehicle.license_plate || 'Non renseignée',

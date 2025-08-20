@@ -83,7 +83,7 @@
         </Section>
 
         <Text style="color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px">
-          Système VehicleRental
+          Equipe E-rentall
         </Text>
       </Container>
     </Body>

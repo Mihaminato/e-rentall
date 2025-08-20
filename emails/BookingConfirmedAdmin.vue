@@ -43,7 +43,7 @@
             • ID Réservation : {{ reservationId }}
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Demandeur : {{ renterName }} ({{ renterEmail }})
+            • Demandeur : {{ renterName }} ({{ renterEmail }}) ({{ renterPhone }})
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
             • Propriétaire : {{ ownerName }} ({{ ownerEmail }})
@@ -65,10 +65,7 @@
             • Acompte réglé : {{ formatPrice(depositAmount) }} ✅
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Reste à payer : {{ formatPrice(totalPrice - depositAmount) }} ✅
-          </Text>
-          <Text style="margin: 5px 0 0 0; color: #666">
-            • Numéro de téléphone de l'envoyeur : +261 {{ paymentReference }}
+            • Référence paiement : {{ paymentReference }}
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666"> • Statut : Confirmée et active </Text>
         </Section>
@@ -111,7 +108,7 @@
         </Section>
 
         <Text style="color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px">
-          Système VehicleRental
+          Equipe E-rentall
         </Text>
       </Container>
     </Body>
@@ -134,6 +131,7 @@
     reservationId: string
     renterName: string
     renterEmail: string
+    renterPhone: string
     ownerName: string
     ownerEmail: string
     vehicleName: string

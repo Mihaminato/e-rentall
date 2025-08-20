@@ -8,7 +8,7 @@
           placeholder="Véhicule, locataire, propriétaire..."
           label="Rechercher"
         /> -->
-        eti
+        
         <UiFormSelect v-model="editableFilters.status" :options="statusOptions" label="Statut" />
 
         <UiFormSelect v-model="editableFilters.period" :options="periodOptions" label="Période" />

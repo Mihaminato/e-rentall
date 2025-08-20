@@ -81,11 +81,8 @@
           <Text style="margin: 0; color: #333">
             <strong>Prochaines étapes :</strong>
           </Text>
-          <Text style="margin: 10px 0 0 0; color: #666">
-            • Vous recevrez sous peu les documents de location par email
-          </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Le propriétaire vous contactera pour organiser la remise du véhicule
+            • Le propriétaire vous contactera pour organiser votre location
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
             • Conservez cette confirmation pour vos records
@@ -117,7 +114,7 @@
 
         <Text style="color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px">
           Cordialement,<br />
-          L'équipe VehicleRental
+          L'équipe E-rentall
         </Text>
       </Container>
     </Body>

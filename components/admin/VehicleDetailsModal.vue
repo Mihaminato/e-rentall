@@ -137,6 +137,7 @@
       emit('vehicle-updated')
     } finally {
       isModerating.value = false
+      closeModal()
     }
   }
 
@@ -148,6 +149,7 @@
       emit('vehicle-updated')
     } finally {
       isModerating.value = false
+      closeModal()
     }
   }
 
