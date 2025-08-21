@@ -27,7 +27,7 @@
             class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-56 max-h-96 overflow-y-auto"
           >
             <li><NuxtLink to="/" class="text-base py-3">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/vehicles" class="text-base py-3">Véhicules</NuxtLink></li>
+            <li><NuxtLink to="/vehicles" class="text-base py-3">Nos Véhicules</NuxtLink></li>
             <li><NuxtLink to="/how-it-works" class="text-base py-3">Comment ça marche</NuxtLink></li>
             <li><NuxtLink to="/about" class="text-base py-3">À propos</NuxtLink></li>
             <li><NuxtLink to="/contact" class="text-base py-3">Contact</NuxtLink></li>
