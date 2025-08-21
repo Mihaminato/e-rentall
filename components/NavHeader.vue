@@ -54,7 +54,7 @@
           </li>
           <li>
             <NuxtLink to="/vehicles" class="hover:bg-base-200 rounded-lg px-3 py-2 text-sm lg:text-base">
-              Véhicules
+              Nos Véhicules
             </NuxtLink>
           </li>
           <li>
