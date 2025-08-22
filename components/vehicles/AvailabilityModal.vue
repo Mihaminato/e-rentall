@@ -410,21 +410,6 @@
     }
   }
 
-  // Confirmer la suppression d'une disponibilité
-  //   const confirmDelete = (availability: Availability) => {
-  //     if (!availability || !availability.id) return
-
-  //     if (
-  //       confirm(
-  //         `Supprimer la période du ${formatDate(availability.start_date)} au ${formatDate(
-  //           availability.end_date
-  //         )} ?`
-  //       )
-  //     ) {
-  //       deleteAvailabilityItem(availability.id)
-  //     }
-  //   }
-
   const updateAvailabilityItem = async (availability: Availability) => {
     if (!availability || !availability.id) return
 
