@@ -13,7 +13,12 @@ export const useCalendarData = (
     bookings: Ref<Booking[]>
     selectedStartDate?: Ref<Date | null>
     selectedEndDate?: Ref<Date | null>
-  } = {} as any
+  } = {} as {
+    availabilities: Ref<Availability[]>
+    bookings: Ref<Booking[]>
+    selectedStartDate?: Ref<Date | null>
+    selectedEndDate?: Ref<Date | null>
+  }
 ) => {
   const { availabilities, bookings, selectedStartDate, selectedEndDate } = options
 

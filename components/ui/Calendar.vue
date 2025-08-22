@@ -190,6 +190,7 @@
   }
 
   // Générer les jours du calendrier
+  // eslint-disable-next-line max-lines-per-function
   const calendarDays = computed(() => {
     const year = currentDate.value.getFullYear()
     const month = currentDate.value.getMonth()
@@ -270,6 +271,7 @@
   })
 
   // Classes CSS pour les jours
+  // eslint-disable-next-line complexity
   const getDayClasses = (day: CalendarDay) => {
     const classes = []
 
