@@ -53,7 +53,7 @@
           />
 
           <!-- Titre et bouton d'édition (pour propriétaire) -->
-          <div class="flex justify-between items-start">
+          <div class="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0">
             <div class="flex-1">
               <h1 class="text-3xl font-bold mb-2">
                 {{ vehicle.make }} {{ vehicle.model }} {{ vehicle.year }}
@@ -186,7 +186,7 @@
 
           <!-- Calendrier des  disponibilités -->
           <VehiclesVehicleAvailabilityCalendar
-            :availabilities="vehicle.availabilities || []"
+            :availabilities="vehicleAvailabilities"
             :price-per-day="vehicle.price_per_day"
             :is-owner="isOwner"
             :vehicle="vehicle"
@@ -219,15 +219,15 @@
 </template>
 
 <script setup lang="ts">
-  import { useVehicles } from '~/composables/useVehicles'
-  import { useAuthStore } from '~/stores/auth'
-  import type { Booking } from '~/types'
+  import type { Booking, Availability } from '~/types'
   import { FUEL_TYPE_OPTIONS } from '~/types'
   import type { SupabaseClient } from '@supabase/supabase-js'
   // Composables et stores
   const route = useRoute()
   const router = useRouter()
   const { vehicle, isLoading, error, fetchVehicleById } = useVehicles()
+  const { fetchVehicleAvailabilities } = useAvailabilities()
+  const { fetchVehicleBookings } = useBookings()
   const supabase = useNuxtApp().$supabase as SupabaseClient
   const { user } = useAuthStore()
 
@@ -235,6 +235,10 @@
   const selectedPhotoIndex = ref(0)
   const isDescriptionExpanded = ref(false)
   const DESCRIPTION_TRUNCATE_LENGTH = 200
+
+  // Données des disponibilités et réservations
+  const vehicleAvailabilities = ref<Availability[]>([])
+  const vehicleBookings = ref<Booking[]>([])
 
   // État pour les toasts
   const toast = ref({
@@ -398,8 +402,37 @@
     const vehicleId = route.params.id as string
     if (vehicleId) {
       await fetchVehicleById(vehicleId)
+      // Charger les disponibilités et réservations
+      await loadVehicleData(vehicleId)
     }
   })
+
+  // Watcher pour recharger les données quand le véhicule change
+  watch(vehicle, async newVehicle => {
+    if (newVehicle?.id) {
+      await loadVehicleData(newVehicle.id)
+    }
+  })
+
+  // Charger les données des disponibilités et réservations
+  const loadVehicleData = async (vehicleId: string) => {
+    try {
+      const [availabilitiesResult, bookingsResult] = await Promise.all([
+        fetchVehicleAvailabilities(vehicleId),
+        fetchVehicleBookings(vehicleId)
+      ])
+
+      if (availabilitiesResult.data) {
+        vehicleAvailabilities.value = availabilitiesResult.data
+      }
+
+      if (bookingsResult.data) {
+        vehicleBookings.value = bookingsResult.data
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des données:', error)
+    }
+  }
 
   // Meta pour SEO
   useHead({

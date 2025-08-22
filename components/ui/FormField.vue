@@ -11,9 +11,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
-  label: string
-  required?: boolean
-  error?: string | null
-}>()
+  defineProps<{
+    label: string
+    required?: boolean
+    error?: string | null
+  }>()
 </script>

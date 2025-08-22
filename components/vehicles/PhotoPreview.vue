@@ -5,12 +5,9 @@
       :key="index"
       class="relative border border-base-300 rounded-lg overflow-hidden h-32"
     >
-      <img
-        :src="preview.url"
-        alt="Aperçu de la photo"
-        class="w-full h-full object-cover"
-      />
+      <img :src="preview.url" alt="Aperçu de la photo" class="w-full h-full object-cover" />
       <button
+        v-if="!disabled"
         type="button"
         class="absolute top-1 right-1 btn btn-circle btn-xs btn-error"
         @click="$emit('remove', index)"
@@ -22,14 +19,15 @@
 </template>
 
 <script setup lang="ts">
-import type { PhotoPreview } from '~/types'
+  import type { PhotoPreview } from '~/types'
 
-defineProps<{
-  photos: PhotoPreview[]
-  maxPhotos?: number
-}>()
+  defineProps<{
+    photos: PhotoPreview[]
+    maxPhotos?: number
+    disabled?: boolean
+  }>()
 
-defineEmits<{
-  (e: 'remove', index: number): void
-}>()
+  defineEmits<{
+    (e: 'remove', index: number): void
+  }>()
 </script>

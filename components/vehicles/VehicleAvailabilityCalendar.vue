@@ -3,21 +3,18 @@
     <div class="card-body">
       <div class="flex justify-between items-center mb-4">
         <h2 class="card-title">Disponibilités</h2>
-        <button v-if="isOwner" class="btn btn-primary btn-sm" @click="$emit('manage-availability')">
-          <Icon name="mdi:pencil" class="w-4 h-4" />
-          Gérer
-        </button>
       </div>
 
       <!-- Calendrier des disponibilités -->
       <UiCalendar
-        :marked-dates="availableDates"
+        :marked-dates="unavailableDates"
         :selected-dates="selectedDatesForCalendar"
+        :booked-dates="bookedDatesForCalendar"
         :initial-date="initialCalendarDate"
         :show-legend="true"
         :legend-items="legendItems"
-        marker-color-class="bg-success"
-        @day-click="handleDayClick"
+        marker-color-class="bg-orange-500"
+        @day-click="handleCalendarDayClick"
         @month-change="handleMonthChange"
       />
 
@@ -60,12 +57,12 @@
 
         <!-- Alerte si le profil n'est pas complet -->
         <UiProfileVerificationCard
-          v-if="!isProfileComplete"
+          v-if="!isProfileCompleteComputed"
           class="m-2"
           text="Veuillez compléter toutes vos informations personnelles avant de pouvoir ajouter des documents. (CIN, Date de délivrance CIN)"
         />
         <button
-          v-if="!isOwner && isProfileComplete"
+          v-if="!isOwner && isProfileCompleteComputed"
           class="btn btn-primary btn-block mt-3"
           @click="openBookingModal"
         >
@@ -74,7 +71,7 @@
         </button>
 
         <!-- Bouton pour effacer la sélection -->
-        <button class="btn btn-outline btn-block mt-2" @click="clearSelection">
+        <button class="btn btn-outline btn-block mt-2" @click="clearSelection()">
           <Icon name="mdi:close" class="w-4 h-4" />
           Effacer la sélection
         </button>
@@ -97,20 +94,20 @@
 
 <script setup lang="ts">
   import dayjs from 'dayjs'
-  import isBetween from 'dayjs/plugin/isBetween'
-  import type { Vehicle, Booking, Profile } from '~/types'
-
-  dayjs.extend(isBetween)
+  import type { Vehicle, Booking, Availability } from '~/types'
+  import type { CalendarDay } from '~/composables/useCalendarSelection'
 
   // --- Store et composables ---
   const authStore = useAuthStore()
   const profile = computed(() => authStore.profile)
+  const { fetchVehicleBookings } = useBookings()
 
-  interface Availability {
-    id: string
-    start_date: string
-    end_date: string
-  }
+  // Composables factorisés
+  const { formatDate, formatPrice, getInitialCalendarDate, getStandardLegendItems } =
+    useCalendarDates()
+  const { selectedStartDate, selectedEndDate, numberOfDays, handleDayClick, clearSelection } =
+    useCalendarSelection()
+  const { isProfileComplete, calculateTotalPrice } = useVehicleBookingValidation()
 
   interface Props {
     availabilities: Availability[]
@@ -133,192 +130,66 @@
   // Références
   const bookingModalRef = ref()
 
-  // État de sélection
-  const selectedStartDate = ref<Date | null>(null)
-  const selectedEndDate = ref<Date | null>(null)
+  // État des réservations
+  const vehicleBookings = ref<Booking[]>([])
 
-  // Dates disponibles calculées (seulement à partir d'aujourd'hui)
-  const availableDates = computed(() => {
-    const dates: Date[] = []
-    const today = dayjs().startOf('day')
+  // Utilisation du composable pour les données du calendrier
+  const availabilitiesRef = ref<Availability[]>(props.availabilities)
+  const vehicleBookingsRef = ref<Booking[]>(vehicleBookings.value)
 
-    props.availabilities.forEach(availability => {
-      const start = dayjs(availability.start_date)
-      const end = dayjs(availability.end_date)
-
-      let current = start
-      while (current.isSameOrBefore(end, 'day')) {
-        if (current.isSameOrAfter(today, 'day')) {
-          dates.push(current.toDate())
-        }
-        current = current.add(1, 'day')
-      }
-    })
-
-    return dates
-  })
-
-  // Dates sélectionnées avec leurs types pour l'affichage
-  const selectedDatesForCalendar = computed(() => {
-    const dates: { date: Date; type: 'start' | 'middle' | 'end' }[] = []
-
-    if (!selectedStartDate.value) return dates
-
-    // Date de début
-    dates.push({ date: selectedStartDate.value, type: 'start' })
-
-    // Si on a aussi une date de fin
-    if (selectedEndDate.value) {
-      // Date de fin
-      dates.push({ date: selectedEndDate.value, type: 'end' })
-
-      // Dates du milieu
-      let current = dayjs(selectedStartDate.value).add(1, 'day')
-      const end = dayjs(selectedEndDate.value)
-
-      while (current.isBefore(end, 'day')) {
-        dates.push({ date: current.toDate(), type: 'middle' })
-        current = current.add(1, 'day')
-      }
+  // Synchroniser les refs avec les données
+  watch(
+    () => props.availabilities,
+    (newAvailabilities: Availability[]) => {
+      availabilitiesRef.value = newAvailabilities
     }
+  )
 
-    return dates
+  watch(
+    () => vehicleBookings.value,
+    (newBookings: Booking[]) => {
+      vehicleBookingsRef.value = newBookings
+    }
+  )
+
+  const {
+    markedDates: unavailableDates,
+    bookedDatesForCalendar,
+    selectedDatesForCalendar
+  } = useCalendarData({
+    availabilities: availabilitiesRef,
+    bookings: vehicleBookingsRef,
+    selectedStartDate,
+    selectedEndDate
   })
 
   // Date d'initialisation du calendrier
-  // Affiche la première disponibilité FUTURE si elle existe, sinon le mois actuel
   const initialCalendarDate = computed(() => {
-    const today = dayjs().startOf('day')
-
-    if (props.availabilities.length === 0) {
-      return today.toDate()
-    }
-
-    // Filtrer uniquement les disponibilités encore valides (fin >= aujourd'hui)
-    const futureAvailabilities = [...props.availabilities]
-      .filter(a => dayjs(a.end_date).isSameOrAfter(today, 'day'))
-      .sort((a, b) => dayjs(a.start_date).valueOf() - dayjs(b.start_date).valueOf())
-
-    if (futureAvailabilities.length === 0) {
-      // Toutes les dispos sont dans le passé → afficher le mois actuel
-      return today.toDate()
-    }
-
-    const firstFuture = futureAvailabilities[0]
-    const firstFutureStart = dayjs(firstFuture.start_date)
-
-    // Ne jamais initialiser sur un mois passé
-    return firstFutureStart.isBefore(today, 'month') ? today.toDate() : firstFutureStart.toDate()
+    return getInitialCalendarDate(props.availabilities)
   })
 
   // Légende du calendrier
-  const legendItems = computed(() => [
-    { label: 'Disponible', color: 'bg-success' },
-    { label: 'Sélectionné', color: 'bg-primary' }
-  ])
-
-  // Calculer le nombre de jours sélectionnés
-  const numberOfDays = computed(() => {
-    if (!selectedStartDate.value || !selectedEndDate.value) return 0
-    return dayjs(selectedEndDate.value).diff(dayjs(selectedStartDate.value), 'day') + 1
+  const legendItems = computed(() => {
+    return getStandardLegendItems()
   })
 
   // Prix total calculé
   const totalPrice = computed(() => {
-    return numberOfDays.value * props.pricePerDay
+    if (!selectedStartDate.value || !selectedEndDate.value) return 0
+    return calculateTotalPrice(selectedStartDate.value, selectedEndDate.value, props.pricePerDay)
   })
 
-  //Verifier que tous les information sont valide
-  // --- Validation ---
-  const isProfileComplete = computed(() => {
-    if (!profile.value) return false
-    const requiredFields: (keyof Profile)[] = [
-      'first_name',
-      'last_name',
-      'phone',
-      'address',
-      'postal_code',
-      'phone',
-      'cin_number'
-    ]
-    return requiredFields.every(field => {
-      const value = profile.value?.[field]
-      return value !== null && value !== undefined && String(value).trim() !== ''
+  // Validation du profil utilisateur
+  const isProfileCompleteComputed = computed(() => {
+    return isProfileComplete(profile.value)
+  })
+
+  // Gérer le clic sur un jour du calendrier
+  const handleCalendarDayClick = (day: CalendarDay) => {
+    handleDayClick(day, {
+      bookings: vehicleBookings.value,
+      unavailabilities: props.availabilities
     })
-  })
-
-  // Vérifier si une date est disponible
-  const isDateAvailable = (date: Date) => {
-    return availableDates.value.some(availableDate =>
-      dayjs(availableDate).isSame(dayjs(date), 'day')
-    )
-  }
-
-  // Vérifier si une période est entièrement disponible
-  const isPeriodAvailable = (start: Date, end: Date) => {
-    let current = dayjs(start)
-    const endDay = dayjs(end)
-
-    while (current.isSameOrBefore(endDay, 'day')) {
-      if (!isDateAvailable(current.toDate())) {
-        return false
-      }
-      current = current.add(1, 'day')
-    }
-
-    return true
-  }
-
-  // Interface pour les jours du calendrier
-  interface CalendarDay {
-    date: number
-    fullDate: Date
-    isCurrentMonth: boolean
-    isToday: boolean
-    isMarked: boolean
-    markerColor?: string
-    data?: Record<string, unknown>
-  }
-
-  // Gérer le clic sur un jour
-  const handleDayClick = (day: CalendarDay) => {
-    // Ignorer si le jour n'est pas du mois courant ou n'est pas disponible
-    if (!day.isCurrentMonth || !isDateAvailable(day.fullDate)) {
-      return
-    }
-
-    // Si aucune date de début sélectionnée
-    if (!selectedStartDate.value) {
-      selectedStartDate.value = day.fullDate
-      selectedEndDate.value = null
-      return
-    }
-
-    // Si seule la date de début est sélectionnée
-    if (selectedStartDate.value && !selectedEndDate.value) {
-      const clickedDate = dayjs(day.fullDate)
-      const startDate = dayjs(selectedStartDate.value)
-
-      // Si on clique avant la date de début, la remplacer
-      if (clickedDate.isBefore(startDate, 'day')) {
-        selectedStartDate.value = day.fullDate
-        return
-      }
-
-      // Vérifier si la période est entièrement disponible
-      if (isPeriodAvailable(selectedStartDate.value, day.fullDate)) {
-        selectedEndDate.value = day.fullDate
-      } else {
-        // Si la période n'est pas disponible, recommencer la sélection
-        selectedStartDate.value = day.fullDate
-        selectedEndDate.value = null
-      }
-      return
-    }
-
-    // Si les deux dates sont sélectionnées, recommencer
-    selectedStartDate.value = day.fullDate
-    selectedEndDate.value = null
   }
 
   // Gérer le changement de mois
@@ -327,11 +198,26 @@
     console.log('Mois changé:', dayjs(date).format('MMMM YYYY'))
   }
 
-  // Effacer la sélection
-  const clearSelection = () => {
-    selectedStartDate.value = null
-    selectedEndDate.value = null
+  // Charger les réservations du véhicule (pour tous)
+  const loadVehicleBookings = async (vehicleId: string) => {
+    const { success, data } = await fetchVehicleBookings(vehicleId)
+    if (success) {
+      vehicleBookings.value = data
+    }
   }
+
+  // Watcher pour charger les réservations quand le véhicule change
+  watch(
+    () => props.vehicle?.id,
+    async newVehicleId => {
+      if (newVehicleId) {
+        await loadVehicleBookings(newVehicleId)
+      } else {
+        vehicleBookings.value = []
+      }
+    },
+    { immediate: true }
+  )
 
   // Ouvrir la modal de réservation
   const openBookingModal = () => {
@@ -349,20 +235,5 @@
   const handleValidationError = (error: string) => {
     console.error('Erreur de validation:', error)
     // Vous pourriez afficher un toast ou une notification ici
-  }
-
-  // Formatage des dates
-  const formatDate = (date: Date) => {
-    return dayjs(date).format('DD/MM/YYYY')
-  }
-
-  // Formatage du prix en Ariary
-  const formatPrice = (price: number) => {
-    return (
-      new Intl.NumberFormat('fr-FR', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-      }).format(price) + ' Ar'
-    )
   }
 </script>

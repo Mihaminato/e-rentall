@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <!-- Modal de confirmation daisyUI -->
-    <dialog class="modal" :class="{ 'modal-open': visible }">
+    <dialog class="modal z-[999]" :class="{ 'modal-open': visible }">
       <div class="modal-box">
         <h3 class="font-bold text-lg">{{ title }}</h3>
         <p class="py-4">{{ message }}</p>

@@ -91,45 +91,64 @@ export const useVehicles = () => {
       data?.map(v => {
         const primaryPhoto = v.vehicle_photos?.find(photo => photo.is_primary)
 
-        // Vérifier si le véhicule a des disponibilités qui chevauchent aujourd'hui ou le futur
-        const today = new Date()
-        today.setHours(0, 0, 0, 0) // Réinitialiser l'heure à minuit
-
-        const hasAvailabilities =
-          v.availabilities &&
-          v.availabilities.length > 0 &&
-          v.availabilities.some(availability => {
-            const endDate = new Date(availability.end_date)
-            return endDate >= today
-          })
-
         return {
           ...v,
           image_url: primaryPhoto?.file_path
             ? supabase.storage.from('cars').getPublicUrl(primaryPhoto.file_path).data.publicUrl
             : undefined,
           vehicle_photos: v.vehicle_photos || [],
-          availabilities: v.availabilities || [],
-          isCurrentlyAvailable: hasAvailabilities
+          availabilities: v.availabilities || []
         }
       }) || []
     )
   }
 
-  // Helper: Filtrer par disponibilités
+  // Helper: Filtrer par disponibilités (NOUVEAU SYSTÈME)
+  // Un véhicule est disponible s'il n'a PAS d'indisponibilité ET PAS de réservation sur la période
+  // eslint-disable-next-line complexity
   const filterByAvailabilities = async (filters: SearchFilters) => {
-    const { data: availableVehicleIds, error: availabilitiesError } = await supabase
-      .from('availabilities')
-      .select('vehicle_id')
-      .lte('start_date', filters.endDate)
-      .gte('end_date', filters.startDate)
+    try {
+      // Étape 1: Obtenir tous les véhicules actifs
+      const { data: allVehicles, error: vehiclesError } = await supabase
+        .from('vehicles')
+        .select('id')
+        .eq('is_active', true)
 
-    if (availabilitiesError) {
-      console.error('Erreur lors de la récupération des availabilities:', availabilitiesError)
-      throw availabilitiesError
+      if (vehiclesError) throw vehiclesError
+
+      const allVehicleIds = allVehicles?.map(v => v.id) || []
+
+      // Étape 2: Trouver les véhicules avec des indisponibilités sur la période
+      const { data: unavailableFromIndisponibilites, error: indispoError } = await supabase
+        .from('availabilities')
+        .select('vehicle_id')
+        .lte('start_date', filters.endDate)
+        .gte('end_date', filters.startDate)
+
+      if (indispoError) throw indispoError
+
+      // Étape 3: Trouver les véhicules avec des réservations actives sur la période
+      const { data: unavailableFromBookings, error: bookingsError } = await supabase
+        .from('bookings')
+        .select('vehicle_id')
+        .not('status', 'in', '(cancelled,completed)')
+        .lte('start_date', filters.endDate)
+        .gte('end_date', filters.startDate)
+
+      if (bookingsError) throw bookingsError
+
+      // Étape 4: Créer un Set des véhicules indisponibles
+      const unavailableIds = new Set([
+        ...(unavailableFromIndisponibilites?.map(av => av.vehicle_id) || []),
+        ...(unavailableFromBookings?.map(bv => bv.vehicle_id) || [])
+      ])
+
+      // Étape 5: Retourner les véhicules disponibles (ceux qui ne sont pas indisponibles)
+      return allVehicleIds.filter(vehicleId => !unavailableIds.has(vehicleId))
+    } catch (error) {
+      console.error('Erreur lors du filtrage par disponibilités:', error)
+      throw error
     }
-
-    return availableVehicleIds?.map(av => av.vehicle_id) || []
   }
 
   // Helper: Exécuter la requête principale
@@ -986,6 +1005,37 @@ export const useVehicles = () => {
     return { error: null }
   }
 
+  // Mettre à jour uniquement la localisation d'un véhicule actif
+  const updateVehicleLocation = async (id: string, province: string) => {
+    isLoading.value = true
+    error.value = null
+
+    try {
+      const { data: updatedVehicle, error: updateError } = await supabase
+        .from('vehicles')
+        .update({
+          province: province,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', id)
+        .select()
+        .maybeSingle()
+
+      if (updateError) throw updateError
+      if (!updatedVehicle)
+        throw new Error(
+          "Le véhicule a été mis à jour, mais n'a pas pu être récupéré. Vérifiez les politiques RLS."
+        )
+
+      return { vehicle: updatedVehicle }
+    } catch (err) {
+      error.value = (err as Error).message
+      return { vehicle: null, error: error.value }
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   return {
     vehicles,
     vehicle,
@@ -1002,6 +1052,7 @@ export const useVehicles = () => {
     fetchAllVehicles,
     addVehicle,
     updateVehicle,
+    updateVehicleLocation,
     deleteVehicle,
     addVehiclePhoto,
     deleteVehiclePhoto,

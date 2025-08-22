@@ -10,21 +10,13 @@
         :alt="`${vehicle.make} ${vehicle.model}`"
         class="h-48 w-full object-cover rounded-t-md"
       />
-      <!-- Badge de disponibilité -->
+      <!-- Badge de disponibilité (nouveau système) -->
       <div class="absolute top-3 left-3">
         <div
-          v-if="vehicle.isCurrentlyAvailable"
           class="badge bg-accent/70 text-accent-content border-accent/70 rounded-full px-3 py-1 font-medium"
         >
           <Icon name="mdi:check-circle" class="w-3 h-3 mr-1" />
           Disponible
-        </div>
-        <div
-          v-else
-          class="badge bg-primary/70 text-primary-content border-primary/70 rounded-full px-3 py-1 font-medium"
-        >
-          <Icon name="mdi:clock-outline" class="w-3 h-3 mr-1" />
-          Non disponible
         </div>
       </div>
     </figure>
