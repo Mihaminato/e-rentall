@@ -103,13 +103,12 @@
               <h3 class="card-title text-xl mb-2 text-accent">Récupérez et profitez</h3>
               <p class="text-sm">
                 Rendez-vous au point de rencontre convenu avec le propriétaire. Effectuez l'état des
-                lieux, récupérez les clés et profitez de votre location. Marquez comme terminée à la
-                fin.
+                lieux et profitez de votre location.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
                 <p><strong>Support disponible :</strong></p>
                 <ul class="text-left">
-                  <li>• Assistance 24/7</li>
+                  <li>• Assistance réactive</li>
                   <li>• Évaluation mutuelle</li>
                   <li>• Résolution de conflits</li>
                 </ul>
