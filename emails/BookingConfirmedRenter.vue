@@ -46,6 +46,9 @@
           </Text>
           <Text v-else style="margin: 10px 0 0 0; color: #666"> • ID Réservation : N/A </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
+            • Propriétaire : {{ ownerName }} ({{ ownerEmail }}) ({{ ownerPhone }})
+          </Text>
+          <Text style="margin: 5px 0 0 0; color: #666">
             • Véhicule : {{ vehicleName }} {{ vehicleModel }}
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
@@ -136,6 +139,9 @@
   defineProps<{
     reservationId: string
     renterName: string
+    ownerName: string
+    ownerEmail: string
+    ownerPhone: string
     vehicleName: string
     vehicleModel: string
     vehicleLicensePlate: string
