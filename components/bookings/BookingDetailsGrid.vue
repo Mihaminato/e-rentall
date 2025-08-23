@@ -70,7 +70,7 @@
             >{{ formatPrice(booking.total_price - booking.deposit_amount) }}
           </span>
           <span class="font-semibold text-primary"
-            >({{ formatPrice(booking.deposit_amount) }} Ar déjà payés)
+            >({{ formatPrice(booking.deposit_amount) }} déjà payés)
           </span>
         </div>
       </div>
