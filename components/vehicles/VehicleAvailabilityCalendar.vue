@@ -59,7 +59,7 @@
         <UiProfileVerificationCard
           v-if="!isProfileCompleteComputed"
           class="m-2"
-          text="Veuillez compléter toutes vos informations personnelles avant de pouvoir ajouter des documents. (CIN, Date de délivrance CIN)"
+          text="Veuillez vous inscrire ou compléter toutes vos informations personnelles (CIN, Date de délivrance CIN) avant de reserver."
         />
         <button
           v-if="!isOwner && isProfileCompleteComputed"
