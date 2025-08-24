@@ -6,6 +6,10 @@
       <div class="text-xs">
         {{ text }}
       </div>
+      <button class="btn btn-primary btn-sm w-fit" @click="navigateTo('/profile')">
+                <Icon name="mdi:account-edit" class="w-4 h-4 mr-2" />
+                Compléter mon profil
+      </button>
     </div>
   </div>
 </template>
