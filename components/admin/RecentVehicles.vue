@@ -9,7 +9,7 @@
         ></span>
       </div>
 
-      <div v-if="recentVehicles.length > 0" class="overflow-x-auto h-96" ref="scrollComponent">
+      <div v-if="recentVehicles.length > 0" ref="scrollComponent" class="overflow-x-auto h-96">
         <AdminVehiclesTable :vehicles="recentVehicles" @view-vehicle="viewVehicle" />
         <div v-if="loadingVehicles" class="text-center p-4">
           <span class="loading loading-sm loading-spinner"></span>

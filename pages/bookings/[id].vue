@@ -488,7 +488,9 @@
             <Icon v-else name="mdi:cancel" class="w-4 h-4" />
             <span v-if="!isUpdating">Confirmer l'annulation</span>
           </button>
-          <button class="btn btn-ghost" @click="showCancelModal = false">Annuler</button>
+          <button class="btn btn-ghost" :disabled="isUpdating" @click="showCancelModal = false">
+            Annuler
+          </button>
         </div>
       </div>
     </dialog>

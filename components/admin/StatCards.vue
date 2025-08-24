@@ -41,7 +41,7 @@
 
     <!-- Bookings Card -->
     <div
-      class="card bg-accent text-accent-content transform hover:-translate-y-1 transition-transform duration-300 ease-in-out shadow-lg"
+      class="card bg-accent text-white transform hover:-translate-y-1 transition-transform duration-300 ease-in-out shadow-lg"
     >
       <div class="card-body flex-row items-center">
         <div class="mr-4">
@@ -56,7 +56,7 @@
 
     <!-- Pending Verification Card -->
     <div
-      class="card bg-info text-info-content transform hover:-translate-y-1 transition-transform duration-300 ease-in-out shadow-lg"
+      class="card bg-blue-500 text-white transform hover:-translate-y-1 transition-transform duration-300 ease-in-out shadow-lg"
     >
       <div class="card-body flex-row items-center">
         <div class="mr-4">

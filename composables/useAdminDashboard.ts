@@ -177,32 +177,98 @@ export function useAdminDashboard() {
     }
   }
 
+  const fetchBookingWithRelations = async (bookingId: string): Promise<Booking | null> => {
+    try {
+      const { data, error } = await supabase
+        .from('bookings')
+        .select(
+          `
+          *,
+          vehicle:vehicles!inner(
+            id,
+            make,
+            model,
+            year,
+            price_per_day,
+            vehicle_photos(file_path, is_primary),
+            owner:profiles!owner_id(
+              id,
+              first_name,
+              last_name,
+              email,
+              phone,
+              address,
+              avatar_url
+            )
+          ),
+          renter:profiles!renter_id(
+            id,
+            first_name,
+            last_name,
+            email,
+            avatar_url
+          )
+        `
+        )
+        .eq('id', bookingId)
+        .single()
+
+      if (error) throw error
+      return data as Booking
+    } catch (e) {
+      console.error('Erreur lors du fetch de la réservation:', e)
+      return null
+    }
+  }
+
+  const handleBookingInsert = async (bookingId: string) => {
+    const fullBooking = await fetchBookingWithRelations(bookingId)
+    if (fullBooking) {
+      const index = recentBookings.value.findIndex(b => b.id === fullBooking.id)
+      if (index === -1) {
+        recentBookings.value.unshift(fullBooking)
+      }
+    }
+  }
+
+  const handleBookingUpdate = async (bookingId: string) => {
+    const fullBooking = await fetchBookingWithRelations(bookingId)
+    if (fullBooking) {
+      const index = recentBookings.value.findIndex(b => b.id === fullBooking.id)
+      if (index !== -1) {
+        recentBookings.value[index] = fullBooking
+      }
+    }
+  }
+
+  const handleBookingDelete = (bookingId: string) => {
+    const deleteIndex = recentBookings.value.findIndex(b => b.id === bookingId)
+    if (deleteIndex !== -1) {
+      recentBookings.value.splice(deleteIndex, 1)
+    }
+  }
+
   const listenToBookingChanges = () => {
     if (realtimeChannel) return
 
     realtimeChannel = supabase
       .channel('public:bookings')
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'bookings' }, payload => {
-        const updatedBooking = payload.new as Booking
-        const index = recentBookings.value.findIndex(b => b.id === updatedBooking.id)
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'bookings' },
+        async payload => {
+          const bookingId =
+            (payload.new as { id: string })?.id || (payload.old as { id: string })?.id
 
-        if (payload.eventType === 'INSERT') {
-          // Ajouter en haut de la liste seulement si pas déjà présent
-          if (index === -1) {
-            recentBookings.value.unshift(updatedBooking)
-          }
-        } else if (payload.eventType === 'UPDATE') {
-          if (index !== -1) {
-            recentBookings.value[index] = { ...recentBookings.value[index], ...updatedBooking }
-          }
-        } else if (payload.eventType === 'DELETE') {
-          const oldBooking = payload.old as Booking
-          const deleteIndex = recentBookings.value.findIndex(b => b.id === oldBooking.id)
-          if (deleteIndex !== -1) {
-            recentBookings.value.splice(deleteIndex, 1)
+          if (payload.eventType === 'INSERT') {
+            await handleBookingInsert(bookingId)
+          } else if (payload.eventType === 'UPDATE') {
+            await handleBookingUpdate(bookingId)
+          } else if (payload.eventType === 'DELETE') {
+            handleBookingDelete(bookingId)
           }
         }
-      })
+      )
       .subscribe()
   }
 
