@@ -1,121 +1,357 @@
 <template>
-  <div class="container mx-auto px-4 py-12">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-bold mb-8 text-accent">Conditions Générales d'Utilisation (CGU) – E-RENTALL</h1>
-      
-      <div class="prose prose-lg">
-        <h2 class="text-2xl font-semibold mt-8 mb-4">PRÉAMBULE</h2>
-        <p class="mb-6">Bienvenue sur E-RENTALL (ci-après « la Plateforme »), plateforme numérique de mise en relation entre Utilisateurs souhaitant réserver un véhicule avec chauffeur (ci-après les « Réservataires ») et ceux proposant un tel service (ci-après les « Fournisseurs »).</p>
-        <p class="mb-6">Chaque Utilisateur peut, selon ses besoins, être à la fois Réservataire et Fournisseur.</p>
-        <p class="mb-6">Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès à la Plateforme et l'utilisation des Services.</p>
-        <p class="mb-6">En accédant à la Plateforme, vous acceptez sans réserve ces CGU. Si vous n'y consentez pas, merci de ne pas utiliser la Plateforme.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 1 – Définitions</strong></h2>
-        <ul class="list-disc pl-6 mb-6">
-          <li><strong>Plateforme</strong> : site internet <a href="https://www.erentall.market" target="_blank" rel="noopener">www.erentall.market</a> et/ou application mobile E-RENTALL.</li>
-          <li><strong>Utilisateur</strong> : toute personne physique accédant à la Plateforme et utilisant les Services.</li>
-          <li><strong>Réservataire</strong> : Utilisateur effectuant une réservation de véhicule avec chauffeur.</li>
-          <li><strong>Fournisseur</strong> : Utilisateur proposant un véhicule avec chauffeur via la Plateforme.</li>
-          <li><strong>Services</strong> : ensemble des fonctionnalités offertes par la Plateforme (mise en relation, réservation, paiement, suivi, etc.).</li>
-          <li><strong>Compte</strong> : espace personnel créé par un Utilisateur pour accéder aux Services.</li>
-          <li><strong>Contenu</strong> : toute information publiée sur la Plateforme (texte, image, vidéo, etc.).</li>
-        </ul>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 2 – Objet</strong></h2>
-        <p class="mb-6">Les CGU définissent les droits et obligations des Utilisateurs sur la Plateforme.</p>
-        <p class="mb-6">E-RENTALL agit uniquement comme intermédiaire technique facilitant la mise en relation entre Réservataires et Fournisseurs.</p>
-        <p class="mb-6">La Plateforme n'est pas partie au contrat de prestation conclu directement entre Utilisateurs.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 3 – Accès à la Plateforme et création de Compte</strong></h2>
-        <h3 class="text-xl font-semibold mt-6 mb-3">3.1. Accès</h3>
-        <p class="mb-4">L'accès à la Plateforme est gratuit. L'utilisation des Services nécessite la création d'un Compte.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">3.2. Création de Compte</h3>
-        <p class="mb-4">L'Utilisateur doit fournir des informations exactes, complètes et à jour : nom, prénom, email, téléphone.</p>
-        <p class="mb-4">Les Fournisseurs doivent aussi fournir un NIF et un STAT valides.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">3.3. Confidentialité des identifiants</h3>
-        <p class="mb-4">L'Utilisateur est responsable de la confidentialité de ses identifiants et des actions réalisées via son Compte.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">3.4. Âge minimum</h3>
-        <p class="mb-4">L'accès est réservé aux personnes majeures (18 ans révolus) disposant de la capacité juridique.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 4 – Utilisation des Services</strong></h2>
-        <h3 class="text-xl font-semibold mt-6 mb-3">4.1. Pour les Réservataires</h3>
-        <p class="mb-4">Recherche et réservation de véhicule avec chauffeur selon des critères (lieu, date, durée, type).</p>
-        <p class="mb-4">La réservation est validée après paiement d'un acompte fixé dans l'article 8 par jour réservé, versé via Mobile Money à la Plateforme.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">4.2. Pour les Fournisseurs</h3>
-        <p class="mb-4">Proposition des véhicules avec chauffeur, renseignement des caractéristiques, disponibilités, tarifs et conditions.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">4.3. Exécution du service</h3>
-        <p class="mb-4">Le Fournisseur s'engage à exécuter le service avec ponctualité, sécurité et professionnalisme.</p>
-        <p class="mb-4">Le Réservataire s'engage à respecter les règles du Fournisseur et à adopter un comportement respectueux.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">4.4. Annulation et modification</h3>
-        <p class="mb-4">Les règles d'annulation et modification sont précisées dans les Conditions Générales de Vente (CGV).</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">4.5. Notations et commentaires</h3>
-        <p class="mb-4">Les Utilisateurs peuvent évaluer le service après chaque prestation.</p>
-        <p class="mb-4">Tout commentaire doit être respectueux. La Plateforme modère ou supprime tout contenu inapproprié.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 5 – Obligations des Utilisateurs</strong></h2>
-        <h3 class="text-xl font-semibold mt-6 mb-3">5.1. Conformité</h3>
-        <p class="mb-4">Utilisation conforme aux lois malgaches en vigueur.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">5.2. Exactitude des informations</h3>
-        <p class="mb-4">Garantie d'exactitude, sincérité et mise à jour des données fournies.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">5.3. Comportement prohibé</h3>
-        <p class="mb-4">Interdiction de :</p>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Perturber la Plateforme.</li>
-          <li>Usurper une identité.</li>
-          <li>Diffuser des contenus illicites, frauduleux, injurieux ou contraires aux bonnes mœurs.</li>
-        </ul>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">5.4. Obligations spécifiques aux Fournisseurs</h3>
-        <ul class="list-disc pl-6 mb-4">
-          <li>Détention de permis, assurances, licences obligatoires.</li>
-          <li>Véhicules conformes, en bon état et sûrs.</li>
-          <li>Respect des horaires et conditions convenues.</li>
-          <li>Être en règle fiscalement et socialement.</li>
-        </ul>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 6 – Propriété intellectuelle</strong></h2>
-        <p class="mb-6">Le contenu de la Plateforme est protégé par la législation. Toute reproduction non autorisée est interdite.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 7 – Responsabilité</strong></h2>
-        <h3 class="text-xl font-semibold mt-6 mb-3">7.1. Responsabilité d'E-RENTALL</h3>
-        <p class="mb-4">La Plateforme agit en tant qu'intermédiaire technique. Elle décline toute responsabilité liée à la prestation entre Utilisateurs.</p>
-        <p class="mb-4">L'accès peut être suspendu pour maintenance ou force majeure.</p>
-        
-        <h3 class="text-xl font-semibold mt-6 mb-3">7.2. Responsabilité des Utilisateurs</h3>
-        <p class="mb-4">Les Utilisateurs sont responsables des dommages directs ou indirects causés à autrui ou à la Plateforme.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 8 – Commande, acompte et commission</strong></h2>
-        <ul class="list-disc pl-6 mb-6">
-          <li>L'acompte est obligatoire et versé via Mobile Money (MVola, Airtel Money, Orange Money).</li>
-          <li>Montant fixé à 5 000 Ariary par jour réservé, révisable.</li>
-          <li>Cet acompte constitue la commission d'E-RENTALL, déduite du montant total à régler au Fournisseur.</li>
-          <li>Le solde est payé directement entre Réservataire et Fournisseur.</li>
-        </ul>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 9 – Données personnelles</strong></h2>
-        <p class="mb-6">Traitement des données conforme à la Politique de Confidentialité accessible sur la Plateforme.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 10 – Modifications des CGU</strong></h2>
-        <p class="mb-6">E-RENTALL peut modifier les CGU à tout moment. La poursuite d'utilisation vaut acceptation des nouvelles CGU.</p>
-        
-        <h2 class="text-2xl font-semibold mt-8 mb-4"><strong>Article 11 – Suspension / suppression de compte</strong></h2>
-        <p class="mb-6">E-RENTALL peut suspendre ou supprimer un Compte en cas de violation des CGU, comportement frauduleux ou motif légitime, sans préavis ni indemnité.</p>
-        
-        <div class="bg-base-200 p-6 rounded-lg mt-12">
-          <p class="font-semibold">Contact</p>
-          <p>Pour toute question concernant ces conditions d'utilisation, veuillez nous contacter à :</p>
-          <p class="mt-2">
-            <a href="mailto:support@erentall.market" class="text-primary underline hover:text-primary-focus">support@erentall.market</a>
-          </p>
+  <div>
+    <!-- Section Hero -->
+    <div class="bg-base-200 py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold mb-6">Conditions Générales d'Utilisation</h1>
+        <p class="text-lg max-w-3xl mx-auto">
+          Découvrez les règles et conditions qui régissent l'utilisation de notre plateforme de location de véhicules entre particuliers.
+        </p>
+      </div>
+    </div>
+
+    <!-- Articles principaux -->
+    <div class="py-16 bg-base-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">
+          Nos conditions en 4 sections principales
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Section 1 -->
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div
+                class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-3xl font-bold text-white mb-4"
+              >
+                1
+              </div>
+              <h3 class="card-title text-xl mb-2 text-accent">Accès et Compte</h3>
+              <p class="text-sm">
+                Création de compte, informations requises, confidentialité des identifiants et âge minimum pour accéder à la plateforme.
+              </p>
+              <div class="mt-4 text-xs text-base-content/70">
+                <p><strong>Obligations :</strong></p>
+                <ul class="text-left">
+                  <li>• Informations exactes</li>
+                  <li>• Âge minimum 18 ans</li>
+                  <li>• Confidentialité</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div
+                class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-3xl font-bold text-white mb-4"
+              >
+                2
+              </div>
+              <h3 class="card-title text-xl mb-2 text-accent">Utilisation des Services</h3>
+              <p class="text-sm">
+                Droits et obligations des réservataires et fournisseurs, exécution des services, annulations et évaluations.
+              </p>
+              <div class="mt-4 text-xs text-base-content/70">
+                <p><strong>Pour tous :</strong></p>
+                <ul class="text-left">
+                  <li>• Respect des règles</li>
+                  <li>• Ponctualité</li>
+                  <li>• Évaluations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div
+                class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-3xl font-bold text-white mb-4"
+              >
+                3
+              </div>
+              <h3 class="card-title text-xl mb-2 text-accent">Paiements et Commission</h3>
+              <p class="text-sm">
+                Acompte obligatoire via Mobile Money, montant fixé à 5000 Ar par jour, commission E-RENTALL et règlement du solde.
+              </p>
+              <div class="mt-4 text-xs text-base-content/70">
+                <p><strong>Sécurité :</strong></p>
+                <ul class="text-left">
+                  <li>• Mobile Money</li>
+                  <li>• Validation admin</li>
+                  <li>• Commission fixe</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div
+                class="w-20 h-20 rounded-full bg-primary flex items-center justify-center text-3xl font-bold text-white mb-4"
+              >
+                4
+              </div>
+              <h3 class="card-title text-xl mb-2 text-accent">Responsabilités</h3>
+              <p class="text-sm">
+                Responsabilité d'E-RENTALL en tant qu'intermédiaire, obligations des utilisateurs, protection des données et sanctions.
+              </p>
+              <div class="mt-4 text-xs text-base-content/70">
+                <p><strong>Protection :</strong></p>
+                <ul class="text-left">
+                  <li>• Données personnelles</li>
+                  <li>• Propriété intellectuelle</li>
+                  <li>• Suspension possible</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center mt-8">
+          <NuxtLink to="/vehicles" class="btn btn-primary btn-lg">Explorer les véhicules</NuxtLink>
+        </div>
+      </div>
+    </div>
+
+    <!-- Types d'utilisateurs -->
+    <div class="py-16 bg-base-200">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Obligations par type d'utilisateur</h2>
+
+        <div class="max-w-4xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Réservataire -->
+            <div class="card bg-white">
+              <div class="card-body text-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-info flex items-center justify-center text-white font-bold mx-auto mb-2"
+                >
+                  👤
+                </div>
+                <h3 class="font-bold">Réservataire</h3>
+                <p class="text-xs">Paiement de l'acompte obligatoire</p>
+              </div>
+            </div>
+
+            <!-- Fournisseur -->
+            <div class="card bg-white">
+              <div class="card-body text-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-success flex items-center justify-center text-white font-bold mx-auto mb-2"
+                >
+                  🚗
+                </div>
+                <h3 class="font-bold">Fournisseur</h3>
+                <p class="text-xs">NIF, STAT et documents requis</p>
+              </div>
+            </div>
+
+            <!-- Propriétaire -->
+            <div class="card bg-white">
+              <div class="card-body text-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-warning flex items-center justify-center text-white font-bold mx-auto mb-2"
+                >
+                  📋
+                </div>
+                <h3 class="font-bold">Documents</h3>
+                <p class="text-xs">Carte grise et assurances</p>
+              </div>
+            </div>
+
+            <!-- Plateforme -->
+            <div class="card bg-white">
+              <div class="card-body text-center">
+                <div
+                  class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold mx-auto mb-2"
+                >
+                  🏢
+                </div>
+                <h3 class="font-bold">E-RENTALL</h3>
+                <p class="text-xs">Intermédiaire technique</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Détails des articles -->
+    <div class="py-16 bg-base-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Détails des conditions</h2>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">Vos droits et obligations</h3>
+            <p class="mb-4">
+              En utilisant E-RENTALL, vous acceptez ces conditions générales qui protègent tous les utilisateurs et garantissent un service de qualité.
+            </p>
+
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-primary mr-2 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Accès gratuit à la plateforme avec création de compte obligatoire</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-primary mr-2 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Paiement sécurisé via Mobile Money avec validation par notre équipe</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-primary mr-2 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Protection des données personnelles conformément à la loi</span>
+              </li>
+              <li class="flex items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-primary mr-2 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span>Support 24/7 et assistance en cas de litige</span>
+              </li>
+            </ul>
+
+            <NuxtLink to="/auth/register" class="btn btn-primary">S'inscrire maintenant</NuxtLink>
+          </div>
+
+          <div class="rounded-lg overflow-hidden shadow-xl">
+            <img
+              src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1470&auto=format&fit=crop"
+              alt="Conditions d'utilisation"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions fréquentes -->
+    <div class="py-16 bg-base-200">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Questions sur nos conditions</h2>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="collapse collapse-arrow bg-base-100 mb-4">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium">Que se passe-t-il si je ne respecte pas les conditions ?</div>
+            <div class="collapse-content">
+              <p>
+                En cas de violation des CGU, E-RENTALL peut suspendre ou supprimer votre compte sans préavis. 
+                Les comportements frauduleux ou contraires aux bonnes mœurs sont strictement interdits et 
+                peuvent entraîner des poursuites judiciaires.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-base-100 mb-4">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium">Puis-je annuler mon compte à tout moment ?</div>
+            <div class="collapse-content">
+              <p>
+                Oui, vous pouvez supprimer votre compte à tout moment depuis les paramètres de votre profil. 
+                Attention : cette action est irréversible et supprimera toutes vos données. Assurez-vous 
+                d'avoir terminé toutes vos réservations en cours.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-base-100 mb-4">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium">
+              Comment sont protégées mes données personnelles ?
+            </div>
+            <div class="collapse-content">
+              <p>
+                Vos données sont protégées conformément à la législation malgache. Nous ne partageons 
+                vos informations qu'avec les prestataires techniques nécessaires et les autorités en 
+                cas d'obligation légale. Vous pouvez exercer vos droits d'accès, rectification et suppression.
+              </p>
+            </div>
+          </div>
+
+          <div class="collapse collapse-arrow bg-base-100 mb-4">
+            <input type="radio" name="faq-accordion" />
+            <div class="collapse-title text-xl font-medium">
+              Les conditions peuvent-elles être modifiées ?
+            </div>
+            <div class="collapse-content">
+              <p>
+                E-RENTALL peut modifier ces conditions à tout moment. Les nouvelles CGU seront publiées 
+                sur la plateforme et vous serez notifié par email. La poursuite de l'utilisation vaut 
+                acceptation des nouvelles conditions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-primary text-primary-content py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Prêt à utiliser notre plateforme ?</h2>
+        <p class="mb-6 max-w-xl mx-auto">
+          En utilisant E-RENTALL, vous acceptez ces conditions générales d'utilisation qui garantissent un service sécurisé et de qualité.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200">
+            S'inscrire gratuitement
+          </NuxtLink>
+          <NuxtLink to="/vehicles" class="btn btn-outline text-white border-white hover:bg-white hover:text-primary">
+            Explorer les véhicules
+          </NuxtLink>
         </div>
       </div>
     </div>
