@@ -18,8 +18,7 @@
       <div class="hero-content text-center text-white relative z-20">
         <div class="max-w-md md:max-w-lg lg:max-w-2xl">
           <h2 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
-            <img src="/assets/imgs/e-rentall-white.svg" alt="E-RENTALL Logo" class="inline-block h-10 w-auto mr-3 align-middle" />
-            <span class="align-middle" style="font-family: Arial, sans-serif;">E-RENTALL</span>
+            <img src="/assets/imgs/e-rentall-white.svg" alt="E-RENTALL Logo" class="inline-block h-20 w-auto mr-3 align-middle" />
           </h2>
           <h3 class="mb-5 text-2xl md:text-3xl lg:text-4xl font-bold">
             Votre partenaire de location de voitures
