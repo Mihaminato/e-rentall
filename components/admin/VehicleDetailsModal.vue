@@ -69,6 +69,7 @@
                       {{ vehicle.owner.last_name }}
                     </div>
                     <div class="text-sm opacity-70">{{ vehicle.owner.email }}</div>
+                    <div class="text-sm opacity-70">{{ vehicle.owner.phone }}</div>
                   </div>
                 </div>
               </NuxtLink>
