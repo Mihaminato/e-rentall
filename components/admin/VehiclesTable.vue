@@ -51,8 +51,7 @@
                 <div class="font-medium">
                   {{ vehicle.owner.first_name }} {{ vehicle.owner.last_name }}
                 </div>
-                <div class="text-sm opacity-50">{{ vehicle.owner.email }}</div>
-                <div class="text-sm opacity-50">{{ vehicle.owner.phone }}</div>
+                <div class="text-sm opacity-50">{{ vehicle.owner.email }} / {{ vehicle.owner.phone }}</div>                
               </div>
             </div>
             <div v-else class="text-sm opacity-50">Propriétaire non défini</div>
