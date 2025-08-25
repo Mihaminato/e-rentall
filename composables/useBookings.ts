@@ -935,28 +935,26 @@ export const useBookings = () => {
     error.value = null
 
     try {
+      // Utiliser la vue publique pour récupérer les dates de réservation
+      // Cette approche fonctionne même pour les utilisateurs non connectés
       const { data, error: fetchError } = await supabase
-        .from('bookings')
-        .select(
-          `
-          id,
-          start_date,
-          end_date,
-          status,
-          renter:profiles!renter_id(
-            id,
-            first_name,
-            last_name
-          )
-        `
-        )
+        .from('public_vehicle_booking_dates')
+        .select('*')
         .eq('vehicle_id', vehicleId)
-        .in('status', ['pending', 'owner_approved', 'confirmed', 'active'])
         .order('start_date', { ascending: true })
 
       if (fetchError) throw fetchError
 
-      return { success: true, data: data as unknown as Booking[] }
+      // Transformer les données pour correspondre au format Booking attendu
+      const transformedBookings = (data || []).map(booking => ({
+        id: `booking-${booking.start_date}-${booking.end_date}`, // ID fictif pour le calendrier
+        vehicle_id: booking.vehicle_id,
+        start_date: booking.start_date,
+        end_date: booking.end_date,
+        status: booking.status
+      }))
+
+      return { success: true, data: transformedBookings as unknown as Booking[] }
     } catch (err) {
       error.value = (err as Error).message
       return { success: false, error: error.value, data: [] }

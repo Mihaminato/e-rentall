@@ -384,10 +384,10 @@
                     Demander une nouvelle référence
                   </button>
                 </div>
-                <div v-if="userRole === 'admin' && booking.status === 'active'">
+                <div v-if="userRole === 'admin'">
                   <button
                     class="btn btn-warning btn-block btn-outline"
-                    :disabled="isUpdating"
+                    :disabled="isUpdating || booking.status === 'active'"
                     @click="handleRevertToOwnerApproved"
                   >
                     <Icon name="mdi:arrow-left" class="w-4 h-4" />
@@ -488,7 +488,9 @@
             <Icon v-else name="mdi:cancel" class="w-4 h-4" />
             <span v-if="!isUpdating">Confirmer l'annulation</span>
           </button>
-          <button class="btn btn-ghost" @click="showCancelModal = false">Annuler</button>
+          <button class="btn btn-ghost" :disabled="isUpdating" @click="showCancelModal = false">
+            Annuler
+          </button>
         </div>
       </div>
     </dialog>
@@ -507,10 +509,6 @@
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
-
-  import { useBookings } from '~/composables/useBookings'
-  import { useAuthStore } from '~/stores/auth'
   import { BOOKING_STATUS_LABELS, BOOKING_STATUS_COLORS } from '~/types'
   import type { SupabaseClient } from '@supabase/supabase-js'
 

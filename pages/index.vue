@@ -18,11 +18,10 @@
       <div class="hero-content text-center text-white relative z-20">
         <div class="max-w-md md:max-w-lg lg:max-w-2xl">
           <h1 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
-            Location de véhicules entre particuliers
+            E-RENTALL: Votre partenaire de location de voitures
           </h1>
           <p class="mb-5 text-lg">
-            Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre quand vous ne
-            l'utilisez pas.
+            Louez ou proposez votre voiture en toute confiance partout à Madagascar.
           </p>
           <!-- Bouton d'installation PWA -->
           <PwaInstallButton />
@@ -155,7 +154,7 @@
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et profitez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Rendez-vous au point de rencontre, effectuez l'état des lieux avec le propriétaire et profitez de votre location en toute tranquillité.
+                Rendez-vous au point de rencontre, effectuez l'état des lieux avec le propriétaire et profitez de votre voyage en toute tranquillité.
               </p>
             </div>
           </div>
@@ -240,8 +239,8 @@
                   />
                 </svg>
               </div>
-              <h3 class="font-bold">Réservation flexible</h3>
-              <p class="text-sm">Annulation gratuite jusqu'à 24h avant la location</p>
+              <h3 class="font-bold">Le Choix et les Opportunités</h3>
+              <p class="text-sm">E-RENTALL propose la plus grande variété de véhicules pour les voyageurs et un accès à une clientèle diversifiée pour les propriétaires.</p>
             </div>
           </div>
 
@@ -263,8 +262,8 @@
                   />
                 </svg>
               </div>
-              <h3 class="font-bold">Communauté vérifiée</h3>
-              <p class="text-sm">Propriétaires et locataires vérifiés pour votre sécurité</p>
+              <h3 class="font-bold">La Confiance et la Sécurité</h3>
+              <p class="text-sm">E-RENTALL vérifie les profils de tous les propriétaires et de tous les locataires inscrits sur la plateforme afin de garantir votre sécurité.</p>
             </div>
           </div>
 
@@ -286,8 +285,8 @@
                   />
                 </svg>
               </div>
-              <h3 class="font-bold">Support 24/7</h3>
-              <p class="text-sm">Notre équipe est à votre service tout au long de votre location</p>
+              <h3 class="font-bold">Le Support Réactif</h3>
+              <p class="text-sm">L'Equipe E-RENTALL est à votre service tout au long de votre expérience.</p>
             </div>
           </div>
         </div>
@@ -300,7 +299,7 @@
         <h2 class="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
         <p class="mb-6 max-w-xl mx-auto">
           Rejoignez notre communauté de propriétaires et locataires dès aujourd'hui et profitez de
-          notre plateforme de location de véhicules entre particuliers.
+          notre plateforme de location de véhicules partout à Madagascar.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200"

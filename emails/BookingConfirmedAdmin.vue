@@ -46,7 +46,7 @@
             • Demandeur : {{ renterName }} ({{ renterEmail }}) ({{ renterPhone }})
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Propriétaire : {{ ownerName }} ({{ ownerEmail }})
+            • Propriétaire : {{ ownerName }} ({{ ownerEmail }}) ({{ ownerPhone }})
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
             • Véhicule : {{ vehicleName }} {{ vehicleModel }}
@@ -134,6 +134,7 @@
     renterPhone: string
     ownerName: string
     ownerEmail: string
+    ownerPhone: string
     vehicleName: string
     vehicleModel: string
     vehicleLicensePlate: string

@@ -217,20 +217,11 @@
               </div>
             </div>
 
-            <!-- Disponibilités -->
+            <!-- Statut de disponibilité simplifié -->
             <div>
-              <div
-                v-if="
-                  vehicleAvailabilities[vehicle.id] && vehicleAvailabilities[vehicle.id].length > 0
-                "
-                class="badge badge-success gap-1"
-              >
+              <div class="badge badge-success gap-1">
                 <Icon name="mdi:check-circle" class="w-4 h-4" />
-                {{ vehicleAvailabilities[vehicle.id].length }} période(s) de disponibilité
-              </div>
-              <div v-else class="badge badge-warning gap-1">
-                <Icon name="mdi:alert" class="w-4 h-4" />
-                Pas de disponibilité
+                Disponible
               </div>
             </div>
 
@@ -246,7 +237,7 @@
                     class="btn btn-sm btn-ghost text-xs px-2"
                     @click="manageAvailability(vehicle)"
                   >
-                    <Icon name="mdi:calendar" class="w-4 h-4 mr-1" />Disponibilités
+                    <Icon name="mdi:calendar" class="w-4 h-4 mr-1" />Indisponibilités
                   </button>
                   <NuxtLink
                     :to="`/vehicles/${vehicle.id}`"
@@ -326,12 +317,6 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, reactive, computed, watch } from 'vue'
-  import { storeToRefs } from 'pinia'
-  import { useVehicles } from '~/composables/useVehicles'
-  import { useAvailabilities } from '~/composables/useAvailabilities'
-  import { usePagination } from '~/composables/usePagination'
-  import { useAuthStore } from '~/stores/auth'
   import type { Vehicle, Availability } from '~/types'
   import { FUEL_TYPE_OPTIONS } from '~/types'
 

@@ -95,9 +95,9 @@
           <td>
             <div class="flex items-center gap-1">
               <button
-                @click="navigateTo(`/bookings/${booking.id}`)"
                 class="btn btn-ghost btn-sm btn-square"
                 title="Voir les détails"
+                @click="navigateTo(`/bookings/${booking.id}`)"
               >
                 <Icon name="mdi:eye" class="w-4 h-4" />
               </button>
@@ -136,13 +136,6 @@
     active: 'badge-success',
     completed: 'badge-ghost',
     cancelled: 'badge-error'
-  }
-
-  const getPublicUrl = (filePath: string | undefined, bucket: 'cars' | 'avatars') => {
-    const defaultUrl = 'https://placehold.co/100x100?text=N/A'
-    if (!filePath) return defaultUrl
-    const { data } = supabase.storage.from(bucket).getPublicUrl(filePath)
-    return data?.publicUrl || defaultUrl
   }
 
   const getProfileFullName = (profile: Profile | null | undefined) => {

@@ -8,12 +8,13 @@
     </label>
     <select
       :value="modelValue"
+      :disabled="disabled"
       class="select select-bordered w-full focus-within:outline-none focus-within:border-primary bg-white"
       :class="{ 'select-error': !!error }"
       @input="$emit('update:modelValue', ($event.target as HTMLSelectElement).value)"
       @blur="$emit('blur')"
     >
-    <option v-if="placeholder" value="" disabled selected>{{ placeholder }}</option>
+      <option v-if="placeholder" value="" disabled selected>{{ placeholder }}</option>
       <option
         v-for="option in options"
         :key="option.value"
@@ -44,6 +45,7 @@
     placeholder?: string
     required?: boolean
     error?: string | null
+    disabled?: boolean
   }>()
 
   defineEmits<{

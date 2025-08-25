@@ -14,6 +14,7 @@
       :class="{ 'input-error': !!error }"
       :max="max"
       :min="min"
+      :disabled="disabled"
       @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"
       @blur="$emit('blur')"
     />
@@ -34,6 +35,7 @@
     error?: string | null
     min?: string | number
     max?: string | number
+    disabled?: boolean
   }>()
 
   defineEmits<{

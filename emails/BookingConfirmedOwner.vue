@@ -46,7 +46,7 @@
           </Text>
           <Text v-else style="margin: 10px 0 0 0; color: #666"> • ID Réservation : N/A </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Locataire : {{ renterName }} ({{ renterEmail }})
+            • Locataire : {{ renterName }} ({{ renterEmail }}) ({{ renterPhone }})
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
             • Véhicule : {{ vehicleName }} {{ vehicleModel }}
@@ -67,9 +67,7 @@
           <Text style="margin: 5px 0 0 0; color: #666">
             • Reste à payer : {{ formatPrice(totalPrice - depositAmount) }} ✅
           </Text>
-          <Text style="margin: 5px 0 0 0; color: #666">
-            • Numéro de téléphone de l'envoyeur : +261 {{ paymentReference }}
-          </Text>
+          
         </Section>
 
         <Section
@@ -88,10 +86,10 @@
             • Préparez votre véhicule pour la location
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Contactez le locataire pour organiser la remise du véhicule
+            • Contactez le locataire pour organiser votre voyage
           </Text>
           <Text style="margin: 5px 0 0 0; color: #666">
-            • Le solde sera réglé à la fin de la location
+            • Le solde sera réglé à la propriétaire uniquement
           </Text>
         </Section>
 
@@ -120,7 +118,7 @@
 
         <Text style="color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px">
           Cordialement,<br />
-          L'équipe VehicleRental
+          L'équipe E-rentall
         </Text>
       </Container>
     </Body>
@@ -144,6 +142,7 @@
     ownerName: string
     renterName: string
     renterEmail: string
+    renterPhone: string
     vehicleName: string
     vehicleModel: string
     vehicleLicensePlate: string

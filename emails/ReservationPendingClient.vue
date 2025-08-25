@@ -74,7 +74,7 @@
 
         <Text style="color: #666; font-size: 16px; line-height: 1.6; margin-top: 30px">
           Cordialement,<br />
-          L'équipe VehicleRental
+          L'équipe E-rentall
         </Text>
       </Container>
     </Body>

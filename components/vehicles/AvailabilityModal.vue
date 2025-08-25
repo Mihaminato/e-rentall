@@ -1,11 +1,15 @@
 <template>
   <div>
-    <dialog :id="modalId" class="modal modal-bottom sm:modal-middle">
+    <dialog :id="modalId" class="modal modal-bottom sm:modal-middle z-[9]">
       <div class="modal-box max-w-4xl">
         <!-- En-tête avec croix pour fermer -->
         <div class="flex justify-between items-center">
           <h3 class="font-bold text-lg">
-            {{ vehicle ? `Disponibilités: ${vehicle.make} ${vehicle.model}` : 'Disponibilités' }}
+            {{
+              vehicle
+                ? `Gestion des indisponibilités: ${vehicle.make} ${vehicle.model}`
+                : 'Gestion des indisponibilités'
+            }}
           </h3>
           <form method="dialog">
             <button class="btn btn-sm btn-circle">
@@ -28,10 +32,22 @@
             <h4 class="font-semibold text-gray-700 mb-4">
               {{
                 editingAvailabilityId
-                  ? 'Modifier la période'
-                  : 'Ajouter une période de disponibilité'
+                  ? "Modifier la période d'indisponibilité"
+                  : "Ajouter une période d'indisponibilité"
               }}
             </h4>
+
+            <!-- Message d'avertissement pour la suppression -->
+            <div v-if="editingAvailabilityId" class="alert alert-warning mb-4">
+              <Icon name="mdi:alert" class="w-5 h-5" />
+              <div>
+                <h4 class="font-semibold">Attention !</h4>
+                <p class="text-sm">
+                  Vous pouvez modifier les dates ou supprimer définitivement cette période
+                  d'indisponibilité. La suppression rendra votre véhicule disponible sur ces dates.
+                </p>
+              </div>
+            </div>
 
             <form
               id="availability-form"
@@ -77,7 +93,7 @@
                   type="button"
                   class="btn btn-error btn-outline"
                   :disabled="isSubmitting || isDeleting === true"
-                  @click="confirmDelete"
+                  @click="deleteCurrentAvailability"
                 >
                   <Icon v-if="isDeleting" name="mdi:loading" class="w-4 h-4 mr-2 animate-spin" />
                   <Icon v-else name="mdi:delete" class="w-4 h-4 mr-2" />
@@ -118,43 +134,83 @@
           <div class="mt-6">
             <h4 class="font-semibold mb-4 text-gray-700">Calendrier des disponibilités</h4>
 
+            <!-- Affichage de la sélection en cours -->
+            <div v-if="selectedStartDate && selectedEndDate" class="alert alert-success mb-4">
+              <Icon name="mdi:calendar-check" class="w-5 h-5" />
+              <div class="flex-1">
+                <span class="text-sm">
+                  <strong>Période sélectionnée:</strong>
+                  {{ formatDate(selectedStartDate) }} -
+                  {{ formatDate(selectedEndDate) }}
+                </span>
+                <button
+                  type="button"
+                  class="btn btn-ghost btn-xs ml-2"
+                  @click="clearCalendarSelection"
+                >
+                  <Icon name="mdi:close" class="w-3 h-3" />
+                  Effacer
+                </button>
+              </div>
+            </div>
+
             <UiCalendar
               :marked-dates="markedDates"
-              :selected-dates="selectedDates"
+              :selected-dates="currentSelectionDates"
+              :booked-dates="bookedDatesForCalendar"
               :show-legend="true"
               :legend-items="legendItems"
               :disable-other-months="true"
               @day-click="handleCalendarDayClick"
+              @month-change="handleMonthChange"
             />
 
             <!-- État vide -->
-            <div v-if="availabilities.length === 0" class="text-center p-8 text-gray-500">
-              <Icon name="mdi:calendar-blank" class="w-12 h-12 mx-auto mb-4 text-gray-300" />
-              <p class="text-lg font-medium mb-2">Aucune période de disponibilité</p>
-              <p class="text-sm">Ajoutez votre première période ci-dessus pour commencer</p>
+            <div v-if="ownerUnavailabilities.length === 0" class="text-center p-8 text-gray-500">
+              <Icon name="mdi:calendar-check" class="w-12 h-12 mx-auto mb-4 text-green-400" />
+              <p class="text-lg font-medium mb-2">Véhicule entièrement disponible</p>
+              <p class="text-sm">
+                Aucune période d'indisponibilité définie. Votre véhicule est disponible tous les
+                jours!
+              </p>
+              <p class="text-xs mt-2 text-gray-400">
+                Ajoutez une période d'indisponibilité ci-dessus si nécessaire
+              </p>
             </div>
           </div>
+
+          <!-- Section: Liste des périodes d'indisponibilité -->
+          <VehiclesUnavailabilityList
+            :unavailabilities="ownerUnavailabilities"
+            :has-active-bookings-for-availability="hasActiveBookingsForAvailability"
+            @edit="updateAvailabilityItem"
+            @delete="confirmDeleteAvailability"
+          />
         </div>
       </div>
     </dialog>
-
-    <!-- Modal de confirmation pour suppression -->
-    <UiConfirmationModal
-      modal-id="confirm-delete-availability"
-      title="Supprimer la période"
-      message="Êtes-vous sûr de vouloir supprimer cette période de disponibilité ? Cette action ne peut pas être annulée."
-      :loading="isDeleting"
-      @confirm="handleConfirmDelete"
-      @cancel="handleCancelDelete"
-    />
   </div>
 </template>
 
 <script setup lang="ts">
   import dayjs from 'dayjs'
-  import { useAvailabilities } from '~/composables/useAvailabilities'
-  import { useBookings } from '~/composables/useBookings'
+  import type { CalendarDay } from '~/composables/useCalendarSelection'
   import type { Vehicle, Availability, Booking } from '~/types'
+
+  // Composables factorisés
+  const { formatDate, getTodayFormatted } = useCalendarDates()
+  const {
+    selectedStartDate,
+    selectedEndDate,
+    selectionError,
+    _selectedStartDate,
+    _selectedEndDate,
+    handleDayClick,
+    clearSelection,
+    getDateUnavailabilities
+  } = useCalendarSelection()
+  const { validateDateRange, canAddPeriodWithoutConflict, hasActiveBookings } =
+    useVehicleBookingValidation()
 
   const props = defineProps<{
     modalId: string
@@ -167,14 +223,28 @@
   const {
     availabilities,
     isLoading,
-    fetchVehicleAvailabilities,
+    fetchVehicleUnavailabilities,
     addAvailability,
     deleteAvailability,
-    isPeriodAvailable,
     updateAvailability
   } = useAvailabilities()
 
   const { fetchVehicleBookings } = useBookings()
+  // Utilisation du composable pour les données du calendrier
+  const availabilitiesRef = computed(() => availabilities.value)
+  const vehicleBookingsRef = computed(() => vehicleBookings.value)
+
+  const {
+    markedDates,
+    bookedDatesForCalendar,
+    selectedDatesForCalendar: currentSelectionDates,
+    legendItems
+  } = useCalendarData({
+    availabilities: availabilitiesRef,
+    bookings: vehicleBookingsRef,
+    selectedStartDate,
+    selectedEndDate
+  })
 
   // État local
   const error = ref<string | null>(null)
@@ -191,8 +261,42 @@
 
   // Date du jour formatée pour l'attribut min des inputs date
   const todayFormatted = computed(() => {
-    return dayjs().format('YYYY-MM-DD')
+    return getTodayFormatted()
   })
+
+  // Synchronisation bidirectionnelle entre inputs et sélection calendrier
+  // Quand la sélection calendrier change, mettre à jour les inputs
+  watch([selectedStartDate, selectedEndDate], ([newStart, newEnd]) => {
+    if (newStart) {
+      newAvailability.value.start_date = dayjs(newStart).format('YYYY-MM-DD')
+    }
+    if (newEnd) {
+      newAvailability.value.end_date = dayjs(newEnd).format('YYYY-MM-DD')
+    }
+  })
+
+  // Quand les inputs changent, mettre à jour la sélection calendrier
+  watch(
+    () => newAvailability.value.start_date,
+    newStartDate => {
+      if (newStartDate && dayjs(newStartDate).isValid()) {
+        _selectedStartDate.value = dayjs(newStartDate).toDate()
+      } else {
+        _selectedStartDate.value = null
+      }
+    }
+  )
+
+  watch(
+    () => newAvailability.value.end_date,
+    newEndDate => {
+      if (newEndDate && dayjs(newEndDate).isValid()) {
+        _selectedEndDate.value = dayjs(newEndDate).toDate()
+      } else {
+        _selectedEndDate.value = null
+      }
+    }
+  )
 
   // Ajouter une nouvelle période de disponibilité
   const handleAddNewAvailability = async () => {
@@ -201,18 +305,25 @@
     isSubmitting.value = true
 
     try {
-      // Vérifier que la date de fin est après la date de début avec Day.js
-      const startDate = dayjs(newAvailability.value.start_date)
-      const endDate = dayjs(newAvailability.value.end_date)
-
-      if (endDate.isBefore(startDate)) {
-        error.value = 'La date de fin doit être après la date de début'
+      // Validation des dates
+      const dateValidation = validateDateRange(
+        newAvailability.value.start_date,
+        newAvailability.value.end_date
+      )
+      if (!dateValidation.isValid) {
+        error.value = dateValidation.error
         return
       }
 
-      // Vérifier si la période ne chevauche pas une disponibilité existante
-      if (!isPeriodAvailable(newAvailability.value.start_date, newAvailability.value.end_date)) {
-        error.value = 'Cette période chevauche une disponibilité existante'
+      // Vérifier si la période ne chevauche pas une indisponibilité existante
+      if (
+        !canAddPeriodWithoutConflict(
+          newAvailability.value.start_date,
+          newAvailability.value.end_date,
+          availabilities.value
+        )
+      ) {
+        error.value = 'Cette période chevauche une indisponibilité existante'
         return
       }
 
@@ -233,30 +344,15 @@
         // Émettre un événement pour informer le parent
         emit('update')
       } else {
-        error.value = "Erreur lors de l'ajout de la disponibilité"
+        error.value = "Erreur lors de l'ajout de l'indisponibilité"
       }
     } catch (err) {
-      console.error("Erreur lors de l'ajout de la disponibilité:", err)
+      console.error("Erreur lors de l'ajout de l'indisponibilité:", err)
       error.value = 'Une erreur est survenue'
     } finally {
       isSubmitting.value = false
     }
   }
-
-  // Confirmer la suppression d'une disponibilité
-  //   const confirmDelete = (availability: Availability) => {
-  //     if (!availability || !availability.id) return
-
-  //     if (
-  //       confirm(
-  //         `Supprimer la période du ${formatDate(availability.start_date)} au ${formatDate(
-  //           availability.end_date
-  //         )} ?`
-  //       )
-  //     ) {
-  //       deleteAvailabilityItem(availability.id)
-  //     }
-  //   }
 
   const updateAvailabilityItem = async (availability: Availability) => {
     if (!availability || !availability.id) return
@@ -278,7 +374,7 @@
       if (newVehicle?.id) {
         error.value = null
         await Promise.all([
-          fetchVehicleAvailabilities(newVehicle.id),
+          fetchVehicleUnavailabilities(newVehicle.id, true),
           loadVehicleBookings(newVehicle.id)
         ])
       } else {
@@ -312,27 +408,29 @@
       end_date: ''
     }
     editingAvailabilityId.value = null
+    clearSelection()
     error.value = null
   }
 
-  // Valider les dates d'une disponibilité avec Day.js
-  const validateDates = (startDate: string, endDate: string) => {
-    const start = dayjs(startDate)
-    const end = dayjs(endDate)
-    if (end.isSameOrBefore(start)) {
-      error.value = 'La date de fin doit être postérieure à la date de début'
-      return false
-    }
-    return true
+  // Effacer seulement la sélection calendrier
+  const clearCalendarSelection = () => {
+    clearSelection()
+    error.value = null
   }
 
-  // Vérifier le chevauchement des périodes avec Day.js
-  const validateNonOverlap = (startDate: string, endDate: string, excludeId: string) => {
-    const isAvailable = isPeriodAvailable(startDate, endDate, excludeId)
-    if (!isAvailable) {
-      error.value = 'Cette période chevauche une autre période existante'
+  // Validation des dates et chevauchements
+  const validateDatesAndOverlap = (startDate: string, endDate: string, excludeId?: string) => {
+    const dateValidation = validateDateRange(startDate, endDate)
+    if (!dateValidation.isValid) {
+      error.value = dateValidation.error
       return false
     }
+
+    if (!canAddPeriodWithoutConflict(startDate, endDate, availabilities.value, excludeId)) {
+      error.value = "Cette période chevauche une autre période d'indisponibilité existante"
+      return false
+    }
+
     return true
   }
 
@@ -350,15 +448,9 @@
     isSubmitting.value = true
 
     try {
-      // Valider les dates avec Day.js
-      if (!validateDates(newAvailability.value.start_date, newAvailability.value.end_date)) {
-        isSubmitting.value = false
-        return
-      }
-
-      // Vérifier le chevauchement
+      // Valider les dates et chevauchements
       if (
-        !validateNonOverlap(
+        !validateDatesAndOverlap(
           newAvailability.value.start_date,
           newAvailability.value.end_date,
           editingAvailabilityId.value
@@ -376,9 +468,9 @@
       })
 
       if (result.success) {
-        // Rafraîchir les disponibilités
+        // Rafraîchir les disponibilités (futures uniquement)
         if (props.vehicle?.id) {
-          await fetchVehicleAvailabilities(props.vehicle.id)
+          await fetchVehicleUnavailabilities(props.vehicle.id, true)
         }
 
         // Réinitialiser le formulaire
@@ -387,144 +479,55 @@
         // Émettre un événement pour informer le parent
         emit('update')
       } else {
-        error.value = 'Erreur lors de la mise à jour de la disponibilité'
+        error.value = "Erreur lors de la mise à jour de l'indisponibilité"
       }
     } catch (err) {
-      console.error('Erreur lors de la mise à jour de la disponibilité:', err)
+      console.error("Erreur lors de la mise à jour de l'indisponibilité:", err)
       error.value = 'Une erreur est survenue'
     } finally {
       isSubmitting.value = false
     }
   }
 
-  // Vérifier si une date est dans une période avec Day.js
-  const isDateInPeriod = (date: Date, startDate: string, endDate: string): boolean => {
-    const checkDate = dayjs(date).startOf('day')
-    const start = dayjs(startDate).startOf('day')
-    const end = dayjs(endDate).startOf('day')
-
-    return checkDate.isBetween(start, end, null, '[]')
-  }
-
-  // Dates marquées pour le calendrier avec Day.js (disponibilités)
-  const markedDates = computed(() => {
-    const dates: Date[] = []
-    availabilities.value.forEach(availability => {
-      const start = dayjs(availability.start_date).startOf('day')
-      const end = dayjs(availability.end_date).startOf('day')
-
-      // Ajouter toutes les dates entre start et end avec Day.js
-      let currentDate = start
-      while (currentDate.isSameOrBefore(end)) {
-        dates.push(currentDate.toDate())
-        currentDate = currentDate.add(1, 'day')
-      }
-    })
-    return dates
+  // Computed pour filtrer les indisponibilités du propriétaire uniquement (pas les réservations)
+  const ownerUnavailabilities = computed(() => {
+    // Les availabilities contiennent déjà uniquement les indisponibilités définies par le propriétaire
+    // (pas les réservations qui sont gérées séparément dans vehicleBookings)
+    return availabilities.value
   })
 
-  // Dates sélectionnées pour le calendrier (réservations)
-  const selectedDates = computed(() => {
-    const dates: Array<{ date: Date; type: 'start' | 'middle' | 'end' }> = []
-
-    vehicleBookings.value.forEach(booking => {
-      const start = dayjs(booking.start_date).startOf('day')
-      const end = dayjs(booking.end_date).startOf('day')
-
-      // Ajouter toutes les dates entre start et end
-      let currentDate = start
-      while (currentDate.isSameOrBefore(end)) {
-        let type: 'start' | 'middle' | 'end' = 'middle'
-
-        if (currentDate.isSame(start) && currentDate.isSame(end)) {
-          type = 'start' // Réservation d'une seule journée
-        } else if (currentDate.isSame(start)) {
-          type = 'start'
-        } else if (currentDate.isSame(end)) {
-          type = 'end'
-        }
-
-        dates.push({ date: currentDate.toDate(), type })
-        currentDate = currentDate.add(1, 'day')
-      }
-    })
-
-    return dates
-  })
-
-  // Items de la légende
-  const legendItems = [
-    { label: 'Disponible', color: 'bg-green-500' },
-    { label: 'Réservée', color: 'bg-primary/70' },
-    { label: 'Ajouter/modifier', color: 'bg-gray-200' }
-  ]
-
-  // Obtenir les disponibilités pour un jour donné
-  const getDayAvailabilities = (date: Date) => {
-    return availabilities.value.filter(availability => {
-      return isDateInPeriod(date, availability.start_date, availability.end_date)
-    })
+  // Obtenir les indisponibilités pour un jour donné
+  const getDayUnavailabilities = (date: Date) => {
+    return getDateUnavailabilities(date, availabilities.value)
   }
 
-  // Vérifier si une date est réservée
-  const isDateBooked = (date: Date) => {
-    return vehicleBookings.value.some(booking => {
-      return isDateInPeriod(date, booking.start_date, booking.end_date)
-    })
-  }
+  // Préparer la suppression depuis la liste (pré-remplit le formulaire)
+  const confirmDeleteAvailability = (availability: Availability) => {
+    if (!availability.id) return
 
-  // Interface pour les jours du calendrier
-  interface CalendarDay {
-    date: number
-    fullDate: Date
-    isCurrentMonth: boolean
-    isToday: boolean
-    isMarked: boolean
-    markerColor?: string
-    data?: Record<string, unknown>
-  }
-
-  // Ouvrir le modal de confirmation de suppression
-  const confirmDelete = () => {
-    if (!editingAvailabilityId.value) return
-
-    // Ouvrir le modal de confirmation
-    const modal = document.getElementById('confirm-delete-availability') as HTMLDialogElement
-    if (modal) {
-      modal.showModal()
+    // Vérifier s'il y a des réservations actives
+    if (hasActiveBookingsForAvailability(availability)) {
+      error.value =
+        'Impossible de supprimer cette indisponibilité car elle contient des réservations actives'
+      return
     }
-  }
 
-  // Confirmer la suppression depuis le modal
-  const handleConfirmDelete = async () => {
-    await deleteCurrentAvailability()
-    // Fermer le modal
-    const modal = document.getElementById('confirm-delete-availability') as HTMLDialogElement
-    if (modal) {
-      modal.close()
+    // Pré-remplir le formulaire avec les données de l'indisponibilité à supprimer
+    newAvailability.value = {
+      start_date: availability.start_date,
+      end_date: availability.end_date
     }
-  }
 
-  // Annuler la suppression
-  const handleCancelDelete = () => {
-    // Fermer le modal
-    const modal = document.getElementById('confirm-delete-availability') as HTMLDialogElement
-    if (modal) {
-      modal.close()
-    }
+    // Passer en mode suppression
+    editingAvailabilityId.value = availability.id
+
+    // Effacer toute erreur précédente
+    error.value = null
   }
 
   // Vérifier si une disponibilité a des réservations actives
-  const hasActiveBookings = (availability: Availability) => {
-    return vehicleBookings.value.some(booking => {
-      const bookingStart = dayjs(booking.start_date)
-      const bookingEnd = dayjs(booking.end_date)
-      const availStart = dayjs(availability.start_date)
-      const availEnd = dayjs(availability.end_date)
-
-      // Vérifier si la réservation chevauche avec la disponibilité
-      return bookingStart.isSameOrBefore(availEnd) && bookingEnd.isSameOrAfter(availStart)
-    })
+  const hasActiveBookingsForAvailability = (availability: Availability) => {
+    return hasActiveBookings(availability, vehicleBookings.value)
   }
 
   // Supprimer la disponibilité actuellement en édition
@@ -533,9 +536,9 @@
 
     // Vérifier s'il y a des réservations actives
     const currentAvailability = availabilities.value.find(a => a.id === editingAvailabilityId.value)
-    if (currentAvailability && hasActiveBookings(currentAvailability)) {
+    if (currentAvailability && hasActiveBookingsForAvailability(currentAvailability)) {
       error.value =
-        'Impossible de supprimer cette disponibilité car elle contient des réservations actives'
+        'Impossible de supprimer cette indisponibilité car elle contient des réservations actives'
       return
     }
 
@@ -543,16 +546,16 @@
     try {
       const result = await deleteAvailability(editingAvailabilityId.value)
       if (result.success) {
-        // Rafraîchir les données
+        // Rafraîchir les données (futures uniquement)
         if (props.vehicle?.id) {
-          await fetchVehicleAvailabilities(props.vehicle.id)
+          await fetchVehicleUnavailabilities(props.vehicle.id, true)
         }
         emit('update')
 
         // Réinitialiser le formulaire
         resetForm()
       } else {
-        error.value = 'Erreur lors de la suppression de la disponibilité'
+        error.value = "Erreur lors de la suppression de l'indisponibilité"
       }
     } catch (err) {
       console.error('Erreur lors de la suppression:', err)
@@ -562,45 +565,42 @@
     }
   }
 
-  // Gérer le clic sur un jour du calendrier depuis le composant Calendar
+  // Gérer le changement de mois dans le calendrier
+  const handleMonthChange = async (_newDate: Date) => {
+    // Recharger les réservations pour le nouveau mois affiché
+    if (props.vehicle?.id) {
+      await loadVehicleBookings(props.vehicle.id)
+    }
+  }
+
+  // Gérer le clic sur un jour du calendrier
   const handleCalendarDayClick = (day: CalendarDay) => {
-    const dayAvailabilities = getDayAvailabilities(day.fullDate)
-    const isBooked = isDateBooked(day.fullDate)
-
-    // Ne pas permettre la modification si la date est réservée
-    if (isBooked) {
-      error.value = 'Impossible de modifier une période qui contient des réservations actives'
-      return
-    }
-
-    if (dayAvailabilities.length > 0) {
-      // Si le jour a une disponibilité, la modifier
-      const availability = dayAvailabilities[0]
-      if (availability) {
-        // Vérifier si cette disponibilité a des réservations
-        if (hasActiveBookings(availability)) {
-          error.value =
-            'Impossible de modifier cette disponibilité car elle contient des réservations actives'
-          return
+    // Validation personnalisée pour les indisponibilités existantes
+    const customValidation = (date: Date) => {
+      // Si on clique sur une indisponibilité existante, la modifier
+      const dayUnavailabilities = getDayUnavailabilities(date)
+      if (dayUnavailabilities.length > 0) {
+        const unavailability = dayUnavailabilities[0]
+        if (unavailability && !hasActiveBookingsForAvailability(unavailability)) {
+          updateAvailabilityItem(unavailability)
+          return false // Arrêter le processus de sélection normal
         }
-        updateAvailabilityItem(availability)
       }
-    } else {
-      // Si le jour n'a pas de disponibilité, créer une nouvelle avec Day.js
-      const dateStr = dayjs(day.fullDate).format('YYYY-MM-DD')
-
-      newAvailability.value = {
-        start_date: dateStr,
-        end_date: dateStr
-      }
-      editingAvailabilityId.value = null
-      error.value = null
-
-      // Optionnel : faire défiler vers le formulaire sur mobile
-      const form = document.getElementById('availability-form')
-      if (form) {
-        form.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      return true // Continuer le processus de sélection normal
     }
+
+    // Utiliser le composable de sélection avec validation personnalisée
+    handleDayClick(day, {
+      bookings: vehicleBookings.value,
+      unavailabilities: availabilities.value,
+      allowPastDates: false,
+      customValidation,
+      onDateSelected: (_start, _end) => {
+        // Synchroniser avec les erreurs locales si nécessaire
+        if (selectionError.value) {
+          error.value = selectionError.value
+        }
+      }
+    })
   }
 </script>

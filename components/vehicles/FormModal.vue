@@ -21,6 +21,20 @@
         </button>
       </div>
 
+      <!-- Message informatif pour les véhicules actifs -->
+      <div v-if="isActiveVehicle" class="alert alert-info mb-6">
+        <Icon name="mdi:information" class="w-5 h-5" />
+        <div>
+          <h4 class="font-semibold">Véhicule actif</h4>
+          <p class="text-sm">
+            Ce véhicule est actuellement actif. Seul le lieu peut être modifié pour éviter
+            d'affecter les réservations en cours.
+            <br />
+            Pour désactiver le véhicule, veuillez contacter l'administrateur.
+          </p>
+        </div>
+      </div>
+
       <!-- Formulaire de véhicule -->
       <form class="space-y-6" @submit.prevent="saveVehicle">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
@@ -30,6 +44,7 @@
             label="Marque"
             placeholder="Ex: Toyota"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.make.$error ? unref(v$.make.$errors[0].$message) : null"
             @blur="v$.make.$touch()"
           />
@@ -40,6 +55,7 @@
             label="Modèle"
             placeholder="Ex: Corolla"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.model.$error ? unref(v$.model.$errors[0].$message) : null"
             @blur="v$.model.$touch()"
           />
@@ -50,6 +66,7 @@
             label="N° d'immatriculation"
             placeholder="Ex: 1234 ABC"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.license_plate?.$error ? unref(v$.license_plate.$errors[0].$message) : null"
             @blur="v$.license_plate?.$touch()"
           />
@@ -63,6 +80,7 @@
             :min="1900"
             :max="new Date().getFullYear() + 1"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.year.$error ? unref(v$.year.$errors[0].$message) : null"
             @blur="v$.year.$touch()"
           />
@@ -73,6 +91,7 @@
             label="Type de véhicule"
             :options="VEHICLE_TYPE_OPTIONS"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.vehicle_type.$error ? unref(v$.vehicle_type.$errors[0].$message) : null"
             @blur="v$.vehicle_type.$touch()"
           />
@@ -83,6 +102,7 @@
             label="Transmission"
             :options="TRANSMISSION_OPTIONS"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.transmission.$error ? unref(v$.transmission.$errors[0].$message) : null"
             @blur="v$.transmission.$touch()"
           />
@@ -93,6 +113,7 @@
             label="Type de carburant"
             :options="FUEL_TYPE_OPTIONS"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.fuel_type.$error ? unref(v$.fuel_type.$errors[0].$message) : null"
             @blur="v$.fuel_type.$touch()"
           />
@@ -106,6 +127,7 @@
             :min="1"
             :max="50"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.seats.$error ? unref(v$.seats.$errors[0].$message) : null"
             @blur="v$.seats.$touch()"
           />
@@ -119,6 +141,7 @@
             :min="0"
             :max="100"
             :required="true"
+            :disabled="isActiveVehicle"
             :error="v$.consumption.$error ? unref(v$.consumption.$errors[0].$message) : null"
             @blur="v$.consumption.$touch()"
           />
@@ -137,6 +160,7 @@
                 step="1000"
                 class="input input-bordered w-full flex items-center gap-2 focus-within:outline-none focus-within:border-primary pr-12"
                 :class="{ 'input-error': v$.price_per_day.$error }"
+                :disabled="isActiveVehicle"
                 placeholder="Ex: 50000"
                 @blur="v$.price_per_day.$touch()"
               />
@@ -177,128 +201,143 @@
                 v-model="form.description"
                 class="textarea textarea-bordered w-full focus-within:outline-none focus-within:border-primary h-32"
                 placeholder="Décrivez votre véhicule (équipements, état, etc.)"
+                :disabled="isActiveVehicle"
                 style="resize: none; border-radius: 0.5rem; transition: all 0.2s ease-in-out"
               ></textarea>
             </div>
           </UiFormField>
         </div>
 
-        <div class="divider">Documents du Véhicule</div>
+        <!-- Section Documents - cachée pour les véhicules actifs -->
+        <div>
+          <div class="divider">Documents du Véhicule</div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4"></div>
-        <!-- Document : Carte Grise -->
-        <UiFormField
-          label="Carte Grise"
-          :required="!vehicle"
-          :error="
-            v$.vehicleRegistrationFile.$error
-              ? unref(v$.vehicleRegistrationFile.$errors[0].$message)
-              : null
-          "
-        >
-          <div class="flex items-center gap-2">
-            <input
-              ref="vehicleRegistrationInput"
-              type="file"
-              class="file-input file-input-bordered w-full"
-              accept="application/pdf,image/jpeg,image/png"
-              @change="e => handleFileChange(e, 'vehicleRegistrationFile')"
-            />
-            <button
-              v-if="form.vehicleRegistrationFile"
-              type="button"
-              class="btn btn-sm btn-ghost btn-circle"
-              @click="clearFile('vehicleRegistrationFile')"
-            >
-              <Icon name="mdi:close" />
-            </button>
-          </div>
-          <div
-            v-if="existingDocs.vehicle_registration && !form.vehicleRegistrationFile"
-            class="text-xs text-gray-500 mt-1 p-2 bg-gray-50 rounded-md flex justify-between items-center"
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4"></div>
+          <!-- Document : Carte Grise -->
+          <UiFormField
+            label="Carte Grise"
+            :required="!vehicle"
+            :error="
+              v$.vehicleRegistrationFile.$error
+                ? unref(v$.vehicleRegistrationFile.$errors[0].$message)
+                : null
+            "
           >
-            <a
-              :href="getDocumentPublicUrl(existingDocs.vehicle_registration.file_path)"
-              target="_blank"
-              class="link link-hover text-primary font-medium truncate pr-2"
-              :title="existingDocs.vehicle_registration.file_path.split('/').pop()"
+            <div v-if="!isActiveVehicle" class="flex items-center gap-2">
+              <input
+                ref="vehicleRegistrationInput"
+                type="file"
+                class="file-input file-input-bordered w-full"
+                accept="application/pdf,image/jpeg,image/png"
+                @change="e => handleFileChange(e, 'vehicleRegistrationFile')"
+              />
+              <button
+                v-if="form.vehicleRegistrationFile"
+                type="button"
+                class="btn btn-sm btn-ghost btn-circle"
+                @click="clearFile('vehicleRegistrationFile')"
+              >
+                <Icon name="mdi:close" />
+              </button>
+            </div>
+            <div
+              v-if="existingDocs.vehicle_registration && !form.vehicleRegistrationFile"
+              class="text-xs text-gray-500 mt-1 p-2 bg-gray-50 rounded-md flex justify-between items-center"
             >
-              <Icon name="mdi:check-decagram" class="text-success mr-1" />
-              {{ existingDocs.vehicle_registration.file_path.split('/').pop() }}
-            </a>
-            <button
-              type="button"
-              class="btn btn-xs btn-error"
-              @click="deleteExistingDocument('vehicle_registration')"
-            >
-              <Icon name="mdi:delete-forever" />
-            </button>
-          </div>
-        </UiFormField>
-        <!-- Document : Visite Technique -->
-        <UiFormField
-          label="Visite Technique"
-          :required="!vehicle"
-          :error="
-            v$.technicalInspectionFile.$error
-              ? unref(v$.technicalInspectionFile.$errors[0].$message)
-              : null
-          "
-        >
-          <div class="flex items-center gap-2">
-            <input
-              ref="technicalInspectionInput"
-              type="file"
-              class="file-input file-input-bordered w-full"
-              accept="application/pdf,image/jpeg,image/png"
-              @change="e => handleFileChange(e, 'technicalInspectionFile')"
-            />
-            <button
-              v-if="form.technicalInspectionFile"
-              type="button"
-              class="btn btn-sm btn-ghost btn-circle"
-              @click="clearFile('technicalInspectionFile')"
-            >
-              <Icon name="mdi:close" />
-            </button>
-          </div>
-          <div
-            v-if="existingDocs.technical_inspection && !form.technicalInspectionFile"
-            class="text-xs text-gray-500 mt-1 p-2 bg-gray-50 rounded-md flex justify-between items-center"
+              <a
+                :href="getDocumentPublicUrl(existingDocs.vehicle_registration.file_path)"
+                target="_blank"
+                class="link link-hover text-primary font-medium truncate pr-2"
+                :title="existingDocs.vehicle_registration.file_path.split('/').pop()"
+              >
+                <Icon name="mdi:check-decagram" class="text-success mr-1" />
+                {{ existingDocs.vehicle_registration.file_path.split('/').pop() }}
+              </a>
+              <button
+                v-if="!isActiveVehicle"
+                type="button"
+                class="btn btn-xs btn-error"
+                @click="deleteExistingDocument('vehicle_registration')"
+              >
+                <Icon name="mdi:delete-forever" />
+              </button>
+            </div>
+          </UiFormField>
+          <!-- Document : Visite Technique -->
+          <UiFormField
+            label="Visite Technique"
+            :required="!vehicle"
+            :error="
+              v$.technicalInspectionFile.$error
+                ? unref(v$.technicalInspectionFile.$errors[0].$message)
+                : null
+            "
           >
-            <a
-              :href="getDocumentPublicUrl(existingDocs.technical_inspection.file_path)"
-              target="_blank"
-              class="link link-hover text-primary font-medium truncate pr-2"
-              :title="existingDocs.technical_inspection.file_path.split('/').pop()"
+            <div v-if="!isActiveVehicle" class="flex items-center gap-2">
+              <input
+                ref="technicalInspectionInput"
+                type="file"
+                class="file-input file-input-bordered w-full"
+                accept="application/pdf,image/jpeg,image/png"
+                @change="e => handleFileChange(e, 'technicalInspectionFile')"
+              />
+              <button
+                v-if="form.technicalInspectionFile"
+                type="button"
+                class="btn btn-sm btn-ghost btn-circle"
+                @click="clearFile('technicalInspectionFile')"
+              >
+                <Icon name="mdi:close" />
+              </button>
+            </div>
+            <div
+              v-if="existingDocs.technical_inspection && !form.technicalInspectionFile"
+              class="text-xs text-gray-500 mt-1 p-2 bg-gray-50 rounded-md flex justify-between items-center"
             >
-              <Icon name="mdi:check-decagram" class="text-success mr-1" />
-              {{ existingDocs.technical_inspection.file_path.split('/').pop() }}
-            </a>
-            <button
-              type="button"
-              class="btn btn-xs btn-error"
-              @click="deleteExistingDocument('technical_inspection')"
-            >
-              <Icon name="mdi:delete-forever" />
-            </button>
+              <a
+                :href="getDocumentPublicUrl(existingDocs.technical_inspection.file_path)"
+                target="_blank"
+                class="link link-hover text-primary font-medium truncate pr-2"
+                :title="existingDocs.technical_inspection.file_path.split('/').pop()"
+              >
+                <Icon name="mdi:check-decagram" class="text-success mr-1" />
+                {{ existingDocs.technical_inspection.file_path.split('/').pop() }}
+              </a>
+              <button
+                v-if="!isActiveVehicle"
+                type="button"
+                class="btn btn-xs btn-error"
+                @click="deleteExistingDocument('technical_inspection')"
+              >
+                <Icon name="mdi:delete-forever" />
+              </button>
+            </div>
+          </UiFormField>
+        </div>
+
+        <!-- Section Photos - cachée pour les véhicules actifs -->
+        <div>
+          <!-- Téléchargement de photos -->
+          <div class="divider">Photos du Véhicule</div>
+          <UiImageDropzone
+            v-if="!isActiveVehicle"
+            label="Photos (jusqu'à 6 images)"
+            :disabled="previews.length >= 6"
+            :max-file-size="1024 * 1024"
+            :helper-text="`JPG ou PNG, max 1 Mo par image (${previews.length}/6)`"
+            @files-selected="handlePhotoChange"
+            @dragging-change="isDragging = $event"
+          />
+
+          <!-- Photos sélectionnées -->
+          <div v-if="previews.length > 0" class="md:col-span-2">
+            <VehiclesPhotoPreview
+              :photos="previews"
+              :max-photos="6"
+              :disabled="isActiveVehicle"
+              @remove="removePhoto"
+            />
           </div>
-        </UiFormField>
-
-        <!-- Téléchargement de photos -->
-        <div class="divider">Photos du Véhicule</div>
-        <UiImageDropzone
-          label="Photos (jusqu'à 6 images)"
-          :disabled="previews.length >= 6"
-          :max-file-size="1024 * 1024"
-          :helper-text="`JPG ou PNG, max 1 Mo par image (${previews.length}/6)`"
-          @files-selected="handlePhotoChange"
-          @dragging-change="isDragging = $event"
-        />
-
-        <!-- Photos sélectionnées -->
-        <div v-if="previews.length > 0" class="md:col-span-2">
-          <VehiclesPhotoPreview :photos="previews" :max-photos="6" @remove="removePhoto" />
         </div>
 
         <div class="flex justify-end gap-4 mt-6">
@@ -356,6 +395,7 @@
     isLoading,
     addVehicle,
     updateVehicle,
+    updateVehicleLocation,
     addVehiclePhoto,
     deleteVehiclePhoto,
     fetchVehicleDocuments,
@@ -721,6 +761,11 @@
     { immediate: true }
   )
 
+  // Computed pour vérifier si le véhicule est actif
+  const isActiveVehicle = computed(() => {
+    return props.vehicle?.is_active === true
+  })
+
   // Sauvegarder le véhicule
   const saveVehicle = async () => {
     v$.value.$touch()
@@ -729,20 +774,29 @@
       return
     }
 
-    const vehicleData = {
-      make: form.make,
-      model: form.model,
-      year: form.year,
-      vehicle_type: form.vehicle_type,
-      transmission: form.transmission,
-      fuel_type: form.fuel_type,
-      seats: form.seats,
-      price_per_day: form.price_per_day,
-      description: form.description,
-      license_plate: form.license_plate,
-      province: form.province,
-      consumption: form.consumption,
-      owner_id: authStore.user!.id
+    let vehicleData
+    if (isActiveVehicle.value) {
+      // Pour les véhicules actifs, seule la province peut être modifiée
+      vehicleData = {
+        province: form.province
+      }
+    } else {
+      // Pour les véhicules inactifs, tous les champs peuvent être modifiés
+      vehicleData = {
+        make: form.make,
+        model: form.model,
+        year: form.year,
+        vehicle_type: form.vehicle_type,
+        transmission: form.transmission,
+        fuel_type: form.fuel_type,
+        seats: form.seats,
+        price_per_day: form.price_per_day,
+        description: form.description,
+        license_plate: form.license_plate,
+        province: form.province,
+        consumption: form.consumption,
+        owner_id: authStore.user!.id
+      }
     }
 
     const documents = {
@@ -752,13 +806,19 @@
 
     let result
     if (props.vehicle) {
-      // Mode mise à jour : on ne touche pas à is_active
-      result = await updateVehicle(props.vehicle.id, vehicleData as Partial<Vehicle>, documents)
+      // Mode mise à jour : restrictions selon le statut du véhicule
+      if (isActiveVehicle.value) {
+        // Véhicule actif : seule la province peut être modifiée
+        result = await updateVehicleLocation(props.vehicle.id, form.province)
+      } else {
+        // Véhicule inactif : toutes les modifications autorisées
+        result = await updateVehicle(props.vehicle.id, vehicleData as Partial<Vehicle>, documents)
+      }
     } else {
-      // Mode ajout : on définit is_active à true par défaut
+      // Mode ajout : on définit is_active à false par défaut
       const newVehicleData = {
         ...vehicleData,
-        is_active: false // Actif par défaut, l'admin modère ensuite
+        is_active: false // Inactif par défaut, l'admin modère ensuite
       }
       result = await addVehicle(
         newVehicleData as Omit<Vehicle, 'id' | 'created_at' | 'updated_at'>,

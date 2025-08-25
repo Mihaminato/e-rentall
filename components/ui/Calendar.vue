@@ -39,15 +39,12 @@
           @click="handleDayClick(day)"
         >
           <span class="text-xs font-medium">{{ day.date }}</span>
-          <div v-if="day.isMarked" class="absolute top-0.5 right-0.5">
-            <div class="w-1.5 h-1.5 rounded-full" :class="day.markerColor || 'bg-green-500'"></div>
-          </div>
         </div>
       </div>
     </div>
 
     <!-- Légende optionnelle -->
-    <div v-if="showLegend" class="mt-4 flex justify-center space-x-6 text-sm">
+    <div v-if="showLegend" class="mt-4 flex justify-between flex-wrap gap-3 text-sm">
       <div v-for="legend in legendItems" :key="legend.label" class="flex items-center space-x-2">
         <div class="w-2 h-2 rounded-full" :class="legend.color"></div>
         <span>{{ legend.label }}</span>
@@ -67,6 +64,8 @@
     markerColor?: string
     isSelected?: boolean // Nouveau : si la date est sélectionnée
     selectionType?: 'start' | 'middle' | 'end' | null // Nouveau : type de sélection
+    isBooked?: boolean // Nouveau : si la date est réservée
+    bookedType?: 'start' | 'middle' | 'end' | null // Nouveau : type de réservation
     isPast?: boolean // Nouveau : si la date est dans le passé
     data?: Record<string, unknown> // Données personnalisées
   }
@@ -79,7 +78,8 @@
   // Props
   const props = defineProps<{
     markedDates?: Date[] // Dates à marquer avec des points
-    selectedDates?: { date: Date; type: 'start' | 'middle' | 'end' }[] // Dates sélectionnées avec type
+    selectedDates?: { date: Date; type: 'start' | 'middle' | 'end' }[] // Dates sélectionnées avec type (bleu)
+    bookedDates?: { date: Date; type: 'start' | 'middle' | 'end' }[] // Dates réservées (rouge)
     initialDate?: Date | null // Date initiale pour le calendrier
     dayHeaders?: string[] // En-têtes personnalisés des jours
     showLegend?: boolean // Afficher la légende
@@ -182,7 +182,15 @@
     return selectedDate ? selectedDate.type : null
   }
 
+  // Vérifier si une date est réservée et retourner son type
+  const getBookedDateType = (date: Date) => {
+    if (!props.bookedDates) return null
+    const bookedDate = props.bookedDates.find(bd => bd.date.toDateString() === date.toDateString())
+    return bookedDate ? bookedDate.type : null
+  }
+
   // Générer les jours du calendrier
+  // eslint-disable-next-line max-lines-per-function
   const calendarDays = computed(() => {
     const year = currentDate.value.getFullYear()
     const month = currentDate.value.getMonth()
@@ -202,6 +210,7 @@
     for (let i = firstDayOfWeek - 1; i > 0; i--) {
       const date = new Date(year, month, 1 - i)
       const selectionType = getSelectedDateType(date)
+      const bookedType = getBookedDateType(date)
       days.push({
         date: date.getDate(),
         fullDate: date,
@@ -211,6 +220,8 @@
         markerColor: props.markerColorClass,
         isSelected: selectionType !== null,
         selectionType: selectionType,
+        isBooked: bookedType !== null,
+        bookedType: bookedType,
         isPast: isPastDate(date)
       })
     }
@@ -219,6 +230,7 @@
     for (let i = 1; i <= lastDay.getDate(); i++) {
       const date = new Date(year, month, i)
       const selectionType = getSelectedDateType(date)
+      const bookedType = getBookedDateType(date)
       days.push({
         date: i,
         fullDate: date,
@@ -228,6 +240,8 @@
         markerColor: props.markerColorClass,
         isSelected: selectionType !== null,
         selectionType: selectionType,
+        isBooked: bookedType !== null,
+        bookedType: bookedType,
         isPast: isPastDate(date)
       })
     }
@@ -237,6 +251,7 @@
     for (let i = 1; i <= remainingDays; i++) {
       const date = new Date(year, month + 1, i)
       const selectionType = getSelectedDateType(date)
+      const bookedType = getBookedDateType(date)
       days.push({
         date: i,
         fullDate: date,
@@ -246,6 +261,8 @@
         markerColor: props.markerColorClass,
         isSelected: selectionType !== null,
         selectionType: selectionType,
+        isBooked: bookedType !== null,
+        bookedType: bookedType,
         isPast: isPastDate(date)
       })
     }
@@ -254,6 +271,7 @@
   })
 
   // Classes CSS pour les jours
+  // eslint-disable-next-line complexity
   const getDayClasses = (day: CalendarDay) => {
     const classes = []
 
@@ -268,15 +286,44 @@
       return classes
     }
 
-    // Gestion des sélections (priorité sur les marquages)
-    if (day.isSelected && day.selectionType) {
-      // Couleur avec opacité pour les dates sélectionnées (réservations)
-      classes.push('bg-primary/10', 'text-base-800', 'border-primary/60')
+    // Gestion des réservations (priorité la plus haute après dates passées)
+    if (day.isBooked && day.bookedType) {
+      // Style rouge/primary pour les réservations
+      if (day.bookedType === 'start' || day.bookedType === 'end') {
+        // Dates de début/fin : style plus marqué
+        classes.push('bg-red-200', 'border-red-500', 'border-2', 'text-red-900', 'font-semibold')
+      } else {
+        // Dates du milieu : style plus léger
+        classes.push('bg-red-100', 'border-red-400', 'border-2', 'text-red-800')
+      }
+    } else if (day.isSelected && day.selectionType) {
+      // Gestion des sélections (priorité sur les marquages)
+      // Style différent selon le type de sélection
+      if (day.selectionType === 'start' || day.selectionType === 'end') {
+        // Dates de début/fin : style plus marqué
+        classes.push('bg-blue-200', 'border-blue-500', 'border-2', 'text-blue-900', 'font-semibold')
+      } else {
+        // Dates du milieu : style plus léger
+        classes.push('bg-blue-100', 'border-blue-300', 'border-2', 'text-blue-800')
+      }
     } else if (day.isMarked) {
-      classes.push('bg-green-50', 'border-green-300', 'hover:bg-green-100')
+      // Style pour les indisponibilités : fond orange avec bordure
+      classes.push(
+        'bg-orange-100',
+        'border-orange-400',
+        'border-2',
+        'text-orange-800',
+        'hover:bg-orange-150'
+      )
     } else if (day.isCurrentMonth) {
-      // Hover pour les dates normales du mois courant
-      classes.push('hover:bg-gray-50')
+      // Dates disponibles : fond vert léger avec bordure verte
+      classes.push(
+        'bg-green-50',
+        'border-green-300',
+        'border-2',
+        'text-green-800',
+        'hover:bg-green-100'
+      )
     }
 
     if (day.isToday && !day.isSelected) {

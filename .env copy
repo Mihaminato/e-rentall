@@ -12,8 +12,8 @@ MVOLA_SANDBOX=true
 SMTP_HOST=live.smtp.mailtrap.io
 SMTP_PORT=587
 SMTP_USER=smtp@mailtrap.io
-SMTP_PASS=b8c754b53e00f3d6fca9a8e66cff9010
+SMTP_PASS=support@erentall.market/password
 
 MAIL_FROM_NAME=location de voiture
-ADMIN_EMAIL=prince.julienh@gmail.com
-MAIL_FROM_ADDRESS=prince.julien@aivi-shop.com
+ADMIN_EMAIL=mihaminato@gmail.com
+MAIL_FROM_ADDRESS=support@erentall.market

@@ -181,8 +181,6 @@ export interface Vehicle {
   province: City
   owner?: Profile
   availabilities?: Availability[]
-  // Propriété calculée pour indiquer si le véhicule a des disponibilités
-  isCurrentlyAvailable?: boolean
 }
 
 export interface VehiclePhoto {

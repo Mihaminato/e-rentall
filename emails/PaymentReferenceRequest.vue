@@ -98,7 +98,7 @@
           Si vous avez des questions, n'hésitez pas à nous contacter.
           <br /><br />
           Cordialement,<br />
-          L'équipe VehicleRental
+          L'équipe E-rentall
         </Text>
       </Container>
     </Body>

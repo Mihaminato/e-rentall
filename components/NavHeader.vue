@@ -27,8 +27,10 @@
             class="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-56 max-h-96 overflow-y-auto"
           >
             <li><NuxtLink to="/" class="text-base py-3">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/vehicles" class="text-base py-3">Véhicules</NuxtLink></li>
-            <li><NuxtLink to="/how-it-works" class="text-base py-3">Comment ça marche</NuxtLink></li>
+            <li><NuxtLink to="/vehicles" class="text-base py-3">Nos Véhicules</NuxtLink></li>
+            <li>
+              <NuxtLink to="/how-it-works" class="text-base py-3">Comment ça marche</NuxtLink>
+            </li>
             <li><NuxtLink to="/about" class="text-base py-3">À propos</NuxtLink></li>
             <li><NuxtLink to="/contact" class="text-base py-3">Contact</NuxtLink></li>
           </ul>
@@ -36,10 +38,10 @@
 
         <!-- Logo responsive -->
         <NuxtLink to="/" class="btn btn-ghost p-1 sm:p-2 hover:bg-transparent border-none">
-          <img 
-            :src="logo" 
-            alt="E-Rentall Logo" 
-            class="h-6 w-auto object-contain transition-all duration-200 sm:h-8 md:h-10 lg:h-12 xl:h-14 2xl:h-16" 
+          <img
+            :src="logo"
+            alt="E-Rentall Logo"
+            class="h-10 w-auto object-contain transition-all duration-200 lg:h-12 xl:h-14 2xl:h-16"
           />
         </NuxtLink>
       </div>
@@ -53,12 +55,18 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/vehicles" class="hover:bg-base-200 rounded-lg px-3 py-2 text-sm lg:text-base">
-              Véhicules
+            <NuxtLink
+              to="/vehicles"
+              class="hover:bg-base-200 rounded-lg px-3 py-2 text-sm lg:text-base"
+            >
+              Nos Véhicules
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/how-it-works" class="hover:bg-base-200 rounded-lg px-3 py-2 text-sm lg:text-base">
+            <NuxtLink
+              to="/how-it-works"
+              class="hover:bg-base-200 rounded-lg px-3 py-2 text-sm lg:text-base"
+            >
               Comment ça marche?
             </NuxtLink>
           </li>
