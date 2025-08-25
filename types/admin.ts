@@ -1,4 +1,4 @@
-// Types pour l'interface admin
+7// Types pour l'interface admin
 
 export interface AdminNavigationItem {
   path: string
@@ -63,7 +63,7 @@ export interface BookingEmailData {
     first_name: string
     last_name: string
     email: string
-    phone?: string
+    phone: string
   }
   destination?: string
   owner_notes?: string
