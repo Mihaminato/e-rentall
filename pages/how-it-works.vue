@@ -78,7 +78,7 @@
               </div>
               <h3 class="card-title text-xl mb-2 text-accent">Paiement et validation</h3>
               <p class="text-sm">
-                Vous recevez un email avec les instructions de paiement. Effectuez le virement avec
+                Vous recevez un email avec les instructions de paiement. Effectuez le paiement avec
                 la référence fournie. Notre équipe valide le paiement et confirme votre réservation.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
@@ -193,10 +193,10 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 class="text-2xl font-bold mb-4">Rentabilisez votre véhicule en toute sécurité</h3>
+            <h3 class="text-2xl font-bold mb-4">Maximisez la rentabilité de votre flotte en toute sécurité</h3>
             <p class="mb-4">
-              Votre véhicule reste immobilisé la plupart du temps ? Mettez-le en location et générez
-              un revenu complémentaire tout en gardant le contrôle total sur vos réservations.
+              Optimisez l'utilisation de votre flotte et élargissez votre clientèle grâce à une plateforme conçue 
+              pour les professionnels de la location.
             </p>
 
             <ul class="space-y-3 mb-6">
@@ -215,7 +215,7 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Vous choisissez vos locataires et fixez vos tarifs</span>
+                <span>Gérez l'intégralité de votre activité via une interface simple et intuitive.</span>
               </li>
               <li class="flex items-start">
                 <svg
@@ -232,7 +232,7 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Vérification des profils et documents des locataires</span>
+                <span>Optimisez la rentabilité de votre flotte en accédant à une clientèle élargie.</span>
               </li>
               <li class="flex items-start">
                 <svg
@@ -249,7 +249,7 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Paiements sécurisés avec validation par notre équipe</span>
+                <span>Collaborez en toute confiance grâce à notre processus de vérification rigoureux des clients.</span>
               </li>
               <li class="flex items-start">
                 <svg
@@ -266,7 +266,7 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Support 24/7 et assistance en cas de problème</span>
+                <span>Bénéficiez d'un support dédié et réactif pour une expérience sans accroc.</span>
               </li>
             </ul>
 
@@ -296,7 +296,7 @@
             <div class="collapse-content">
               <p>
                 Après approbation par le propriétaire, vous recevez un email avec les instructions
-                de paiement. Effectuez un virement avec la référence fournie. Notre équipe valide le
+                de paiement. Effectuez un paiement par mobile money avec le numero fourni. Notre équipe valide le
                 paiement sous 24h et confirme automatiquement votre réservation. L'acompte
                 représente nombre de jours * 5000 Ar.
               </p>
@@ -308,10 +308,7 @@
             <div class="collapse-title text-xl font-medium">Puis-je annuler ma réservation ?</div>
             <div class="collapse-content">
               <p>
-                Oui, vous pouvez annuler gratuitement jusqu'à 24h avant le début de la location. En
-                cas d'annulation moins de 24h avant, des frais peuvent s'appliquer. Le propriétaire
-                peut également annuler, mais des pénalités sont appliquées pour garantir la
-                fiabilité du service.
+                Oui, vous pouvez annuler gratuitement avant le paiement de l'acompte.
               </p>
             </div>
           </div>
@@ -323,8 +320,7 @@
             </div>
             <div class="collapse-content">
               <p>
-                Tous les utilisateurs doivent fournir une pièce d'identité (CIN), un permis de
-                conduire et une preuve d'adresse. Nos équipes vérifient ces documents avant
+                Tous les utilisateurs doivent fournir une pièce d'identité (CIN). Nos équipes vérifient ce document avant
                 d'approuver les comptes. Les propriétaires doivent également fournir la carte grise
                 de leur véhicule.
               </p>
@@ -338,9 +334,7 @@
             </div>
             <div class="collapse-content">
               <p>
-                Notre équipe de support est disponible 24/7 pour vous aider. En cas de problème avec
-                le véhicule, contactez-nous immédiatement. Nous disposons d'un système d'assurance
-                et de garanties pour protéger tous les acteurs.
+                Notre équipe de support est disponible pour vous aider.
               </p>
             </div>
           </div>
