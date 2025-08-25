@@ -17,9 +17,14 @@
       <!-- Contenu avec z-index pour être au-dessus du gradient -->
       <div class="hero-content text-center text-white relative z-20">
         <div class="max-w-md md:max-w-lg lg:max-w-2xl">
-          <h1 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
-            E-RENTALL: Votre partenaire de location de voitures
-          </h1>
+          <h2 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
+            <img src="/assets/imgs/e-rentall-white.svg" alt="E-RENTALL Logo" class="inline-block h-10 w-auto mr-3 align-middle" />
+            <span class="align-middle" style="font-family: Arial, sans-serif;">E-RENTALL</span>
+          </h2>
+          <h3 class="mb-5 text-2xl md:text-3xl lg:text-4xl font-bold">
+            Votre partenaire de location de voitures
+          </h3>
+          
           <p class="mb-5 text-lg">
             Louez ou proposez votre voiture en toute confiance partout à Madagascar.
           </p>
