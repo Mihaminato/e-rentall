@@ -27,7 +27,7 @@
         <div>
           <h4 class="font-semibold">Véhicule actif</h4>
           <p class="text-sm">
-            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seuls le lieu et la description peuvent être modifiés."
+            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seuls le lieu et la description peuvent être modifiés.
             <br />
             Pour désactiver le véhicule, veuillez contacter l'administrateur.
           </p>
@@ -195,12 +195,13 @@
 
           <!-- Description -->
           <UiFormField label="Description" class="md:col-span-2">
-            <p class="text-sm text-base-content/70 mt-1">"Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)"</p>
+            <p class="text-sm text-base-content/70 mt-1">Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)</p>
             <div>
               <textarea
                 v-model="form.description"
                 class="textarea textarea-bordered w-full focus-within:outline-none focus-within:border-primary h-32"
-                placeholder="Décrivez: votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)"                
+                placeholder="Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)"                
+                :disabled="isActiveVehicle"
                 style="resize: none; border-radius: 0.5rem; transition: all 0.2s ease-in-out"
               ></textarea>
             </div>
@@ -777,8 +778,7 @@
     if (isActiveVehicle.value) {
       // Pour les véhicules actifs, seule la province peut être modifiée
       vehicleData = {
-        province: form.province,
-        description: form.description
+        province: form.province
       }
     } else {
       // Pour les véhicules inactifs, tous les champs peuvent être modifiés

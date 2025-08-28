@@ -97,6 +97,7 @@
 
           <!-- Commentaires  -->
           <UiFormField label="Description de votre reservation">
+            <p class="text-sm text-base-content/70 mt-1">Point de départ, Heure de départ, Etat de la route, Autres demandes specifiques...</p>
             <textarea
               v-model="formData.comments"
               placeholder="Point de départ, Heure de départ, Etat de la route, autres demandes specifiques..."
