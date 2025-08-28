@@ -425,7 +425,7 @@
             téléphone de l'envoyeur pour confirmer.
           </p>
           <div class="my-3 p-3 bg-base-200 rounded-lg text-center font-mono text-lg">
-            (+261) 34 00 123 45 (M-Vola)
+            (+261) 34 60 642 20: To Vivion (M-Vola)            
           </div>
         </div>
         <!-- Champ numéro de téléphone avec validation -->
@@ -433,6 +433,7 @@
           <label class="label">
             <span class="label-text font-semibold">Numéro de l'envoyeur</span>
           </label>
+          
           <div class="input-group">
             <span class="input-group-text bg-base-200 text-base-content font-mono">+261</span>
             <input

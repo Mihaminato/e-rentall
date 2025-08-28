@@ -27,7 +27,7 @@
         <div>
           <h4 class="font-semibold">Véhicule actif</h4>
           <p class="text-sm">
-            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seuls le lieu et la description peuvent être modifiés.
+            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seul le lieu peut être modifié.
             <br />
             Pour désactiver le véhicule, veuillez contacter l'administrateur.
           </p>
