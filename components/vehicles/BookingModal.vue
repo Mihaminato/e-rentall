@@ -70,7 +70,7 @@
           <UiFormInput
             v-model="formData.destination"
             label="Destination / Lieu d'utilisation"
-            placeholder="Ex: Centre-ville, Aéroport, Excursion..."
+            placeholder="Ex: Analamahitsy, Morondava, Excursion..."
             required
           />
 
@@ -87,21 +87,22 @@
             v-model.number="formData.numberOfPeople"
             label="Nombre de passagers"
             type="number"
-            :max="vehicle?.seats"
+            :max="vehicle?.seats - 1"
             min="1"
             required
             :error="formErrors.numberOfPeople"
           >
-            <template #alt> Maximum {{ vehicle?.seats }} places pour ce véhicule </template>
+            <template #alt> Maximum {{ vehicle?.seats - 1}} places pour ce véhicule </template>
           </UiFormInput>
 
-          <!-- Commentaires optionnels -->
-          <UiFormField label="Commentaires (optionnel)">
+          <!-- Commentaires  -->
+          <UiFormField label="Description de votre reservation">
             <textarea
               v-model="formData.comments"
-              placeholder="Informations supplémentaires, demandes spéciales..."
+              placeholder="Point de départ, Heure de départ, Etat de la route, autres demandes specifiques..."
               class="textarea textarea-bordered w-full focus-within:border-primary focus-within:outline-none"
               rows="3"
+              required
             ></textarea>
           </UiFormField>
         </div>
@@ -134,7 +135,7 @@
               </div>
               <div>
                 <strong>Personnes :</strong><br />
-                {{ formData.numberOfPeople }} / {{ vehicle?.seats }} places
+                {{ formData.numberOfPeople }} / {{ vehicle?.seats - 1}} places
               </div>
               <div>
                 <strong>Prix par jour :</strong><br />
@@ -240,7 +241,8 @@
       formData.value.destination.trim() &&
       formData.value.locationType &&
       formData.value.numberOfPeople > 0 &&
-      formData.value.numberOfPeople <= (props.vehicle?.seats || 0) &&
+      formData.value.numberOfPeople <= (props.vehicle?.seats || 0) - 1 &&
+      formData.value.comments.trim() &&
       duration.value > 0
     )
   })
@@ -265,8 +267,8 @@
   watch(
     () => formData.value.numberOfPeople,
     newValue => {
-      if (props.vehicle && newValue > props.vehicle.seats) {
-        formErrors.value.numberOfPeople = `Le maximum est de ${props.vehicle.seats} personnes.`
+      if (props.vehicle && newValue > props.vehicle.seats - 1) {
+        formErrors.value.numberOfPeople = `Le maximum est de ${props.vehicle.seats - 1} personnes.`
       } else {
         formErrors.value.numberOfPeople = ''
       }
