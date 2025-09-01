@@ -27,7 +27,8 @@
         <div>
           <h4 class="font-semibold">Véhicule actif</h4>
           <p class="text-sm">
-            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seul le lieu peut être modifié.
+            Ce véhicule est actuellement actif. Pour ne pas affecter les réservations en cours, seul
+            le lieu peut être modifié.
             <br />
             Pour désactiver le véhicule, veuillez contacter l'administrateur.
           </p>
@@ -174,34 +175,25 @@
             :error="v$.province.$error ? unref(v$.province.$errors[0].$message) : null"
             class="md:col-span-2"
           >
-            <div class="relative flex items-center">
-              <Icon
-                name="mdi:map-marker-radius"
-                class="absolute left-3 text-gray-400 h-5 w-5 z-10"
-              />
-              <select
-                v-model="form.province"
-                class="select select-bordered w-full focus-within:outline-none focus-within:border-primary pl-10"
-                :class="{ 'select-error': v$.province.$error }"
-                @blur="v$.province.$touch()"
-              >
-                <option value="" disabled selected>Lieu</option>
-                <option v-for="option in CITY_OPTIONS" :key="option.value" :value="option.value">
-                  {{ option.label }}
-                </option>
-              </select>
-            </div>
+            <UiSearchableSelect
+              v-model="form.province"
+              :options="CITY_OPTIONS"
+              placeholder="Lieu"
+              :error="v$.province.$error ? unref(v$.province.$errors[0].$message) : null"
+            />
           </UiFormField>
 
           <!-- Description -->
           <UiFormField label="Description" class="md:col-span-2">
-            <p class="text-sm text-base-content/70 mt-1">Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)</p>
+            <p class="text-sm text-base-content/70 mt-1">
+              Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge
+              du chauffeur, condition de route adaptée, ...)
+            </p>
             <div>
               <textarea
                 v-model="form.description"
                 class="textarea textarea-bordered w-full focus-within:outline-none focus-within:border-primary h-32"
-                placeholder="Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)"                
-                :disabled="isActiveVehicle"
+                placeholder="Décrivez votre véhicule (état, options, etc.) et votre conditions de location (charge du chauffeur, condition de route adaptée, ...)"
                 style="resize: none; border-radius: 0.5rem; transition: all 0.2s ease-in-out"
               ></textarea>
             </div>
@@ -389,6 +381,8 @@
 
   // Emits
   const emit = defineEmits(['close', 'saved'])
+
+  // Select villes délégué au composant UiSearchableSelect
 
   // Composables
   const {
@@ -778,7 +772,8 @@
     if (isActiveVehicle.value) {
       // Pour les véhicules actifs, seule la province peut être modifiée
       vehicleData = {
-        province: form.province
+        province: form.province,
+        description: form.description
       }
     } else {
       // Pour les véhicules inactifs, tous les champs peuvent être modifiés
@@ -809,7 +804,10 @@
       // Mode mise à jour : restrictions selon le statut du véhicule
       if (isActiveVehicle.value) {
         // Véhicule actif : seule la province peut être modifiée
-        result = await updateVehicleLocation(props.vehicle.id, form.province)
+        result = await updateVehicleLocation(props.vehicle.id, {
+          province: form.province,
+          description: form.description
+        })
       } else {
         // Véhicule inactif : toutes les modifications autorisées
         result = await updateVehicle(props.vehicle.id, vehicleData as Partial<Vehicle>, documents)

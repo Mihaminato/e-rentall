@@ -24,6 +24,54 @@ export const useVehicles = () => {
 
   const VEHICLE_DOCUMENTS_BUCKET = 'documents'
 
+  // Helper: Envoyer une notification email pour un véhicule
+  // eslint-disable-next-line complexity
+  const sendVehicleNotification = async (
+    eventType: 'vehicle_created' | 'vehicle_updated_active',
+    vehicle: {
+      id: string
+      owner_id: string
+      make: string
+      model: string
+      license_plate?: string | null
+      province?: string | null
+      description?: string | null
+    }
+  ) => {
+    try {
+      // Récupération du profil propriétaire côté client
+      const { data: owner } = await supabase
+        .from('profiles')
+        .select('first_name,last_name,email,phone,address')
+        .eq('id', vehicle.owner_id)
+        .maybeSingle()
+
+      await $fetch('/api/vehicles/send-notifications', {
+        method: 'POST',
+        body: {
+          eventType,
+          vehicle: {
+            id: vehicle.id,
+            make: vehicle.make,
+            model: vehicle.model,
+            license_plate: vehicle.license_plate,
+            province: vehicle.province,
+            description: vehicle.description
+          },
+          owner: {
+            first_name: owner?.first_name || null,
+            last_name: owner?.last_name || null,
+            email: owner?.email || null,
+            phone: owner?.phone || null,
+            address: owner?.address || null
+          }
+        }
+      })
+    } catch (e) {
+      console.error(`Email vehicles ${eventType} error:`, e)
+    }
+  }
+
   // Objet contenant des fonctions pour appliquer chaque type de filtre
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filterHandlers: Record<string, (query: any, value: any) => any> = {
@@ -445,6 +493,7 @@ export const useVehicles = () => {
   }
 
   // Ajouter un nouveau véhicule
+  // eslint-disable-next-line complexity
   const addVehicle = async (
     vehicleData: Omit<Vehicle, 'id' | 'created_at' | 'updated_at'>,
     documents: { vehicleRegistrationFile: File | null; technicalInspectionFile: File | null }
@@ -485,6 +534,9 @@ export const useVehicles = () => {
           documents.technicalInspectionFile
         )
       }
+
+      // Envoi email uniquement à la création et seulement si actif (tu as précisé: creation)
+      await sendVehicleNotification('vehicle_created', newVehicle)
 
       return { vehicle: newVehicle }
     } catch (err) {
@@ -1006,7 +1058,11 @@ export const useVehicles = () => {
   }
 
   // Mettre à jour uniquement la localisation d'un véhicule actif
-  const updateVehicleLocation = async (id: string, province: string) => {
+  // eslint-disable-next-line complexity
+  const updateVehicleLocation = async (
+    id: string,
+    payload: { province: string; description: string }
+  ) => {
     isLoading.value = true
     error.value = null
 
@@ -1014,7 +1070,8 @@ export const useVehicles = () => {
       const { data: updatedVehicle, error: updateError } = await supabase
         .from('vehicles')
         .update({
-          province: province,
+          province: payload.province,
+          description: payload.description,
           updated_at: new Date().toISOString()
         })
         .eq('id', id)
@@ -1026,6 +1083,11 @@ export const useVehicles = () => {
         throw new Error(
           "Le véhicule a été mis à jour, mais n'a pas pu être récupéré. Vérifiez les politiques RLS."
         )
+
+      // Envoyer email uniquement si actif
+      if (updatedVehicle.is_active === true) {
+        await sendVehicleNotification('vehicle_updated_active', updatedVehicle)
+      }
 
       return { vehicle: updatedVehicle }
     } catch (err) {

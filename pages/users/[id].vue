@@ -179,9 +179,9 @@
             />
           </div> -->
 
-          <div v-if="ownerVehicles.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div v-if="activeVehicles.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <VehiclesVehicleCard
-              v-for="vehicle in ownerVehicles"
+              v-for="vehicle in activeVehicles"
               :key="vehicle.id"
               :vehicle="vehicle"
             />
@@ -281,6 +281,11 @@
     return data.publicUrl
   })
 
+  const activeVehicles = computed(() => {
+    if (isAdmin.value) return ownerVehicles.value
+    return ownerVehicles.value.filter(vehicle => vehicle.is_active)
+  })
+
   // Charger les données
   const loadUserData = async () => {
     try {
@@ -307,7 +312,6 @@
 
       // Charger les véhicules du propriétaire
       await fetchOwnerVehiclesWithPhotos(userId.value)
-      console.log('ownerVehicles', ownerVehicles.value)
 
       // Mettre à jour le titre de la page
       useHead({

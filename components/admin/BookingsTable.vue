@@ -88,7 +88,7 @@
             <div v-else class="text-center">-</div>
           </td>
           <td>
-            <div class="badge whitespace-nowrap" :class="getStatusClass(booking.status)">
+            <div class="badge whitespace-nowrap text-white" :class="getStatusClass(booking.status)">
               {{ getStatusLabel(booking.status) }}
             </div>
           </td>
@@ -117,8 +117,6 @@
     bookings: Booking[]
   }>()
 
-  const supabase = useNuxtApp().$supabase
-
   // --- Logique copiée de pages/admin/bookings.vue ---
   const BOOKING_STATUS_LABELS: Record<string, string> = {
     pending: 'En attente',
@@ -126,6 +124,7 @@
     confirmed: 'Admin OK',
     active: 'En cours',
     completed: 'Terminé',
+    pending_completion: 'En attente de finalisation',
     cancelled: 'Annulé'
   }
 
@@ -134,7 +133,8 @@
     owner_approved: 'badge-info',
     confirmed: 'badge-primary',
     active: 'badge-success',
-    completed: 'badge-ghost',
+    completed: 'bg-blue-500',
+    pending_completion: 'bg-yellow-500',
     cancelled: 'badge-error'
   }
 

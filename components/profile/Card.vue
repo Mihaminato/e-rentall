@@ -71,13 +71,13 @@
       <div v-if="publicView" class="w-full text-left p-4 border-t border-base-200">
         <div class="grid grid-cols-2 gap-x-6 gap-y-4">
           <!-- Téléphone -->
-          <!-- <div v-if="phone" class="flex items-center gap-3">
+          <div v-if="phone && isAdmin" class="flex items-center gap-3">
             <Icon name="mdi:phone" class="h-5 w-5 text-primary mt-1" />
             <div>
               <p class="font-medium text-base-content/60">Téléphone</p>
               <p class="text-base-content">{{ phone }}</p>
             </div>
-          </div> -->
+          </div>
           <!-- Adresse -->
           <div v-if="address" class="flex items-start gap-3">
             <Icon name="mdi:map-marker" class="h-5 w-5 text-primary mt-1" />
@@ -178,6 +178,7 @@
     statNumber?: string | null
     cinIssuedDate?: string | null
     memberSince?: string | null
+    isAdmin?: boolean
   }>()
 
   const emit = defineEmits<{

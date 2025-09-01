@@ -23,6 +23,14 @@
             <div>
               <h4 class="text-2xl font-bold">{{ vehicle.make }} {{ vehicle.model }}</h4>
               <p class="text-base-content/70">{{ vehicle.year }}</p>
+              <!-- Redirection vers la page du véhicule -->
+              <NuxtLink
+                :to="`/vehicles/${vehicle.id}`"
+                class="text-sm text-base-content/70 flex items-center gap-2 hover:text-primary"
+              >
+                <Icon name="mdi:eye" class="w-4 h-4" />
+                Voir le véhicule
+              </NuxtLink>
             </div>
 
             <div class="grid grid-cols-2 gap-2 text-sm">
@@ -68,7 +76,9 @@
                       {{ vehicle.owner.first_name }}
                       {{ vehicle.owner.last_name }}
                     </div>
-                    <div class="text-sm opacity-70">{{ vehicle.owner.email }} / {{ vehicle.owner.phone }}</div>    
+                    <div class="text-sm opacity-70">
+                      {{ vehicle.owner.email }} / {{ vehicle.owner.phone }}
+                    </div>
                   </div>
                 </div>
               </NuxtLink>

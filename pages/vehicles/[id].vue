@@ -131,6 +131,34 @@
                 Modifier
               </button>
             </div>
+
+            <!-- Bouton d'activation pour les admins -->
+            <div v-else-if="isAdmin" class="flex items-center gap-3">
+              <!-- Toggle Actif/Inactif -->
+              <div class="form-control">
+                <label class="flex items-center gap-2 select-none">
+                  <span class="text-sm">{{ vehicle.is_active ? 'Actif' : 'Inactif' }}</span>
+                  <Icon
+                    :name="vehicle.is_active ? 'mdi:check-circle' : 'mdi:close-circle'"
+                    :class="vehicle.is_active ? 'text-success' : 'text-error'"
+                    class="w-4 h-4"
+                  />
+                </label>
+              </div>
+
+              <!-- Bouton d'activation -->
+              <button
+                class="btn btn-sm"
+                :class="vehicle.is_active ? 'btn-error' : 'btn-success'"
+                @click="activateVehicle"
+              >
+                <Icon
+                  :name="vehicle.is_active ? 'mdi:close-circle' : 'mdi:check-circle'"
+                  class="w-4 h-4 mr-1"
+                />
+                {{ vehicle.is_active ? 'Désactiver' : 'Activer' }}
+              </button>
+            </div>
           </div>
 
           <!-- Séparateur -->
@@ -229,7 +257,7 @@
   const { fetchVehicleAvailabilities } = useAvailabilities()
   const { fetchVehicleBookings } = useBookings()
   const supabase = useNuxtApp().$supabase as SupabaseClient
-  const { user } = useAuthStore()
+  const { user, isAdmin } = useAuthStore()
 
   // Données réactives
   const selectedPhotoIndex = ref(0)
@@ -381,6 +409,24 @@
 
   const editPhotos = () => {
     router.push(`/vehicles/my-vehicles?edit=${vehicle.value?.id}`)
+  }
+
+  // Fonction pour activer un véhicule (pour les admins)
+  const activateVehicle = async () => {
+    if (!vehicle.value || !isAdmin) return
+    const { moderateVehicle } = useVehicles()
+    const statusVehicle = vehicle.value.is_active
+    try {
+      await moderateVehicle(vehicle.value.id, !statusVehicle)
+
+      showToast('Véhicule activé avec succès !', 'success')
+
+      // Recharger les données du véhicule
+      await fetchVehicleById(vehicle.value.id)
+    } catch (err) {
+      console.error('Erreur activation véhicule:', err)
+      showToast("Erreur lors de l'activation du véhicule", 'error')
+    }
   }
 
   // Fonction pour afficher un toast avec fermeture automatique

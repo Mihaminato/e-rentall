@@ -10,7 +10,7 @@
       </div>
 
       <!-- Tableau des réservations -->
-      <div v-if="recentBookings.length > 0" ref="scrollComponent" class="overflow-x-auto h-96">
+      <div v-if="recentBookings.length > 0" ref="scrollComponent" class="overflow-x-auto h-120">
         <AdminBookingsTable :bookings="recentBookings" />
         <!-- Ligne de chargement -->
         <div v-if="loadingBookings" class="text-center p-4">

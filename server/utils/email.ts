@@ -16,6 +16,8 @@ import ReservationPendingClient from '~/emails/ReservationPendingClient.vue'
 import DepositAwaitingValidationAdmin from '~/emails/DepositAwaitingValidationAdmin.vue'
 import PaymentReferenceRequest from '~/emails/PaymentReferenceRequest.vue'
 import DocumentsSubmittedAdmin from '~/emails/DocumentsSubmittedAdmin.vue'
+import VehicleActivated from '~/emails/VehicleActivated.vue'
+import VehicleUpdatedActive from '~/emails/VehicleUpdatedActive.vue'
 
 // Récupération de la configuration d'exécution de Nuxt
 const config = useRuntimeConfig()
@@ -36,7 +38,9 @@ const emailComponents: Record<string, Component> = {
   ReservationPendingClient: ReservationPendingClient,
   DepositAwaitingValidationAdmin: DepositAwaitingValidationAdmin,
   PaymentReferenceRequest: PaymentReferenceRequest,
-  DocumentsSubmittedAdmin: DocumentsSubmittedAdmin
+  DocumentsSubmittedAdmin: DocumentsSubmittedAdmin,
+  VehicleActivated: VehicleActivated,
+  VehicleUpdatedActive: VehicleUpdatedActive
 }
 
 interface SendEmailOptions {

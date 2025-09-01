@@ -295,6 +295,7 @@
               :city="booking.renter.city"
               :postal-code="booking.renter.postal_code"
               :public-view="true"
+              :is-admin="isAdmin"
               :member-since="formatDate(booking.renter.created_at)"
             />
           </div>
@@ -316,6 +317,7 @@
               :city="booking.vehicle.owner.city"
               :postal-code="booking.vehicle.owner.postal_code"
               :public-view="true"
+              :is-admin="isAdmin"
               :member-since="formatDate(booking.vehicle.owner.created_at)"
             />
           </div>
@@ -349,7 +351,10 @@
                 >
                   <button
                     class="btn btn-warning btn-block btn-outline"
-                    :disabled="isUpdating"
+                    :disabled="
+                      isUpdating ||
+                      ['active', 'owner_approved', 'confirmed'].includes(booking.status)
+                    "
                     @click="handleRevertToPending"
                   >
                     <span v-if="isUpdating" class="loading loading-spinner"></span>
@@ -425,7 +430,7 @@
             téléphone de l'envoyeur pour confirmer.
           </p>
           <div class="my-3 p-3 bg-base-200 rounded-lg text-center font-mono text-lg">
-            (+261) 34 60 642 20: To Vivion (M-Vola)            
+            (+261) 34 60 642 20: To Vivion (M-Vola)
           </div>
         </div>
         <!-- Champ numéro de téléphone avec validation -->
@@ -433,7 +438,7 @@
           <label class="label">
             <span class="label-text font-semibold">Numéro de l'envoyeur</span>
           </label>
-          
+
           <div class="input-group">
             <span class="input-group-text bg-base-200 text-base-content font-mono">+261</span>
             <input
@@ -540,7 +545,7 @@
   } = useBookings()
   const authStore = useAuthStore()
   const user = computed(() => authStore.user)
-
+  const isAdmin = computed(() => authStore.isAdmin)
   // --- État Local ---
   const isDescriptionExpanded = ref(false)
   const showCancelModal = ref(false)
