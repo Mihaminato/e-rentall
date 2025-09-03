@@ -8,7 +8,7 @@
           <div class="hidden md:block md:basis-1/4 md:min-w-[240px] flex-shrink-0">
             <UiFormSelect
               v-model="internalFilters.province"
-              label="Province"
+              label="Lieux"
               :options="provinceOptions"
             />
           </div>
@@ -47,7 +47,7 @@
               <div class="md:hidden">
                 <UiFormSelect
                   v-model="internalFilters.province"
-                  label="Province"
+                  label="Lieux"
                   :options="provinceOptions"
                 />
               </div>
