@@ -25,7 +25,7 @@ Configuré dans `nuxt.config.ts` :
 ```typescript
 app: {
   head: {
-    title: 'E-Rentall - Location de voitures entre particuliers à Madagascar',
+    title: 'E-Rentall - Votre partenaire de location de voitures',
     link: [
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon.png' },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon.png' },

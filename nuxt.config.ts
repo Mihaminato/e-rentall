@@ -166,13 +166,13 @@ export default defineNuxtConfig({
   // Optimisation des ressources
   app: {
     head: {
-      title: 'E-Rentall - Location de voitures entre particuliers à Madagascar',
+      title: 'E-Rentall - Votre partenaire de location de voitures',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Location de voitures entre particuliers à Madagascar. Louez un véhicule auprès de propriétaires locaux ou rentabilisez le vôtre.'
+          content: 'Louez ou proposez votre voiture en toute confiance partout à Madagascar.'
         },
         { name: 'theme-color', content: '#e2725b' },
         { name: 'msapplication-TileColor', content: '#e2725b' },
