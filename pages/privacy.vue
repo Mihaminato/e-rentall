@@ -121,7 +121,7 @@
             <div class="bg-base-100 p-4 rounded-lg">
               <p class="text-base-content/80">
                 <strong>Contact :</strong> 
-                <a href="mailto:contact@e-rentall.mg" class="text-primary hover:underline">
+                <a href="mailto:support@erentall.market" class="text-primary hover:underline">
                   support@erentall.market
                 </a>
               </p>
