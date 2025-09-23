@@ -210,22 +210,6 @@
     return dayjs(date).format('DD/MM/YYYY')
   })
 
-  // Affichage de la note
-  const displayRating = computed(() => {
-    return props.averageRating > 0 ? props.averageRating.toFixed(1) : '0.0'
-  })
-
-  // Calculs de performance
-  const occupancyRate = computed(() => {
-    if (props.bookingsCount === 0) return 0
-    return Math.min(Math.round((props.bookingsCount / 30) * 100), 100)
-  })
-
-  const responseRate = computed(() => {
-    // TODO: Implement response rate calculation
-    return 0
-  })
-
   // Conseils d'amélioration basés sur les données
   const improvementTips = computed(() => {
     const tips = []

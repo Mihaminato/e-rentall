@@ -207,7 +207,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4"></div>
           <!-- Document : Carte Grise -->
           <UiFormField
-            label="Carte Grise"
+            label="Carte Grise (pdf)"
             :required="!vehicle"
             :error="
               v$.vehicleRegistrationFile.$error
@@ -220,7 +220,7 @@
                 ref="vehicleRegistrationInput"
                 type="file"
                 class="file-input file-input-bordered w-full"
-                accept="application/pdf,image/jpeg,image/png"
+                accept="application/pdf"
                 @change="e => handleFileChange(e, 'vehicleRegistrationFile')"
               />
               <button
@@ -257,7 +257,7 @@
           </UiFormField>
           <!-- Document : Visite Technique -->
           <UiFormField
-            label="Visite Technique"
+            label="Visite Technique (pdf)"
             :required="!vehicle"
             :error="
               v$.technicalInspectionFile.$error
@@ -270,7 +270,7 @@
                 ref="technicalInspectionInput"
                 type="file"
                 class="file-input file-input-bordered w-full"
-                accept="application/pdf,image/jpeg,image/png"
+                accept="application/pdf"
                 @change="e => handleFileChange(e, 'technicalInspectionFile')"
               />
               <button
@@ -448,6 +448,15 @@
     technical_inspection: null
   })
 
+  // Validateur personnalisé pour vérifier le format PDF
+  const isPdfFile = helpers.withMessage(
+    'Seuls les fichiers PDF sont acceptés, pas les images',
+    (value: File | null) => {
+      if (!value) return true // Si pas de fichier, laisser le validateur 'required' gérer
+      return value.type === 'application/pdf'
+    }
+  )
+
   // Règles de validation
   const rules = computed(() => ({
     make: { required: helpers.withMessage('La marque est obligatoire', required) },
@@ -485,13 +494,15 @@
       required: helpers.withMessage(
         'La carte grise est obligatoire pour un nouveau véhicule',
         (value: File | null) => !!props.vehicle || value !== null
-      )
+      ),
+      isPdfFile
     },
     technicalInspectionFile: {
       required: helpers.withMessage(
         'La visite technique est obligatoire pour un nouveau véhicule',
         (value: File | null) => !!props.vehicle || value !== null
-      )
+      ),
+      isPdfFile
     }
   }))
 
@@ -535,7 +546,11 @@
     const target = event.target as HTMLInputElement
     if (target.files && target.files[0]) {
       form[field] = target.files[0]
+    } else {
+      form[field] = null
     }
+    // Déclencher la validation du champ pour afficher l'erreur immédiatement
+    v$.value[field].$touch()
   }
 
   const clearFile = (field: 'vehicleRegistrationFile' | 'technicalInspectionFile') => {
@@ -546,6 +561,8 @@
     if (field === 'technicalInspectionFile' && technicalInspectionInput.value) {
       technicalInspectionInput.value.value = ''
     }
+    // Déclencher la validation pour nettoyer l'erreur
+    v$.value[field].$touch()
   }
 
   const getDocumentPublicUrl = (filePath: string) => {

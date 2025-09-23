@@ -18,6 +18,8 @@ import PaymentReferenceRequest from '~/emails/PaymentReferenceRequest.vue'
 import DocumentsSubmittedAdmin from '~/emails/DocumentsSubmittedAdmin.vue'
 import VehicleActivated from '~/emails/VehicleActivated.vue'
 import VehicleUpdatedActive from '~/emails/VehicleUpdatedActive.vue'
+import ProfileVerified from '~/emails/ProfileVerified.vue'
+import ProfileUnverified from '~/emails/ProfileUnverified.vue'
 
 // Récupération de la configuration d'exécution de Nuxt
 const config = useRuntimeConfig()
@@ -40,7 +42,9 @@ const emailComponents: Record<string, Component> = {
   PaymentReferenceRequest: PaymentReferenceRequest,
   DocumentsSubmittedAdmin: DocumentsSubmittedAdmin,
   VehicleActivated: VehicleActivated,
-  VehicleUpdatedActive: VehicleUpdatedActive
+  VehicleUpdatedActive: VehicleUpdatedActive,
+  ProfileVerified: ProfileVerified,
+  ProfileUnverified: ProfileUnverified
 }
 
 interface SendEmailOptions {
