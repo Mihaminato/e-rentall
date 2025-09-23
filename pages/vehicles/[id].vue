@@ -195,7 +195,6 @@
           <!-- Documents du véhicule (pour le propriétaire uniquement) -->
           <div v-if="isOwner || isAdmin" class="card bg-base-100 shadow-lg">
             <div class="card-body">
-              {{ vehicleDocuments }}
               <VehiclesVehicleDocuments
                 :documents="vehicleDocuments"
                 :is-loading="documentsLoading"
