@@ -69,6 +69,106 @@
       </div>
     </div>
 
+    <!-- Avantages / Pourquoi nous choisir -->
+    <div class="py-16 bg-base-100">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Pourquoi nous choisir ?</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-12 w-12"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-bold">Le Choix et les Opportunités</h3>
+              <p class="text-sm">E-RENTALL propose la plus grande variété de véhicules pour les voyageurs et un accès à une clientèle diversifiée pour les propriétaires.</p>
+            </div>
+          </div>
+
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-12 w-12"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-bold">La Confiance et la Sécurité</h3>
+              <p class="text-sm">E-RENTALL vérifie les profils de tous les propriétaires et de tous les locataires inscrits sur la plateforme afin de garantir votre sécurité.</p>
+            </div>
+          </div>
+
+          <div class="card bg-base-200">
+            <div class="card-body items-center text-center">
+              <div class="text-4xl text-primary mb-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-12 w-12"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  />
+                </svg>
+              </div>
+              <h3 class="font-bold">Le Support Réactif</h3>
+              <p class="text-sm">L'Equipe E-RENTALL est à votre service tout au long de votre expérience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="bg-neutral text-primary-content py-16">
+      <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
+        <p class="mb-6 max-w-xl mx-auto">
+          Rejoignez notre communauté de propriétaires et locataires dès aujourd'hui et profitez de
+          notre plateforme de location de véhicules partout à Madagascar.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200"
+            >S'inscrire gratuitement</NuxtLink
+          >
+          <NuxtLink
+            to="/vehicles"
+            class="btn btn-outline text-white border-white hover:bg-white hover:text-primary"
+            >Explorer les véhicules</NuxtLink
+          >
+        </div>
+      </div>
+    </div>
+
+
     <!-- Comment ça marche -->
     <div class="py-16 bg-base-100">
       <div class="container mx-auto px-4">
@@ -217,106 +317,7 @@
           </div>
         </div>
       </section>
-    </ClientOnly>
-
-    <!-- Avantages / Pourquoi nous choisir -->
-    <div class="py-16 bg-base-100">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12">Pourquoi nous choisir</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="card bg-base-200">
-            <div class="card-body items-center text-center">
-              <div class="text-4xl text-primary mb-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-12 w-12"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-bold">Le Choix et les Opportunités</h3>
-              <p class="text-sm">E-RENTALL propose la plus grande variété de véhicules pour les voyageurs et un accès à une clientèle diversifiée pour les propriétaires.</p>
-            </div>
-          </div>
-
-          <div class="card bg-base-200">
-            <div class="card-body items-center text-center">
-              <div class="text-4xl text-primary mb-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-12 w-12"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-bold">La Confiance et la Sécurité</h3>
-              <p class="text-sm">E-RENTALL vérifie les profils de tous les propriétaires et de tous les locataires inscrits sur la plateforme afin de garantir votre sécurité.</p>
-            </div>
-          </div>
-
-          <div class="card bg-base-200">
-            <div class="card-body items-center text-center">
-              <div class="text-4xl text-primary mb-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-12 w-12"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-              </div>
-              <h3 class="font-bold">Le Support Réactif</h3>
-              <p class="text-sm">L'Equipe E-RENTALL est à votre service tout au long de votre expérience.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CTA Section -->
-    <div class="bg-neutral text-primary-content py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-4">Prêt à commencer ?</h2>
-        <p class="mb-6 max-w-xl mx-auto">
-          Rejoignez notre communauté de propriétaires et locataires dès aujourd'hui et profitez de
-          notre plateforme de location de véhicules partout à Madagascar.
-        </p>
-        <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200"
-            >S'inscrire gratuitement</NuxtLink
-          >
-          <NuxtLink
-            to="/vehicles"
-            class="btn btn-outline text-white border-white hover:bg-white hover:text-primary"
-            >Explorer les véhicules</NuxtLink
-          >
-        </div>
-      </div>
-    </div>
+    </ClientOnly>    
   </div>
 </template>
 
