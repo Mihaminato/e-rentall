@@ -1,6 +1,5 @@
 import { sendEmail } from '~/server/utils/email'
 
-// eslint-disable-next-line max-lines-per-function, complexity
 export default defineEventHandler(async event => {
   try {
     console.log('API: Début de traitement de la notification de documents')

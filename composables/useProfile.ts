@@ -540,6 +540,34 @@ export default function useProfile() {
   }
 
   /**
+   * Récupère les informations de base d'un utilisateur spécifique
+   * @param userId L'ID de l'utilisateur
+   * @returns Les informations de base (nom, prénom, email) ou null en cas d'erreur
+   */
+  const fetchUserProfile = async (
+    userId: string
+  ): Promise<{
+    first_name: string
+    last_name: string
+    email: string
+  } | null> => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('first_name, last_name, email')
+        .eq('id', userId)
+        .single()
+
+      if (error) throw error
+      return data
+    } catch (error: unknown) {
+      const errorMsg = error instanceof Error ? error.message : 'Erreur inconnue'
+      console.error(`Erreur lors de la récupération du profil utilisateur: ${errorMsg}`)
+      return null
+    }
+  }
+
+  /**
    * Renvoie le nom lisible d'un type de document
    */
   const getDocumentTypeName = (type: string): string => {
@@ -811,6 +839,10 @@ export default function useProfile() {
 
     try {
       loading.value = true
+
+      // Récupérer les informations de l'utilisateur à vérifier
+      const userData = await fetchUserProfile(userId)
+
       // Appel de la nouvelle fonction RPC qui gère la transaction
       const { error } = await supabase.rpc('verify_user_and_documents', {
         p_user_id: userId
@@ -820,6 +852,23 @@ export default function useProfile() {
 
       // Mettre à jour localement l'état des documents si nécessaire
       documents.value = documents.value.map(doc => ({ ...doc, is_verified: true }))
+
+      // Envoyer un email de confirmation à l'utilisateur
+      if (userData) {
+        try {
+          await $fetch('/api/profile/send-verification-notification', {
+            method: 'POST',
+            body: {
+              eventType: 'profile_verified',
+              userData
+            }
+          })
+          console.log('Email de vérification envoyé avec succès')
+        } catch (emailError) {
+          console.error("Erreur lors de l'envoi de l'email de vérification:", emailError)
+          // Ne pas faire échouer l'opération principale si l'email échoue
+        }
+      }
 
       return true
     } catch (error: unknown) {
@@ -842,6 +891,10 @@ export default function useProfile() {
     }
     try {
       loading.value = true
+
+      // Récupérer les informations de l'utilisateur à déverifier
+      const userData = await fetchUserProfile(userId)
+
       const { error } = await supabase
         .from('profiles')
         .update({
@@ -851,6 +904,24 @@ export default function useProfile() {
         .eq('id', userId)
 
       if (error) throw error
+
+      // Envoyer un email de notification à l'utilisateur
+      if (userData) {
+        try {
+          await $fetch('/api/profile/send-verification-notification', {
+            method: 'POST',
+            body: {
+              eventType: 'profile_unverified',
+              userData
+            }
+          })
+          console.log('Email de déverification envoyé avec succès')
+        } catch (emailError) {
+          console.error("Erreur lors de l'envoi de l'email de déverification:", emailError)
+          // Ne pas faire échouer l'opération principale si l'email échoue
+        }
+      }
+
       return true
     } catch (error: unknown) {
       const errorMsg = error instanceof Error ? error.message : 'Erreur inconnue'
@@ -887,6 +958,7 @@ export default function useProfile() {
     // Gestion documents
     loadDocuments,
     loadUserDocuments,
+    fetchUserProfile,
     uploadDocument,
     viewDocument,
     getDocumentTypeName,

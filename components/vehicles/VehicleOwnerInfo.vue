@@ -20,9 +20,10 @@
         </div>
 
         <div class="flex-1 min-w-0">
-          <div class="flex justify-between items-start w-full">
-            <!-- Partie Gauche: Nom & Date -->
-            <div>
+          <!-- Layout toujours en colonne pour éviter les débordements -->
+          <div class="flex flex-col gap-2 w-full">
+            <!-- Partie Supérieure: Nom & Date -->
+            <div class="flex-shrink-0">
               <div class="flex items-center gap-1.5">
                 <h3 class="font-semibold text-sm truncate">{{ ownerName }}</h3>
                 <div v-if="vehicle.owner?.is_verified" class="badge badge-success badge-xs px-1">
@@ -32,13 +33,13 @@
               <p class="text-sm text-base-content/70">Membre depuis {{ joinDate }}</p>
             </div>
 
-            <!-- Partie Droite: Contact -->
-            <div class="text-right text-sm space-y-1">
-              <div v-if="ownerFullAddress" class="flex items-start gap-1.5 justify-end">
-                <span class="max-w-[150px] truncate text-right">
+            <!-- Partie Inférieure: Adresse (toujours en bas) -->
+            <div v-if="ownerFullAddress" class="text-sm">
+              <div class="flex items-start gap-1.5">
+                <Icon name="mdi:map-marker" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <span class="break-words leading-tight">
                   {{ ownerFullAddress }}
                 </span>
-                <Icon name="mdi:map-marker" class="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
               </div>
             </div>
           </div>

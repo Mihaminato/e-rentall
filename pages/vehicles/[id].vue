@@ -13,7 +13,7 @@
       <div class="breadcrumbs text-sm">
         <ul>
           <li>
-            <a @click="router.back()" class="link link-hover cursor-pointer">
+            <a class="link link-hover cursor-pointer" @click="router.back()">
               <Icon name="mdi:arrow-left" class="w-4 h-4 mr-1" />
               Retour
             </a>
@@ -191,6 +191,17 @@
               </div>
             </div>
           </div>
+
+          <!-- Documents du véhicule (pour le propriétaire uniquement) -->
+          <div v-if="isOwner || isAdmin" class="card bg-base-100 shadow-lg">
+            <div class="card-body">
+              <VehiclesVehicleDocuments
+                :documents="vehicleDocuments"
+                :is-loading="documentsLoading"
+                @view-document="viewVehicleDocument"
+              />
+            </div>
+          </div>
         </div>
 
         <!-- Colonne droite - Prix et réservation OU Infos propriétaire -->
@@ -253,7 +264,7 @@
   // Composables et stores
   const route = useRoute()
   const router = useRouter()
-  const { vehicle, isLoading, error, fetchVehicleById } = useVehicles()
+  const { vehicle, isLoading, error, fetchVehicleById, fetchVehicleDocuments } = useVehicles()
   const { fetchVehicleAvailabilities } = useAvailabilities()
   const { fetchVehicleBookings } = useBookings()
   const supabase = useNuxtApp().$supabase as SupabaseClient
@@ -267,6 +278,17 @@
   // Données des disponibilités et réservations
   const vehicleAvailabilities = ref<Availability[]>([])
   const vehicleBookings = ref<Booking[]>([])
+
+  // Documents du véhicule
+  interface VehicleDocument {
+    id: string
+    vehicle_id: string
+    type: string
+    file_path: string
+    created_at: string
+  }
+  const vehicleDocuments = ref<VehicleDocument[]>([])
+  const documentsLoading = ref(false)
 
   // État pour les toasts
   const toast = ref({
@@ -345,7 +367,7 @@
   }))
 
   // Fonctions pour la réservation
-  const openBookingModal = (reservationData?: {
+  const openBookingModal = (_reservationData?: {
     startDate: string
     endDate: string
     totalPrice: number
@@ -443,6 +465,12 @@
     }, 5000)
   }
 
+  // Fonction pour visualiser un document de véhicule
+  const viewVehicleDocument = (documentId: string, filePath: string) => {
+    const publicUrl = supabase.storage.from('documents').getPublicUrl(filePath).data.publicUrl
+    window.open(publicUrl, '_blank')
+  }
+
   // Chargement des données
   onMounted(async () => {
     const vehicleId = route.params.id as string
@@ -475,8 +503,32 @@
       if (bookingsResult.data) {
         vehicleBookings.value = bookingsResult.data
       }
+
+      // Charger les documents seulement si l'utilisateur est le propriétaire
+      if (isOwner.value || isAdmin) {
+        await loadVehicleDocuments(vehicleId)
+      }
     } catch (error) {
       console.error('Erreur lors du chargement des données:', error)
+    }
+  }
+
+  // Charger les documents du véhicule
+  const loadVehicleDocuments = async (vehicleId: string) => {
+    documentsLoading.value = true
+    try {
+      const { data, error } = await fetchVehicleDocuments(vehicleId)
+      if (error) {
+        console.error('Erreur lors du chargement des documents:', error)
+        showToast('Erreur lors du chargement des documents', 'error')
+      } else {
+        vehicleDocuments.value = data || []
+      }
+    } catch (error) {
+      console.error('Erreur lors du chargement des documents:', error)
+      showToast('Erreur lors du chargement des documents', 'error')
+    } finally {
+      documentsLoading.value = false
     }
   }
 
