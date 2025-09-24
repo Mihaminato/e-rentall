@@ -29,10 +29,8 @@
             <li><NuxtLink to="/" class="text-base py-3">Accueil</NuxtLink></li>
             <li><NuxtLink to="/vehicles" class="text-base py-3">Nos Véhicules</NuxtLink></li>
             <li>
-              <NuxtLink to="/how-it-works" class="text-base py-3">Comment ça marche</NuxtLink>
+              <NuxtLink to="/how-it-works" class="text-base py-3">Comment ça marche?</NuxtLink>
             </li>
-            <li><NuxtLink to="/about" class="text-base py-3">À propos</NuxtLink></li>
-            <li><NuxtLink to="/contact" class="text-base py-3">Contact</NuxtLink></li>
           </ul>
         </div>
 

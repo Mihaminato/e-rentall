@@ -7,6 +7,13 @@ interface VehiclePayload {
   license_plate?: string | null
   province?: string | null
   description?: string | null
+  year?: number | null
+  vehicle_type?: string | null
+  transmission?: string | null
+  fuel_type?: string | null
+  seats?: number | null
+  consumption?: number | null
+  price_per_day?: number | null
 }
 
 interface OwnerPayload {
@@ -18,9 +25,10 @@ interface OwnerPayload {
 }
 
 interface VehicleEmailData {
-  eventType: 'vehicle_created' | 'vehicle_updated_active'
+  eventType: 'vehicle_created' | 'vehicle_updated_active' | 'vehicle_updated'
   vehicle: VehiclePayload
   owner: OwnerPayload
+  modifiedFields?: string[]
 }
 
 // eslint-disable-next-line max-lines-per-function, complexity
@@ -33,7 +41,7 @@ export default defineEventHandler(async event => {
 
   try {
     const body = (await readBody(event)) as VehicleEmailData
-    const { eventType, vehicle, owner } = body
+    const { eventType, vehicle, owner, modifiedFields = [] } = body
 
     const emailsToSend: {
       to?: string
@@ -50,6 +58,13 @@ export default defineEventHandler(async event => {
       vehicleLicensePlate: vehicle.license_plate || 'Non renseignée',
       province: vehicle.province || 'Non renseignée',
       description: vehicle.description || '',
+      year: vehicle.year,
+      vehicleType: vehicle.vehicle_type,
+      transmission: vehicle.transmission,
+      fuelType: vehicle.fuel_type,
+      seats: vehicle.seats,
+      consumption: vehicle.consumption,
+      pricePerDay: vehicle.price_per_day,
       ownerName: `${owner.first_name || ''} ${owner.last_name || ''}`.trim() || '—',
       ownerEmail: owner.email || '—',
       ownerPhone: owner.phone || '—',
@@ -72,6 +87,17 @@ export default defineEventHandler(async event => {
           subject: `[ADMIN] Véhicule actif mis à jour - #${vehicle.id.slice(0, 8)}`,
           component: 'VehicleUpdatedActive',
           props: commonProps
+        })
+        break
+      case 'vehicle_updated':
+        emailsToSend.push({
+          to: process.env.ADMIN_EMAIL,
+          subject: `[ADMIN] Véhicule modifié - ${vehicle.make} ${vehicle.model} #${vehicle.id.slice(0, 8)}`,
+          component: 'VehicleUpdated',
+          props: {
+            ...commonProps,
+            modifiedFields
+          }
         })
         break
       default:

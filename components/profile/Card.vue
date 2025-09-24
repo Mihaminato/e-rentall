@@ -68,7 +68,7 @@
       <!-- Divider élégant -->
 
       <!-- Informations additionnelles pour la vue publique -->
-      <div v-if="publicView" class="w-full text-left p-4 border-t border-base-200">
+      <div v-if="isAdmin" class="w-full text-left p-4 border-t border-base-200">
         <div class="grid grid-cols-2 gap-x-6 gap-y-4">
           <!-- Téléphone -->
           <div v-if="phone && isAdmin" class="flex items-center gap-3">

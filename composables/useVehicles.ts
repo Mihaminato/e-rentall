@@ -27,7 +27,7 @@ export const useVehicles = () => {
   // Helper: Envoyer une notification email pour un véhicule
   // eslint-disable-next-line complexity
   const sendVehicleNotification = async (
-    eventType: 'vehicle_created' | 'vehicle_updated_active',
+    eventType: 'vehicle_created' | 'vehicle_updated_active' | 'vehicle_updated',
     vehicle: {
       id: string
       owner_id: string
@@ -36,7 +36,15 @@ export const useVehicles = () => {
       license_plate?: string | null
       province?: string | null
       description?: string | null
-    }
+      year?: number | null
+      vehicle_type?: string | null
+      transmission?: string | null
+      fuel_type?: string | null
+      seats?: number | null
+      consumption?: number | null
+      price_per_day?: number | null
+    },
+    modifiedFields?: string[]
   ) => {
     try {
       // Récupération du profil propriétaire côté client
@@ -56,7 +64,14 @@ export const useVehicles = () => {
             model: vehicle.model,
             license_plate: vehicle.license_plate,
             province: vehicle.province,
-            description: vehicle.description
+            description: vehicle.description,
+            year: vehicle.year,
+            vehicle_type: vehicle.vehicle_type,
+            transmission: vehicle.transmission,
+            fuel_type: vehicle.fuel_type,
+            seats: vehicle.seats,
+            consumption: vehicle.consumption,
+            price_per_day: vehicle.price_per_day
           },
           owner: {
             first_name: owner?.first_name || null,
@@ -64,14 +79,14 @@ export const useVehicles = () => {
             email: owner?.email || null,
             phone: owner?.phone || null,
             address: owner?.address || null
-          }
+          },
+          modifiedFields: modifiedFields || []
         }
       })
     } catch (e) {
       console.error(`Email vehicles ${eventType} error:`, e)
     }
   }
-
   // Objet contenant des fonctions pour appliquer chaque type de filtre
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const filterHandlers: Record<string, (query: any, value: any) => any> = {
@@ -557,7 +572,17 @@ export const useVehicles = () => {
     error.value = null
 
     try {
-      // 1. Mettre à jour les données de base du véhicule
+      // 1. Récupérer les données actuelles du véhicule pour comparer
+      const { data: currentVehicle, error: fetchError } = await supabase
+        .from('vehicles')
+        .select('*')
+        .eq('id', id)
+        .maybeSingle()
+
+      if (fetchError) throw fetchError
+      if (!currentVehicle) throw new Error('Véhicule non trouvé')
+
+      // 2. Mettre à jour les données de base du véhicule
       const { data: updatedVehicle, error: updateError } = await supabase
         .from('vehicles')
         .update(updates)
@@ -571,7 +596,22 @@ export const useVehicles = () => {
           "Le véhicule a été mis à jour, mais n'a pas pu être récupéré. Vérifiez les politiques RLS."
         )
 
-      // 2. Gérer les documents
+      // 3. Détecter les champs modifiés
+      const modifiedFields: string[] = []
+      const fieldsToCheck = [
+        'make', 'model', 'year', 'vehicle_type', 'transmission', 
+        'fuel_type', 'seats', 'consumption', 'price_per_day', 
+        'province', 'description', 'license_plate'
+      ]
+
+      fieldsToCheck.forEach(field => {
+        if (updates[field as keyof Vehicle] !== undefined && 
+            updates[field as keyof Vehicle] !== currentVehicle[field as keyof Vehicle]) {
+          modifiedFields.push(field)
+        }
+      })
+
+      // 4. Gérer les documents
       const handleDocumentUpdate = async (docType: string, newFile: File | null) => {
         if (!newFile) return // Pas de nouveau fichier, on ne fait rien
 
@@ -601,6 +641,11 @@ export const useVehicles = () => {
       await handleDocumentUpdate('vehicle_registration', documents.vehicleRegistrationFile)
       await handleDocumentUpdate('technical_inspection', documents.technicalInspectionFile)
 
+      // 5. Envoyer email de notification si des champs ont été modifiés
+      if (modifiedFields.length > 0) {
+        await sendVehicleNotification('vehicle_updated', updatedVehicle, modifiedFields)
+      }
+
       return { vehicle: updatedVehicle }
     } catch (err) {
       error.value = (err as Error).message
@@ -609,7 +654,6 @@ export const useVehicles = () => {
       isLoading.value = false
     }
   }
-
   // Récupérer les chemins de fichiers des photos d'un véhicule
   const getVehiclePhotoPaths = async (vehicleId: string) => {
     try {

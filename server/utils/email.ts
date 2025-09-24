@@ -16,6 +16,7 @@ import ReservationPendingClient from '~/emails/ReservationPendingClient.vue'
 import DepositAwaitingValidationAdmin from '~/emails/DepositAwaitingValidationAdmin.vue'
 import PaymentReferenceRequest from '~/emails/PaymentReferenceRequest.vue'
 import DocumentsSubmittedAdmin from '~/emails/DocumentsSubmittedAdmin.vue'
+import VehicleUpdated from '~/emails/VehicleUpdated.vue'
 import VehicleActivated from '~/emails/VehicleActivated.vue'
 import VehicleUpdatedActive from '~/emails/VehicleUpdatedActive.vue'
 
@@ -39,6 +40,7 @@ const emailComponents: Record<string, Component> = {
   DepositAwaitingValidationAdmin: DepositAwaitingValidationAdmin,
   PaymentReferenceRequest: PaymentReferenceRequest,
   DocumentsSubmittedAdmin: DocumentsSubmittedAdmin,
+  VehicleUpdated: VehicleUpdated,
   VehicleActivated: VehicleActivated,
   VehicleUpdatedActive: VehicleUpdatedActive
 }

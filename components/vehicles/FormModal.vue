@@ -310,6 +310,14 @@
         <!-- Section Photos - cachée pour les véhicules actifs -->
         <div>
           <!-- Téléchargement de photos -->
+          <div class="alert alert-warning mb-4 text-sm flex items-center gap-2">
+            <span>
+              <Icon name="mdi:alert-circle-outline" class="text-white" />
+              <span class="text-white">
+                <strong>Attention&nbsp;:</strong> Les images du véhicule ne peuvent être modifiées que sur demande auprès de l'administrateur. Veuillez bien les choisir avant d'enregistrer .
+              </span>
+            </span>
+          </div>
           <div class="divider">Photos du Véhicule</div>
           <UiImageDropzone
             v-if="!isActiveVehicle"
