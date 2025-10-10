@@ -34,7 +34,7 @@
                 <Icon name="mdi:eye" class="w-4 h-4" />
               </button>
               <button
-                v-if="!isReadOnly"
+                v-if="!isReadOnly && !doc.is_verified"
                 class="btn btn-xs btn-ghost text-error"
                 title="Supprimer le document"
                 @click="confirmDelete(doc)"
@@ -57,7 +57,17 @@
         v-if="!isProfileComplete"
         text="Veuillez compléter toutes vos informations personnelles avant de pouvoir ajouter des documents. (CIN, Date de délivrance CIN, NIF, STAT)"
       />
-
+      <!-- Indication pour l'insertion obligatoire des documents -->
+      <div 
+        v-if="isProfileComplete" 
+        class="alert alert-info text-sm mt-4 mb-2 p-3"
+      >
+        <Icon name="mdi:information-outline" class="w-5 h-5" />
+        <div>
+          Veuillez insérer tous les documents requis pour la validation de votre compte. 
+          Ces documents sont obligatoires pour l'ajout de véhicules.
+        </div>
+      </div>
       <!-- Bouton d'ajout -->
       <button
         v-if="isProfileComplete"
