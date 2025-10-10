@@ -34,7 +34,7 @@
                 <Icon name="mdi:eye" class="w-4 h-4" />
               </button>
               <button
-                v-if="!isReadOnly && !doc.is_verified"
+                v-if="!isReadOnly && !is_verified"
                 class="btn btn-xs btn-ghost text-error"
                 title="Supprimer le document"
                 @click="confirmDelete(doc)"
@@ -59,7 +59,7 @@
       />
       <!-- Indication pour l'insertion obligatoire des documents -->
       <div 
-        v-if="isProfileComplete" 
+        v-if="isProfileComplete && !is_verified" 
         class="alert alert-info text-sm mt-4 mb-2 p-3"
       >
         <Icon name="mdi:information-outline" class="w-5 h-5" />
@@ -108,6 +108,7 @@
   defineProps<{
     isReadOnly?: boolean
     isProfileComplete: boolean
+    isVerified?: boolean
   }>()
 
   // Utilisation de l'état partagé depuis le composable singleton
