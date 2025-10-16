@@ -430,7 +430,7 @@
             téléphone de l'envoyeur pour confirmer.
           </p>
           <div class="my-3 p-3 bg-base-200 rounded-lg text-center font-mono text-lg">
-            (+261) 34 29 118 97: ERENTAL (M-Vola)
+            (+261) 38 29 118 97: ERENTAL (M-Vola)
           </div>
         </div>
         <!-- Champ numéro de téléphone avec validation -->
