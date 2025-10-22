@@ -112,7 +112,7 @@ export default defineNuxtConfig({
     mailFromAddress: process.env.MAIL_FROM_ADDRESS || '',
     openai: {
       apiKey: process.env.OPENAI_API_KEY || '',
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       maxTokens: 800,
       temperature: 0.3
     },
