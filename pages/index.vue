@@ -10,20 +10,22 @@
       "
     >
       <!-- Gradient overlay personnalisé -->
-      <div 
-        class="absolute inset-0 z-10 bg-gradient-to-br from-primary/70 to-accent/70"
-      ></div>
-      
+      <div class="absolute inset-0 z-10 bg-gradient-to-br from-primary/70 to-accent/70"></div>
+
       <!-- Contenu avec z-index pour être au-dessus du gradient -->
       <div class="hero-content text-center text-white relative z-20">
         <div class="max-w-md md:max-w-lg lg:max-w-2xl">
           <h2 class="mb-5 text-4xl md:text-5xl lg:text-6xl font-bold">
-            <img src="/assets/imgs/e-rentall-white.svg" alt="E-RENTALL Logo" class="inline-block h-20 w-auto mr-3 align-middle" />
+            <img
+              src="/assets/imgs/e-rentall-white.svg"
+              alt="E-RENTALL Logo"
+              class="inline-block h-20 w-auto mr-3 align-middle"
+            />
           </h2>
           <h3 class="mb-5 text-2xl md:text-3xl lg:text-4xl font-bold">
             Votre partenaire de location de voitures
           </h3>
-          
+
           <p class="mb-5 text-lg">
             Louez ou proposez votre voiture en toute confiance partout à Madagascar.
           </p>
@@ -94,7 +96,10 @@
                 </svg>
               </div>
               <h3 class="font-bold">Le Choix et les Opportunités</h3>
-              <p class="text-sm">E-RENTALL propose la plus grande variété de véhicules pour les voyageurs et un accès à une clientèle diversifiée pour les propriétaires.</p>
+              <p class="text-sm">
+                E-RENTALL propose la plus grande variété de véhicules pour les voyageurs et un accès
+                à une clientèle diversifiée pour les propriétaires.
+              </p>
             </div>
           </div>
 
@@ -117,7 +122,10 @@
                 </svg>
               </div>
               <h3 class="font-bold">La Confiance et la Sécurité</h3>
-              <p class="text-sm">E-RENTALL vérifie les profils de tous les propriétaires et de tous les locataires inscrits sur la plateforme afin de garantir votre sécurité.</p>
+              <p class="text-sm">
+                E-RENTALL vérifie les profils de tous les propriétaires et de tous les locataires
+                inscrits sur la plateforme afin de garantir votre sécurité.
+              </p>
             </div>
           </div>
 
@@ -140,7 +148,9 @@
                 </svg>
               </div>
               <h3 class="font-bold">Le Support Réactif</h3>
-              <p class="text-sm">L'Equipe E-RENTALL est à votre service tout au long de votre expérience.</p>
+              <p class="text-sm">
+                L'Equipe E-RENTALL est à votre service tout au long de votre expérience.
+              </p>
             </div>
           </div>
         </div>
@@ -167,7 +177,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- Comment ça marche -->
     <div class="py-16 bg-base-100">
@@ -201,7 +210,8 @@
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Recherchez et réservez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Trouvez votre véhicule idéal avec nos filtres avancés. Remplissez le formulaire de réservation avec vos dates, destination et nombre de personnes.
+                Trouvez votre véhicule idéal avec nos filtres avancés. Remplissez le formulaire de
+                réservation avec vos dates, destination et nombre de personnes.
               </p>
             </div>
 
@@ -220,7 +230,8 @@
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Le propriétaire approuve</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Le propriétaire examine votre demande et peut l'approuver ou la refuser. En cas d'approbation, un acompte significatif est défini automatiquement.
+                Le propriétaire examine votre demande et peut l'approuver ou la refuser. En cas
+                d'approbation, un acompte significatif est défini automatiquement.
               </p>
             </div>
 
@@ -239,7 +250,8 @@
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Paiement et validation</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Effectuez le paiement avec la référence fournie. Notre équipe valide le paiement et confirme automatiquement votre réservation.
+                Effectuez le paiement avec la référence fournie. Notre équipe valide le paiement et
+                confirme automatiquement votre réservation.
               </p>
             </div>
 
@@ -258,7 +270,8 @@
               </div>
               <h3 class="text-lg font-bold text-base-content mb-3">Récupérez et profitez</h3>
               <p class="text-base-content/70 leading-relaxed">
-                Rendez-vous au point de rencontre, effectuez l'état des lieux avec le propriétaire et profitez de votre voyage en toute tranquillité.
+                Rendez-vous au point de rencontre, effectuez l'état des lieux avec le propriétaire
+                et profitez de votre voyage en toute tranquillité.
               </p>
             </div>
           </div>
@@ -317,7 +330,7 @@
           </div>
         </div>
       </section>
-    </ClientOnly>    
+    </ClientOnly>
   </div>
 </template>
 
@@ -326,6 +339,11 @@
   import { CITY_OPTIONS } from '~/types'
   import type { Vehicle } from '~/types'
   import { useVehicles } from '~/composables/useVehicles'
+
+  // Titre par défaut pour la page d'accueil
+  useHead({
+    title: 'E-Rentall - Votre partenaire de location de voitures'
+  })
 
   // Date actuelle pour les champs de date par défaut
   const currentDate = new Date()

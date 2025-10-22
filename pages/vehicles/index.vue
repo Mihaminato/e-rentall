@@ -1,10 +1,7 @@
 <template>
   <div>
     <!-- Message d'information pour les visiteurs non connectés -->
-    <div
-      v-if="!isLoggedIn && showGuestInfo"
-      class="bg-accent/10 border-l-4 border-accent p-4 mb-6"
-    >
+    <div v-if="!isLoggedIn && showGuestInfo" class="bg-accent/10 border-l-4 border-accent p-4 mb-6">
       <div class="container mx-auto px-4">
         <div class="flex items-center">
           <Icon name="mdi:information" class="w-5 h-5 text-accent mr-3" />
@@ -109,6 +106,11 @@
 
   definePageMeta({
     middleware: []
+  })
+
+  // Titre par défaut pour la page des véhicules
+  useHead({
+    title: 'E-Rentall - Votre partenaire de location de voitures'
   })
 
   const route = useRoute()

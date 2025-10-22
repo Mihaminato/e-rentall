@@ -193,10 +193,12 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div>
-            <h3 class="text-2xl font-bold mb-4">Maximisez la rentabilité de votre flotte en toute sécurité</h3>
+            <h3 class="text-2xl font-bold mb-4">
+              Maximisez la rentabilité de votre flotte en toute sécurité
+            </h3>
             <p class="mb-4">
-              Optimisez l'utilisation de votre flotte et élargissez votre clientèle grâce à une plateforme conçue 
-              pour les professionnels de la location.
+              Optimisez l'utilisation de votre flotte et élargissez votre clientèle grâce à une
+              plateforme conçue pour les professionnels de la location.
             </p>
 
             <ul class="space-y-3 mb-6">
@@ -215,7 +217,10 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Gérez l'intégralité de votre activité via une interface simple et intuitive.</span>
+                <span
+                  >Gérez l'intégralité de votre activité via une interface simple et
+                  intuitive.</span
+                >
               </li>
               <li class="flex items-start">
                 <svg
@@ -232,7 +237,10 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Optimisez la rentabilité de votre flotte en accédant à une clientèle élargie.</span>
+                <span
+                  >Optimisez la rentabilité de votre flotte en accédant à une clientèle
+                  élargie.</span
+                >
               </li>
               <li class="flex items-start">
                 <svg
@@ -249,7 +257,10 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Collaborez en toute confiance grâce à notre processus de vérification rigoureux des clients.</span>
+                <span
+                  >Collaborez en toute confiance grâce à notre processus de vérification rigoureux
+                  des clients.</span
+                >
               </li>
               <li class="flex items-start">
                 <svg
@@ -266,7 +277,9 @@
                     d="M5 13l4 4L19 7"
                   />
                 </svg>
-                <span>Bénéficiez d'un support dédié et réactif pour une expérience sans accroc.</span>
+                <span
+                  >Bénéficiez d'un support dédié et réactif pour une expérience sans accroc.</span
+                >
               </li>
             </ul>
 
@@ -296,9 +309,9 @@
             <div class="collapse-content">
               <p>
                 Après approbation par le propriétaire, vous recevez un email avec les instructions
-                de paiement. Effectuez un paiement par mobile money avec le numero fourni. Notre équipe valide le
-                paiement sous 24h et confirme automatiquement votre réservation. L'acompte
-                représente nombre de jours * 5000 Ar.
+                de paiement. Effectuez un paiement par mobile money avec le numero fourni. Notre
+                équipe valide le paiement sous 24h et confirme automatiquement votre réservation.
+                L'acompte représente nombre de jours * 5000 Ar.
               </p>
             </div>
           </div>
@@ -307,9 +320,7 @@
             <input type="radio" name="faq-accordion" />
             <div class="collapse-title text-xl font-medium">Puis-je annuler ma réservation ?</div>
             <div class="collapse-content">
-              <p>
-                Oui, vous pouvez annuler gratuitement avant le paiement de l'acompte.
-              </p>
+              <p>Oui, vous pouvez annuler gratuitement avant le paiement de l'acompte.</p>
             </div>
           </div>
 
@@ -320,9 +331,9 @@
             </div>
             <div class="collapse-content">
               <p>
-                Tous les utilisateurs doivent fournir une pièce d'identité (CIN). Nos équipes vérifient ce document avant
-                d'approuver les comptes. Les propriétaires doivent également fournir la carte grise
-                de leur véhicule.
+                Tous les utilisateurs doivent fournir une pièce d'identité (CIN). Nos équipes
+                vérifient ce document avant d'approuver les comptes. Les propriétaires doivent
+                également fournir la carte grise de leur véhicule.
               </p>
             </div>
           </div>
@@ -333,9 +344,7 @@
               Que se passe-t-il en cas de problème ?
             </div>
             <div class="collapse-content">
-              <p>
-                Notre équipe de support est disponible pour vous aider.
-              </p>
+              <p>Notre équipe de support est disponible pour vous aider.</p>
             </div>
           </div>
         </div>
@@ -366,5 +375,10 @@
 </template>
 
 <script setup>
+  // Titre par défaut pour la page comment ça marche
+  useHead({
+    title: 'E-Rentall - Votre partenaire de location de voitures'
+  })
+
   // Pas de logique particulière pour cette page informative
 </script>

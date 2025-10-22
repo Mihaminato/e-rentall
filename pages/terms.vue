@@ -5,7 +5,8 @@
       <div class="container mx-auto px-4 text-center">
         <h1 class="text-4xl font-bold mb-6">Conditions Générales d'Utilisation</h1>
         <p class="text-lg max-w-3xl mx-auto">
-          Découvrez les règles et conditions qui régissent l'utilisation de notre plateforme de location de véhicules entre particuliers.
+          Découvrez les règles et conditions qui régissent l'utilisation de notre plateforme de
+          location de véhicules entre particuliers.
         </p>
       </div>
     </div>
@@ -28,7 +29,8 @@
               </div>
               <h3 class="card-title text-xl mb-2 text-accent">Accès et Compte</h3>
               <p class="text-sm">
-                Création de compte, informations requises, confidentialité des identifiants et âge minimum pour accéder à la plateforme.
+                Création de compte, informations requises, confidentialité des identifiants et âge
+                minimum pour accéder à la plateforme.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
                 <p><strong>Obligations :</strong></p>
@@ -51,7 +53,8 @@
               </div>
               <h3 class="card-title text-xl mb-2 text-accent">Utilisation des Services</h3>
               <p class="text-sm">
-                Droits et obligations des réservataires et fournisseurs, exécution des services, annulations et évaluations.
+                Droits et obligations des réservataires et fournisseurs, exécution des services,
+                annulations et évaluations.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
                 <p><strong>Pour tous :</strong></p>
@@ -74,7 +77,8 @@
               </div>
               <h3 class="card-title text-xl mb-2 text-accent">Paiements et Commission</h3>
               <p class="text-sm">
-                Acompte obligatoire via Mobile Money, montant fixé à 5000 Ar par jour, commission E-RENTALL et règlement du solde.
+                Acompte obligatoire via Mobile Money, montant fixé à 5000 Ar par jour, commission
+                E-RENTALL et règlement du solde.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
                 <p><strong>Sécurité :</strong></p>
@@ -97,7 +101,8 @@
               </div>
               <h3 class="card-title text-xl mb-2 text-accent">Responsabilités</h3>
               <p class="text-sm">
-                Responsabilité d'E-RENTALL en tant qu'intermédiaire, obligations des utilisateurs, protection des données et sanctions.
+                Responsabilité d'E-RENTALL en tant qu'intermédiaire, obligations des utilisateurs,
+                protection des données et sanctions.
               </p>
               <div class="mt-4 text-xs text-base-content/70">
                 <p><strong>Protection :</strong></p>
@@ -189,7 +194,8 @@
           <div>
             <h3 class="text-2xl font-bold mb-4">Vos droits et obligations</h3>
             <p class="mb-4">
-              En utilisant E-RENTALL, vous acceptez ces conditions générales qui protègent tous les utilisateurs et garantissent un service de qualité.
+              En utilisant E-RENTALL, vous acceptez ces conditions générales qui protègent tous les
+              utilisateurs et garantissent un service de qualité.
             </p>
 
             <ul class="space-y-3 mb-6">
@@ -285,24 +291,28 @@
         <div class="max-w-3xl mx-auto">
           <div class="collapse collapse-arrow bg-base-100 mb-4">
             <input type="radio" name="faq-accordion" />
-            <div class="collapse-title text-xl font-medium">Que se passe-t-il si je ne respecte pas les conditions ?</div>
+            <div class="collapse-title text-xl font-medium">
+              Que se passe-t-il si je ne respecte pas les conditions ?
+            </div>
             <div class="collapse-content">
               <p>
-                En cas de violation des CGU, E-RENTALL peut suspendre ou supprimer votre compte sans préavis. 
-                Les comportements frauduleux ou contraires aux bonnes mœurs sont strictement interdits et 
-                peuvent entraîner des poursuites judiciaires.
+                En cas de violation des CGU, E-RENTALL peut suspendre ou supprimer votre compte sans
+                préavis. Les comportements frauduleux ou contraires aux bonnes mœurs sont
+                strictement interdits et peuvent entraîner des poursuites judiciaires.
               </p>
             </div>
           </div>
 
           <div class="collapse collapse-arrow bg-base-100 mb-4">
             <input type="radio" name="faq-accordion" />
-            <div class="collapse-title text-xl font-medium">Puis-je annuler mon compte à tout moment ?</div>
+            <div class="collapse-title text-xl font-medium">
+              Puis-je annuler mon compte à tout moment ?
+            </div>
             <div class="collapse-content">
               <p>
-                Oui, vous pouvez supprimer votre compte à tout moment depuis les paramètres de votre profil. 
-                Attention : cette action est irréversible et supprimera toutes vos données. Assurez-vous 
-                d'avoir terminé toutes vos réservations en cours.
+                Oui, vous pouvez supprimer votre compte à tout moment depuis les paramètres de votre
+                profil. Attention : cette action est irréversible et supprimera toutes vos données.
+                Assurez-vous d'avoir terminé toutes vos réservations en cours.
               </p>
             </div>
           </div>
@@ -314,9 +324,10 @@
             </div>
             <div class="collapse-content">
               <p>
-                Vos données sont protégées conformément à la législation malgache. Nous ne partageons 
-                vos informations qu'avec les prestataires techniques nécessaires et les autorités en 
-                cas d'obligation légale. Vous pouvez exercer vos droits d'accès, rectification et suppression.
+                Vos données sont protégées conformément à la législation malgache. Nous ne
+                partageons vos informations qu'avec les prestataires techniques nécessaires et les
+                autorités en cas d'obligation légale. Vous pouvez exercer vos droits d'accès,
+                rectification et suppression.
               </p>
             </div>
           </div>
@@ -328,9 +339,9 @@
             </div>
             <div class="collapse-content">
               <p>
-                E-RENTALL peut modifier ces conditions à tout moment. Les nouvelles CGU seront publiées 
-                sur la plateforme et vous serez notifié par email. La poursuite de l'utilisation vaut 
-                acceptation des nouvelles conditions.
+                E-RENTALL peut modifier ces conditions à tout moment. Les nouvelles CGU seront
+                publiées sur la plateforme et vous serez notifié par email. La poursuite de
+                l'utilisation vaut acceptation des nouvelles conditions.
               </p>
             </div>
           </div>
@@ -343,13 +354,17 @@
       <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold mb-4">Prêt à utiliser notre plateforme ?</h2>
         <p class="mb-6 max-w-xl mx-auto">
-          En utilisant E-RENTALL, vous acceptez ces conditions générales d'utilisation qui garantissent un service sécurisé et de qualité.
+          En utilisant E-RENTALL, vous acceptez ces conditions générales d'utilisation qui
+          garantissent un service sécurisé et de qualité.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <NuxtLink to="/auth/register" class="btn bg-white text-primary hover:bg-gray-200">
             S'inscrire gratuitement
           </NuxtLink>
-          <NuxtLink to="/vehicles" class="btn btn-outline text-white border-white hover:bg-white hover:text-primary">
+          <NuxtLink
+            to="/vehicles"
+            class="btn btn-outline text-white border-white hover:bg-white hover:text-primary"
+          >
             Explorer les véhicules
           </NuxtLink>
         </div>
@@ -359,5 +374,10 @@
 </template>
 
 <script setup>
-// Aucune logique spécifique n'est nécessaire pour cette page statique
+  // Titre par défaut pour la page des conditions d'utilisation
+  useHead({
+    title: 'E-Rentall - Votre partenaire de location de voitures'
+  })
+
+  // Aucune logique spécifique n'est nécessaire pour cette page statique
 </script>
