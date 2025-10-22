@@ -110,6 +110,12 @@ export default defineNuxtConfig({
       }
     },
     mailFromAddress: process.env.MAIL_FROM_ADDRESS || '',
+    openai: {
+      apiKey: process.env.OPENAI_API_KEY || '',
+      model: 'gpt-4o',
+      maxTokens: 800,
+      temperature: 0.3
+    },
     public: {
       appName: 'location-voitures-madagascar',
       supabaseUrl: process.env.SUPABASE_URL || '',

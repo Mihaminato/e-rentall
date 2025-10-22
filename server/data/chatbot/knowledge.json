@@ -1,0 +1,412 @@
+{
+  "company": {
+    "name": "E-RENTALL",
+    "slogan": {
+      "fr": "Votre partenaire de location de voitures",
+      "mg": "Mpiara-miasa aminao amin'ny fanofana fiara"
+    },
+    "description": {
+      "fr": "Plateforme de location de voitures entre particuliers et professionnels à Madagascar",
+      "mg": "Sehatra fanofana fiara eo amin'ny olon-tsotra sy matihanina any Madagasikara"
+    },
+    "coverage": {
+      "fr": "Partout à Madagascar : Antananarivo, Toamasina, Fianarantsoa, Mahajanga, Toliara, Antsiranana",
+      "mg": "Manerana an'i Madagasikara: Antananarivo, Toamasina, Fianarantsoa, Mahajanga, Toliara, Antsiranana"
+    },
+    "contact": {
+      "email": "support@erentall.market",
+      "support_hours": "24/7",
+      "response_time": {
+        "fr": "Réponse sous 24h",
+        "mg": "Valiny ao anatin'ny 24 ora"
+      }
+    },
+    "features": {
+      "fr": [
+        "Le Choix et les Opportunités : plus grande variété de véhicules pour les voyageurs et accès à une clientèle diversifiée pour les propriétaires",
+        "La Confiance et la Sécurité : vérification des profils de tous les propriétaires et locataires inscrits sur la plateforme",
+        "Le Support Réactif : équipe disponible 24/7 tout au long de votre expérience"
+      ],
+      "mg": [
+        "Safidy sy Fahafahana: fiara maro samihafa ho an'ny mpandeha sy fidirana amin'ny mpanjifa maro ho an'ny tompon'izy",
+        "Fahatokisana sy Fiarovana: fanamarinana ny mombamomba ny tompon'izy sy ny mpanofa rehetra",
+        "Fanohanan-tsaina: ekipa vonona 24/7 mandritra ny traikefanao"
+      ]
+    }
+  },
+  "process": {
+    "title": {
+      "fr": "Louer un véhicule en 4 étapes sécurisées",
+      "mg": "Manofa fiara amin'ny dingana 4 azo antoka"
+    },
+    "steps": [
+      {
+        "number": 1,
+        "title": {
+          "fr": "Recherchez et réservez",
+          "mg": "Mitady sy manapa-kevitra"
+        },
+        "description": {
+          "fr": "Trouvez votre véhicule idéal avec nos filtres avancés (province, dates, type de véhicule, transmission, nombre de places). Remplissez le formulaire de réservation avec vos dates, destination et nombre de personnes. Votre demande est automatiquement envoyée au propriétaire.",
+          "mg": "Mahita ny fiara mifanaraka aminao amin'ny alalan'ny sivana mandroso (faritra, daty, karazana fiara, fifindrana, isa). Fenoy ny taratasy fangatahana miaraka amin'ny daty, toerana haleha ary isan'ny olona. Ny fangatahana dia alefa ho azy amin'ny tompon'izy."
+        },
+        "details": {
+          "fr": [
+            "Vérification automatique de disponibilité du véhicule",
+            "Calcul automatique du prix total selon la durée",
+            "Notification immédiate envoyée au propriétaire"
+          ],
+          "mg": [
+            "Fanamarinana ho azy ny fisian'ny fiara",
+            "Kajy ho azy ny totalin'ny vidiny araka ny fotoana",
+            "Fampandrenesana avy hatrany ny tompon'izy"
+          ]
+        }
+      },
+      {
+        "number": 2,
+        "title": {
+          "fr": "Le propriétaire approuve",
+          "mg": "Manaiky ny tompon'izy"
+        },
+        "description": {
+          "fr": "Le propriétaire examine votre profil et votre demande, puis peut l'approuver ou la refuser. En cas d'approbation, un acompte est automatiquement défini selon la formule : nombre de jours × 5000 Ar.",
+          "mg": "Ny tompon'izy dia mijery ny mombamomba anao sy ny fangatahana, dia afaka manaiky na mandà. Raha manaiky, ny acompte dia hazavaina ho azy: isan'ny andro × 5000 Ar."
+        },
+        "details": {
+          "fr": [
+            "Vérification du profil du locataire par le propriétaire",
+            "Définition automatique de l'acompte (jours × 5000 Ar)",
+            "Envoi automatique des instructions de paiement par email"
+          ],
+          "mg": [
+            "Fanamarinana ny mombamomba ny mpanofa ataon'ny tompon'izy",
+            "Famaritana ho azy ny acompte (andro × 5000 Ar)",
+            "Fandefasana ho azy ny torolalana momba ny fandoavam-bola amin'ny mailaka"
+          ]
+        }
+      },
+      {
+        "number": 3,
+        "title": {
+          "fr": "Paiement et validation",
+          "mg": "Fandoavam-bola sy fanamafisana"
+        },
+        "description": {
+          "fr": "Vous recevez un email avec les instructions de paiement et une référence unique. Effectuez le paiement par Mobile Money avec cette référence. Notre équipe valide le paiement sous 24h et confirme automatiquement votre réservation.",
+          "mg": "Mahazo mailaka miaraka amin'ny torolalana sy reference tokana ianao. Mandoa amin'ny Mobile Money miaraka amin'ity reference ity. Ny ekipanay dia manamarina ny fandoavam-bola ao anatin'ny 24 ora ary manamarina ho azy ny famandrihana."
+        },
+        "details": {
+          "fr": [
+            "Référence de paiement unique pour chaque réservation",
+            "Validation manuelle par l'équipe admin sous 24h",
+            "Confirmation automatique et activation de la réservation après validation"
+          ],
+          "mg": [
+            "Reference fandoavam-bola tokana ho an'ny famandrihana tsirairay",
+            "Fanamafisana ataon'ny ekipa admin ao anatin'ny 24 ora",
+            "Fanamafisana ho azy sy fandefasana ny famandrihana aorian'ny fanamarinana"
+          ]
+        }
+      },
+      {
+        "number": 4,
+        "title": {
+          "fr": "Récupérez et profitez",
+          "mg": "Mandray sy mifaly"
+        },
+        "description": {
+          "fr": "Rendez-vous au point de rencontre convenu avec le propriétaire. Effectuez ensemble l'état des lieux du véhicule et profitez de votre voyage en toute tranquillité. Support disponible 24/7 en cas de besoin.",
+          "mg": "Mandeha any amin'ny toerana fifandraisana efa nifanarahana tamin'ny tompon'izy. Miaraha manao fanamarinana ny fiara ary mifalia amin'ny dianao tsy misy ahiahy. Fanohanan-tsaina 24/7 raha ilaina."
+        },
+        "details": {
+          "fr": [
+            "Assistance réactive disponible pendant toute la durée de location",
+            "Système d'évaluation mutuelle après la location",
+            "Résolution de litiges par l'équipe E-RENTALL si nécessaire"
+          ],
+          "mg": [
+            "Fanohanan-tsaina vonona mandritra ny fotoana fanofana",
+            "Rafitra fanombanana mifamaly aorian'ny fanofana",
+            "Famahana fifandirana ataon'ny ekipa E-RENTALL raha ilaina"
+          ]
+        }
+      }
+    ]
+  },
+  "booking_statuses": {
+    "title": {
+      "fr": "Suivi de votre réservation",
+      "mg": "Fanaraha-maso ny famandrihana"
+    },
+    "statuses": [
+      {
+        "key": "pending",
+        "label": {
+          "fr": "En attente",
+          "mg": "Miandry"
+        },
+        "description": {
+          "fr": "Demande envoyée au propriétaire, en attente de son approbation",
+          "mg": "Fangatahana nalefa amin'ny tompon'izy, miandry ny fankatoavany"
+        }
+      },
+      {
+        "key": "owner_approved",
+        "label": {
+          "fr": "Approuvé par le propriétaire",
+          "mg": "Nekena tamin'ny tompon'izy"
+        },
+        "description": {
+          "fr": "Le propriétaire a accepté votre demande. Acompte requis : nombre de jours × 5000 Ar",
+          "mg": "Nanaiky ny fangatahana ny tompon'izy. Acompte ilaina: isan'ny andro × 5000 Ar"
+        }
+      },
+      {
+        "key": "confirmed",
+        "label": {
+          "fr": "Confirmé",
+          "mg": "Voamarina"
+        },
+        "description": {
+          "fr": "Paiement validé par l'équipe, réservation confirmée",
+          "mg": "Fandoavam-bola voamarin'ny ekipa, famandrihana voamarina"
+        }
+      },
+      {
+        "key": "active",
+        "label": {
+          "fr": "Actif - Location en cours",
+          "mg": "Mandeha - Fanofana an-dalana"
+        },
+        "description": {
+          "fr": "Vous avez récupéré le véhicule, location en cours",
+          "mg": "Efa nandray ny fiara ianao, fanofana an-dalana"
+        }
+      },
+      {
+        "key": "completed",
+        "label": {
+          "fr": "Terminé",
+          "mg": "Vita"
+        },
+        "description": {
+          "fr": "Location terminée avec succès, merci d'avoir utilisé E-RENTALL",
+          "mg": "Fanofana vita tamim-pahombiazana, misaotra nanampy ny E-RENTALL"
+        }
+      },
+      {
+        "key": "cancelled",
+        "label": {
+          "fr": "Annulé",
+          "mg": "Nofoana"
+        },
+        "description": {
+          "fr": "Réservation annulée",
+          "mg": "Famandrihana nofoana"
+        }
+      }
+    ]
+  },
+  "faq": [
+    {
+      "question": {
+        "fr": "Comment fonctionne le paiement ?",
+        "mg": "Ahoana ny fomba fandoavam-bola ?"
+      },
+      "answer": {
+        "fr": "Après approbation du propriétaire, vous recevez un email avec les instructions de paiement et une référence unique. Payez par Mobile Money avec cette référence. Notre équipe valide le paiement sous 24h et confirme automatiquement votre réservation. Formule de l'acompte : nombre de jours × 5000 Ar. Exemple : 3 jours = 15 000 Ar d'acompte.",
+        "mg": "Aorian'ny fankatoavan'ny tompon'izy, mahazo mailaka miaraka amin'ny torolalana sy reference tokana ianao. Mandoa amin'ny Mobile Money miaraka amin'ity reference ity. Ny ekipanay dia manamarina ny fandoavam-bola ao anatin'ny 24 ora ary manamarina ho azy ny famandrihana. Acompte: isan'ny andro × 5000 Ar. Ohatra: 3 andro = 15 000 Ar."
+      }
+    },
+    {
+      "question": {
+        "fr": "Puis-je annuler ma réservation ?",
+        "mg": "Afaka manafoana ny famandrihako ve aho ?"
+      },
+      "answer": {
+        "fr": "Oui, vous pouvez annuler gratuitement avant le paiement de l'acompte. Après le paiement de l'acompte, des conditions d'annulation s'appliquent et l'acompte peut être retenu selon les conditions du propriétaire. Contactez le support à support@erentall.market pour plus de détails.",
+        "mg": "Eny, afaka manafoana maimaim-poana ianao alohan'ny fandoavam-bola. Aorian'ny fandoavam-bola, misy fepetra momba ny fanafoanana ary ny acompte dia azo tazonina araka ny fepetra nomen'ny tompon'izy. Mifandraisa amin'ny fanohanan-tsaina amin'ny support@erentall.market raha mila fanazavana fanampiny."
+      }
+    },
+    {
+      "question": {
+        "fr": "Comment sont vérifiés les utilisateurs ?",
+        "mg": "Ahoana no fanamarinana ny mpampiasa ?"
+      },
+      "answer": {
+        "fr": "Tous les utilisateurs doivent fournir une pièce d'identité (CIN). Notre équipe vérifie ce document avant validation du compte. Les propriétaires doivent également fournir la carte grise de leur véhicule. Les professionnels doivent avoir NIF et STAT. Documents validés sous 48h.",
+        "mg": "Ny rehetra dia tsy maintsy manome taratasy famantarana (CIN). Ny ekipanay dia manamarina ny antontan-taratasy alohan'ny fankatoavana ny kaonty. Ny tompon'izy dia manome ny carte grise koa. Ny matihanina dia tsy maintsy manana NIF sy STAT. Antontan-taratasy voamarina ao anatin'ny 48 ora."
+      }
+    },
+    {
+      "question": {
+        "fr": "Quel est le montant de l'acompte ?",
+        "mg": "Ohatrinona ny acompte ?"
+      },
+      "answer": {
+        "fr": "L'acompte est automatiquement calculé selon la formule : nombre de jours de location × 5000 Ar. Par exemple : location de 3 jours = 15 000 Ar, location de 7 jours = 35 000 Ar. Le solde est réglé directement avec le propriétaire au moment de la récupération du véhicule.",
+        "mg": "Ny acompte dia kajiana ho azy: isan'ny andro × 5000 Ar. Ohatra: fanofana 3 andro = 15 000 Ar, fanofana 7 andro = 35 000 Ar. Ny sisa dia aloa mivantana amin'ny tompon'izy rehefa mandray ny fiara."
+      }
+    },
+    {
+      "question": {
+        "fr": "Que faire en cas de problème pendant la location ?",
+        "mg": "Inona no hatao raha misy olana mandritra ny fanofana ?"
+      },
+      "answer": {
+        "fr": "Notre équipe support est disponible 24/7. Contactez-nous immédiatement à support@erentall.market. Nous intervenons pour résoudre les litiges entre locataire et propriétaire de manière impartiale. Notre priorité est votre sécurité et satisfaction.",
+        "mg": "Ny ekipa mpanohana dia vonona 24/7. Mifandraisa aminay avy hatrany amin'ny support@erentall.market. Miditra izahay hamaha ny fifandirana eo amin'ny mpanofa sy ny tompon'izy tsy miandany. Ny laharam-pahamehana dia ny fiarovana sy ny fahafaham-po."
+      }
+    },
+    {
+      "question": {
+        "fr": "Comment devenir propriétaire sur la plateforme ?",
+        "mg": "Ahoana no fomba ho tompon'izy amin'ny sehatra ?"
+      },
+      "answer": {
+        "fr": "Inscrivez-vous gratuitement sur E-RENTALL. Complétez votre profil avec votre CIN. Ajoutez votre véhicule avec carte grise et plusieurs photos (minimum 3 : extérieur, intérieur, tableau de bord). Après vérification par notre équipe (sous 48h), votre véhicule sera visible et disponible à la location.",
+        "mg": "Misoratra anarana maimaim-poana amin'ny E-RENTALL. Fenoy ny mombamomba anao miaraka amin'ny CIN. Ampio ny fiaranao miaraka amin'ny carte grise sy sary maro (3 farafahakeliny: ivelany, ao anatiny, tableau de bord). Aorian'ny fanamarinana (ao anatin'ny 48 ora), ho hita sy ho azo fanofaina ny fiaranao."
+      }
+    },
+    {
+      "question": {
+        "fr": "Quels documents dois-je fournir comme propriétaire ?",
+        "mg": "Inona ireo antontan-taratasy tsy maintsy atolotro amin'ny maha tompon'izy ahy ?"
+      },
+      "answer": {
+        "fr": "Documents obligatoires : CIN, carte grise du véhicule, assurance du véhicule à jour. Pour les professionnels : NIF et STAT en plus. Photos claires du véhicule (minimum 3 photos : extérieur, intérieur, tableau de bord). L'assurance doit couvrir la location à des tiers.",
+        "mg": "Antontan-taratasy tsy maintsy: CIN, carte grise ny fiara, fiantohana ny fiara vaovao. Ho an'ny matihanina: NIF sy STAT koa. Sary mazava ny fiara (3 farafahakeliny: ivelany, ao anatiny, tableau de bord). Ny fiantohana dia tsy maintsy manarona ny fanofana ho an'ny hafa."
+      }
+    },
+    {
+      "question": {
+        "fr": "Combien coûte l'inscription sur E-RENTALL ?",
+        "mg": "Ohatrinona ny vidin'ny fisoratana anarana amin'ny E-RENTALL ?"
+      },
+      "answer": {
+        "fr": "L'inscription est totalement gratuite pour les locataires et les propriétaires. Aucun frais d'inscription, aucun abonnement. E-RENTALL prend une commission fixe uniquement sur les locations confirmées et finalisées. Vous ne payez que si vous louez.",
+        "mg": "Ny fisoratana anarana dia maimaim-poana tanteraka ho an'ny mpanofa sy ny tompon'izy. Tsy misy sarany, tsy misy famandrihana. E-RENTALL dia maka karama raikitra amin'ny fanofana voamarina sy vita ihany. Mandoa ianao raha manofa ihany."
+      }
+    },
+    {
+      "question": {
+        "fr": "Dans quelles villes E-RENTALL est disponible ?",
+        "mg": "Amin'ny tanàna aiza no misy E-RENTALL ?"
+      },
+      "answer": {
+        "fr": "E-RENTALL couvre les 6 provinces de Madagascar : Antananarivo, Toamasina, Fianarantsoa, Mahajanga, Toliara et Antsiranana, avec toutes leurs villes et communes. La plateforme est accessible partout à Madagascar avec une connexion internet.",
+        "mg": "E-RENTALL dia mandrakotra ny faritra 6 any Madagasikara: Antananarivo, Toamasina, Fianarantsoa, Mahajanga, Toliara ary Antsiranana, miaraka amin'ny tanàna sy kaominina rehetra ao. Azo idirana manerana an'i Madagasikara raha misy internet."
+      }
+    },
+    {
+      "question": {
+        "fr": "Puis-je louer plusieurs véhicules en même temps ?",
+        "mg": "Afaka manofa fiara maro miaraka ve aho ?"
+      },
+      "answer": {
+        "fr": "Oui, vous pouvez faire plusieurs réservations simultanées. Chaque réservation nécessite son propre acompte et sa propre validation. Idéal pour les groupes, événements ou entreprises nécessitant plusieurs véhicules. Contactez-nous pour des réservations groupées.",
+        "mg": "Eny, afaka manao famandrihana maro miaraka ianao. Ny famandrihana tsirairay dia mitaky acompte sy fanamafisana manokana. Tsara ho an'ny vondrona, hetsika na orinasa mila fiara maro. Mifandraisa aminay ho an'ny famandrihana vondrona."
+      }
+    },
+    {
+      "question": {
+        "fr": "Comment contacter le support E-RENTALL ?",
+        "mg": "Ahoana no fifandraisana amin'ny fanohanan-tsaina E-RENTALL ?"
+      },
+      "answer": {
+        "fr": "Notre équipe support est disponible 24/7. Contactez-nous par email à support@erentall.market. Nous répondons sous 24h maximum. Pour les urgences pendant une location active, précisez 'URGENT' dans l'objet de votre email.",
+        "mg": "Ny ekipanay dia vonona 24/7. Mifandraisa aminay amin'ny mailaka amin'ny support@erentall.market. Mamaly izahay ao anatin'ny 24 ora. Ho an'ny maika mandritra ny fanofana mandeha, lazao 'MAIKA' ao amin'ny lohateny mailaka."
+      }
+    },
+    {
+      "question": {
+        "fr": "Que se passe-t-il si le véhicule a un problème technique ?",
+        "mg": "Inona no mitranga raha misy olana teknika amin'ny fiara ?"
+      },
+      "answer": {
+        "fr": "Contactez immédiatement le propriétaire et notre équipe support. Le propriétaire doit résoudre le problème rapidement ou proposer un véhicule de remplacement. Si le problème persiste, nous interviendrons pour trouver une solution équitable (remboursement partiel ou total selon la situation).",
+        "mg": "Mifandraisa avy hatrany amin'ny tompon'izy sy ny ekipanay. Ny tompon'izy dia tsy maintsy mamaha ny olana haingana na manolotra fiara hafa. Raha mitohy ny olana, hiditra izahay hahita vahaolana marina (famerenana vola ampahany na tanteraka araka ny toe-javatra)."
+      }
+    }
+  ],
+  "policies": {
+    "payment": {
+      "fr": "Acompte obligatoire calculé selon : nombre de jours × 5000 Ar. Paiement par Mobile Money avec référence unique fournie par email. Validation manuelle par notre équipe sous 24h. Le solde est réglé directement avec le propriétaire au moment de la récupération du véhicule. E-RENTALL prend une commission fixe sur chaque location confirmée.",
+      "mg": "Acompte tsy maintsy: isan'ny andro × 5000 Ar. Fandoavam-bola amin'ny Mobile Money miaraka amin'ny reference tokana nomena tamin'ny mailaka. Fanamafisana ataon'ny ekipanay ao anatin'ny 24 ora. Ny sisa dia aloa mivantana amin'ny tompon'izy rehefa mandray ny fiara. E-RENTALL dia maka karama raikitra amin'ny fanofana voamarina tsirairay."
+    },
+    "cancellation": {
+      "fr": "Annulation gratuite avant paiement de l'acompte. Après paiement de l'acompte, des conditions s'appliquent : l'acompte peut être retenu partiellement ou totalement selon le délai d'annulation et les conditions du propriétaire. Plus vous annulez tôt, plus vous avez de chances de récupérer votre acompte. Contactez le support à support@erentall.market pour toute demande d'annulation.",
+      "mg": "Fanafoanana maimaim-poana alohan'ny fandoavam-bola. Aorian'ny fandoavam-bola, misy fepetra: ny acompte dia azo tazonina ampahany na tanteraka araka ny fe-potoana fanafoanana sy ny fepetra nomen'ny tompon'izy. Maika kokoa ny fanafoanana, lehibe kokoa ny azo averina. Mifandraisa amin'ny support@erentall.market ho an'ny fangatahana fanafoanana."
+    },
+    "verification": {
+      "fr": "Vérification obligatoire de la CIN pour tous les utilisateurs avant toute réservation. Carte grise obligatoire pour les propriétaires. NIF et STAT pour les professionnels. Assurance du véhicule à jour obligatoire couvrant la location à des tiers. Photos claires du véhicule obligatoires (minimum 3). Documents validés sous 48h par notre équipe de vérification.",
+      "mg": "Fanamarinana tsy maintsy ny CIN ho an'ny rehetra alohan'ny famandrihana. Carte grise tsy maintsy ho an'ny tompon'izy. NIF sy STAT ho an'ny matihanina. Fiantohana ny fiara vaovao tsy maintsy manarona ny fanofana ho an'ny hafa. Sary mazava ny fiara tsy maintsy (3 farafahakeliny). Antontan-taratasy voamarina ao anatin'ny 48 ora."
+    },
+    "data_protection": {
+      "fr": "Vos données personnelles sont protégées selon notre politique de confidentialité. Nous collectons : nom, prénom, téléphone, email, CIN, localisation lors des réservations. Partage limité aux besoins de la prestation (propriétaire, locataire, prestataires techniques). Vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Conservation limitée à la durée nécessaire et conforme à la loi malgache. Contact pour vos droits : support@erentall.market",
+      "mg": "Ny angon-drakitrao dia voaaro araka ny politikanay momba ny tsiambaratelo. Manangona: anarana, finday, mailaka, CIN, toerana rehefa manao famandrihana. Fizarana voafetra amin'ny ilana ny asa (tompon'izy, mpanofa, matihanina teknika). Manana zo hidirana, hanitsiana ary hamafa ny angon-drakitrao ianao. Fitahirizana voafetra amin'ny fotoana ilaina sy araka ny lalàna malagasy. Fifandraisana ho an'ny zo: support@erentall.market"
+    },
+    "insurance": {
+      "fr": "Le véhicule doit être assuré par le propriétaire. L'assurance doit couvrir spécifiquement la location à des tiers. E-RENTALL n'est qu'un intermédiaire technique mettant en relation locataires et propriétaires. La responsabilité de l'assurance et de l'entretien du véhicule incombe entièrement au propriétaire. En cas d'accident, suivez les procédures d'assurance du véhicule et informez immédiatement notre équipe.",
+      "mg": "Ny fiara dia tsy maintsy voatsintona tamin'ny tompon'izy. Ny fiantohana dia tsy maintsy manarona manokana ny fanofana ho an'ny hafa. E-RENTALL dia mpanelanelana teknika ihany mampifandray ny mpanofa sy ny tompon'izy. Ny tompon'izy no tompon'andraikitra tanteraka amin'ny fiantohana sy ny fikojakojana ny fiara. Raha misy lozam-pifamoivoizana, araho ny fomba fiasan'ny fiantohana ary ampahafantaro avy hatrany ny ekipanay."
+    },
+    "terms": {
+      "fr": "En utilisant E-RENTALL, vous acceptez nos conditions générales d'utilisation. Inscription gratuite obligatoire. Âge minimum 18 ans. Informations exactes requises. Respect mutuel entre utilisateurs. Paiements sécurisés via Mobile Money uniquement. Support disponible 24/7 pour tout litige. E-RENTALL se réserve le droit de suspendre ou supprimer un compte en cas de violation des conditions. Les CGU peuvent être modifiées, vous serez notifié par email.",
+      "mg": "Amin'ny fampiasana E-RENTALL, manaiky ny fepetra ankapobenao ianao. Fisoratana anarana maimaim-poana tsy maintsy. Taona 18 farafahakeliny. Fampahalalana marina takiana. Fifanajana eo amin'ny mpampiasa. Fandoavam-bola azo antoka amin'ny Mobile Money ihany. Fanohanan-tsaina 24/7 ho an'ny fifandirana. E-RENTALL dia afaka manakana na mamafa kaonty raha misy fanitsakitsahana ny fepetra. Ny CGU dia azo ovaina, hampahafantarina amin'ny mailaka ianao."
+    }
+  },
+  "owner_benefits": {
+    "title": {
+      "fr": "Vous avez un véhicule à louer ?",
+      "mg": "Manana fiara hofaina ve ianao ?"
+    },
+    "subtitle": {
+      "fr": "Maximisez la rentabilité de votre flotte en toute sécurité",
+      "mg": "Ampitomboy ny tombom-barotra amin'ny fiaranao amin'ny fomba azo antoka"
+    },
+    "benefits": [
+      {
+        "title": {
+          "fr": "Gérez votre activité facilement",
+          "mg": "Tantano mora ny asanao"
+        },
+        "description": {
+          "fr": "Interface simple et intuitive pour gérer vos véhicules, réservations et disponibilités. Tableau de bord complet pour suivre vos revenus.",
+          "mg": "Sehatra tsotra sy mora ho an'ny fitantanana ny fiaranao, famandrihana ary fahafaha-manao. Dashboard feno hanaraha-maso ny fidiranao."
+        }
+      },
+      {
+        "title": {
+          "fr": "Optimisez votre rentabilité",
+          "mg": "Ampitomboy ny tombom-barotra"
+        },
+        "description": {
+          "fr": "Accédez à une clientèle élargie partout à Madagascar. Fixez vos propres tarifs et conditions. Maximisez le taux d'occupation de votre flotte.",
+          "mg": "Miditra amin'ny mpanjifa maro manerana an'i Madagasikara. Mamaritra ny sarany sy ny fepetra. Ampitomboy ny fampiasana ny fiaranao."
+        }
+      },
+      {
+        "title": {
+          "fr": "Sécurité garantie",
+          "mg": "Fiarovana azo antoka"
+        },
+        "description": {
+          "fr": "Vérification rigoureuse de tous les locataires avant chaque réservation. Validation des CIN sous 48h. Acompte obligatoire pour toute location.",
+          "mg": "Fanamarinana hentitra ny mpanofa rehetra alohan'ny famandrihana. Fankatoavana ny CIN ao anatin'ny 48 ora. Acompte tsy maintsy ho an'ny fanofana rehetra."
+        }
+      },
+      {
+        "title": {
+          "fr": "Support dédié 24/7",
+          "mg": "Fanohanan-tsaina 24/7"
+        },
+        "description": {
+          "fr": "Équipe réactive pour vous accompagner, répondre à vos questions et résoudre les litiges. Assistance technique disponible à tout moment.",
+          "mg": "Ekipa vonona hanampy anao, hamaly ny fanontanianao sy hamaha ny fifandirana. Fanampiana teknika azo atao amin'ny fotoana rehetra."
+        }
+      }
+    ]
+  }
+}
+

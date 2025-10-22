@@ -343,3 +343,56 @@ export interface UserToVerify {
   last_submission_date: string | null
   documents: Document[]
 }
+
+// Chatbot types
+export interface ChatMessage {
+  role: 'user' | 'assistant' | 'system'
+  content: string
+  timestamp: string
+}
+
+export interface ChatbotState {
+  messages: ChatMessage[]
+  isOpen: boolean
+  isTyping: boolean
+  error: string | null
+}
+
+export interface KnowledgeBase {
+  company: {
+    name: string
+    slogan: { fr: string; mg: string }
+    description: { fr: string; mg: string }
+    coverage: { fr: string; mg: string }
+    contact: {
+      email: string
+      support_hours: string
+      response_time: { fr: string; mg: string }
+    }
+    features: {
+      fr: string[]
+      mg: string[]
+    }
+  }
+  process: {
+    title: { fr: string; mg: string }
+    steps: Array<{
+      number: number
+      title: { fr: string; mg: string }
+      description: { fr: string; mg: string }
+      details?: { fr: string[]; mg: string[] }
+    }>
+  }
+  faq: Array<{
+    question: { fr: string; mg: string }
+    answer: { fr: string; mg: string }
+  }>
+  policies: {
+    payment: { fr: string; mg: string }
+    cancellation: { fr: string; mg: string }
+    verification: { fr: string; mg: string }
+    data_protection: { fr: string; mg: string }
+    insurance: { fr: string; mg: string }
+    terms?: { fr: string; mg: string }
+  }
+}

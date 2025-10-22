@@ -10,6 +10,11 @@
 
     <!-- Footer -->
     <NavFooter />
+
+    <!-- Chatbot -->
+    <ClientOnly>
+      <ChatbotChatBot />
+    </ClientOnly>
   </div>
 </template>
 
