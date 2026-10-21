@@ -68,7 +68,47 @@
         </div>
       </div>
     </div>
+    
+    <ClientOnly>
+      <!-- Nos derniers véhicules -->
+      <section id="recent-vehicles" class="py-20 bg-base-200">
+        <div class="container mx-auto px-4">
+          <!-- Titre de la section -->
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold">Nos derniers véhicules</h2>
+            <p class="text-lg text-base-content/70 mt-2">
+              Découvrez les derniers ajouts à notre flotte.
+            </p>
+            <div class="mt-4">
+              <NuxtLink to="/vehicles" class="btn btn-primary">Voir tous les véhicules</NuxtLink>
+            </div>
+          </div>
 
+          <!-- Grille des véhicules -->
+          <div v-if="isLoading" class="text-center">
+            <span class="loading loading-spinner loading-lg"></span>
+          </div>
+          <div v-else-if="error" class="alert alert-error">
+            <Icon name="mdi:alert-circle" />
+            <span>{{ error }}</span>
+          </div>
+          <div
+            v-else-if="recentVehicles.length > 0"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <VehiclesVehicleCard
+              v-for="vehicle in recentVehicles"
+              :key="vehicle.id"
+              :vehicle="vehicle"
+            />
+          </div>
+          <div v-else class="text-center py-8">
+            <p>Aucun véhicule à afficher pour le moment.</p>
+          </div>
+        </div>
+      </section>
+    </ClientOnly>
+    
     <!-- Avantages / Pourquoi nous choisir -->
     <div class="py-16 bg-base-100">
       <div class="container mx-auto px-4">
@@ -277,47 +317,7 @@
           </div>
         </div>
       </div>
-    </div>
-
-    <ClientOnly>
-      <!-- Nos derniers véhicules -->
-      <section id="recent-vehicles" class="py-20 bg-base-200">
-        <div class="container mx-auto px-4">
-          <!-- Titre de la section -->
-          <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold">Nos derniers véhicules</h2>
-            <p class="text-lg text-base-content/70 mt-2">
-              Découvrez les derniers ajouts à notre flotte.
-            </p>
-            <div class="mt-4">
-              <NuxtLink to="/vehicles" class="btn btn-primary">Voir tous les véhicules</NuxtLink>
-            </div>
-          </div>
-
-          <!-- Grille des véhicules -->
-          <div v-if="isLoading" class="text-center">
-            <span class="loading loading-spinner loading-lg"></span>
-          </div>
-          <div v-else-if="error" class="alert alert-error">
-            <Icon name="mdi:alert-circle" />
-            <span>{{ error }}</span>
-          </div>
-          <div
-            v-else-if="recentVehicles.length > 0"
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <VehiclesVehicleCard
-              v-for="vehicle in recentVehicles"
-              :key="vehicle.id"
-              :vehicle="vehicle"
-            />
-          </div>
-          <div v-else class="text-center py-8">
-            <p>Aucun véhicule à afficher pour le moment.</p>
-          </div>
-        </div>
-      </section>
-    </ClientOnly>    
+    </div>        
   </div>
 </template>
 
